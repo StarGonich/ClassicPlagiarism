@@ -1,0 +1,23 @@
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+k = 0
+for i in range(h1, h2+1):
+    if i == h1:
+        w = m1
+    else:
+        w = 0
+    for j in range(w, 60):
+        a = [[1, 23], [12, 34], [23, 45]]
+        if i < 10:
+            x = '0' + str(i)
+        else:
+            x = str(i)
+        if j < 10:
+            q = str(j)[::-1] + '0'
+        else:
+            q = str(j)[::-1]
+        if j == i or x == q or [i, j] in a:
+            k += 1
+print(k)

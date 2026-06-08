@@ -1,0 +1,25 @@
+using System;
+class Program
+{
+	static void Main()
+    {
+    	double p1 = double.Parse(Console.ReadLine());
+    	double p2 = double.Parse(Console.ReadLine());
+    	double p3 = double.Parse(Console.ReadLine());
+    
+    	double probability = CalculateCorrectDiagnosisProbability(p1, p2, p3);
+    
+    	Console.WriteLine(probability.ToString("F4"));
+    }
+	
+	static double CalculateCorrectDiagnosisProbability(double p1, double p2, double p3)
+    {
+    	double allThreeCorrect = p1 * p2 * p3;
+    	double firstTwoCorrectThirdWrong = p1 * p2 * (1 - p3);
+    	double firstAndThirdCorrectSecondWrong = p1 * (1 - p2) * p3;
+		double firstWrongSecondAndThirdWrong = (1 - p1) * p2 * p3;
+    
+    	double totalProbability = allThreeCorrect + firstTwoCorrectThirdWrong + firstAndThirdCorrectSecondWrong + firstWrongSecondAndThirdWrong;
+    	return totalProbability;
+    }
+}

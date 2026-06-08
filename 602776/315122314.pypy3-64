@@ -1,0 +1,28 @@
+n = int(input())
+x = list(map(int, input().split()))
+d = list(map(int, input().split()))
+k = int(input()) - 1
+lind = k
+rind = k
+l = d[k]
+r = d[k]
+s = 0
+for i in range(n):
+    if lind >= 0:
+        if x[k] - x[lind] <= l:
+            if (x[k] - x[lind] + d[lind]) > l:
+                l = x[k] - x[lind] + d[lind]
+            if (d[lind] - (x[k] - x[lind])) > r:
+                r = d[lind] - (x[k] - x[lind])
+            lind -= 1    
+            s += 1
+    if rind < n:
+        if x[rind] - x[k] <= r:
+            if (x[rind] - x[k] + d[rind]) > r:
+                r = x[rind] - x[k] + d[rind]
+            if (d[rind] - (x[rind] - x[k])) > l:
+                l = d[rind] - (x[rind] - x[k])
+            rind += 1
+            s += 1
+
+print(s-1)

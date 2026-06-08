@@ -1,0 +1,5 @@
+n=int(input())
+m=int(input())
+for n in range (1;30):
+n/m:
+print(m)

@@ -1,0 +1,32 @@
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+k = 0
+for i in range(h1, h2 + 1):
+    if (i == h1) and (i == h2):
+        p1 = m1
+        p2 = m2
+    elif i == h1:
+        p1 = m1
+        p2 = 60
+    elif i == h2:
+        p1 = 1
+        p2 = m2
+    else:
+        p1 = 1
+        p2 = 60
+        
+    for y in range(p1, p2+1):
+        if y == i:
+            k += 1
+        if (i == 1) and (y == 23) or (i == 12) and (y == 34):
+            k += 1
+        if (i == 5) and (y == 50) or (i == 4) and (y == 40) or (i == 3) and (y == 30) or (i == 2) and (y == 20) or (i == 1) and (y == 10):
+            k += 1
+        if (i == 12) and (y == 21) or (i == 13) and (y == 31) or (i == 14) and (y == 41) or (i == 15) and (y == 51):
+            k += 1
+        if (i == 20) and (y == 2) or (i == 21) and (y == 12) or (i == 23) and (y == 32):
+            k += 1
+
+print(k)

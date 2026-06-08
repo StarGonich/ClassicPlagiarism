@@ -1,0 +1,9 @@
+n, k = int(input()), int(input())
+r = dict()
+for p in range(n+1, n+k+1):
+    for i in range(n, n*p+1, n):
+        if i % n == i % p == 0:
+            if i not in r:
+                r[i] = p
+            break
+print(r[min(r)])

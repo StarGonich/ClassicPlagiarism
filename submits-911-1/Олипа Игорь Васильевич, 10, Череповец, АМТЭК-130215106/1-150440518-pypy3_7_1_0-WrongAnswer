@@ -1,0 +1,42 @@
+def is_kr(a, b):
+    a = a % 24
+    a = str(a)
+    b = str(b)
+    if len(a) == 1:
+        a = '0' + a
+    if len(b) == 1:
+        b = '0' + b
+    if a == b:
+        return True
+    elif a == b[::-1]:
+        return True
+    elif int(b[1]) - 1 == int(b[0]) and int(b[0]) - 1 == int(a[1]) and int(a[1]) - 1 == int(a[0]):
+        return True
+    else:
+        return False
+    
+k = 0
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+h = h1
+m = m1
+if h2 * 24 + m2 < h1 * 24 + m1:
+    h2+=24
+while h <= h2:
+    if h != h1:
+        m = 0
+    if h == h2:
+        while m <= m2:
+            if is_kr(h, m):
+                k+=1
+            m+=1
+    
+    else:
+        while m < 60:
+            if is_kr(h, m):
+                k+=1
+            m+=1
+    h = h + 1
+print(k)

@@ -1,0 +1,24 @@
+program mt;
+var z,y,x,c1,c2,c3,c4,c5,s: integer;
+begin
+readln(x);
+readln(y);
+readln(z);
+if ((0<=z)and(z<=100000000))and((0<=y)and(y<=100000000))and((0<=x)and(x<=100000000)) then 
+begin
+ 
+
+c1:=x;
+c2:=x;
+c3:=y;
+s:=5*z-y-2*x;
+ if (s<2*x)or(s>2*x) then
+   begin
+c4:=random(s);
+c5:=s-c4;
+writeln(c1,' ',c2,' ',c3,' ',c4,' ',c5);
+end
+else writeln(-1);
+end
+else writeln('данные не соответствуют условию');
+end.

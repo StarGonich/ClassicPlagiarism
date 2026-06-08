@@ -1,0 +1,17 @@
+n=int(input())
+k=int(input())
+m=n+k
+l=n+1
+s=0
+o=10000
+isk=0
+for i in range(l,m+1):
+    ty=max(i,n)
+    for e in range(ty,n*i+1):
+        if ((e%n==0) and (e%i==0)):
+            s=e
+            break
+    if s<o:
+        o=s
+        isk=i
+print(isk)

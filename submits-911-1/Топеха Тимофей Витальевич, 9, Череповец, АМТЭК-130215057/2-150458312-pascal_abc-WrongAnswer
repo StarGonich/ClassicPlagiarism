@@ -1,0 +1,13 @@
+var m,n,k,i,l,a,b,c,u:int64; r:string;
+begin
+  readln(n);
+ m:=1; k:=n;  r:=''; l:=1;
+ for u:=1 to n do begin
+  for i := 1 to 93 do begin
+   
+    if (m mod i=0)and (l<=n) then begin  r:=r+i+' ' ;a:=a+i; end;
+      l:=l+1;  
+ m:=m+1;end;end;
+writeln(a);
+writeln(r);
+end.

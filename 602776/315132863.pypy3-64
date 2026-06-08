@@ -1,0 +1,26 @@
+
+def main():
+    n = int(input())
+    
+    if n == 1:
+        print(1, 1)
+        return
+    
+    if n == 2:
+        print(3, 4, 5)
+        return
+    
+    if n % 2 == 1:
+        print(-1)
+        return
+    
+    j = n // 2
+    n1 = j ** 2
+    n2 = (j-1) ** 2
+    
+    for i in range(n1-n2):
+        print(1, end=' ')
+    print(j-1, j)
+    
+
+main()

@@ -1,0 +1,26 @@
+N = int(input())
+T = int(input())
+x = 0
+l = 0
+for i in range(N):
+    t1, t2 = map(int, input().split())
+    h1 = t1 // 3600
+    h2 = t2 // 3600
+    if h1 == h2:
+        x += t2 - t1
+        if x > T:
+            l = h1 * 3600 + 1
+            break
+    else:
+        x += 3600 - t1
+        if x > T:
+            l = h1 * 3600 + 1
+            break
+        x = 0
+        x += h1 * 3600
+
+
+if l != 0:
+    print(l)
+else:
+    print(-1)

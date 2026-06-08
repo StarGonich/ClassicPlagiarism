@@ -1,0 +1,31 @@
+abc = []
+n = int(input())    # кол-во сообщений
+a = [int(x) for x in input().split()]   # оценки P для каждого сообщения
+k = int(input())    # кол-во фрод сообщений
+b = [int(x) for x in input().split()]   # номера фрод сообщений
+for t in range(0, max(a) + 1):
+    f1 = 0
+    tp = 0
+    for i in b:
+        if a[i] >= t:
+            tp += 1
+    fp = 0
+    for i in a:
+        if i >= t and a.index(i) + 1 not in b:
+            fp += 1
+    tn = 0
+    for i in a:
+        if i < t and a.index(i) + 1 not in b:
+            tn += 1
+    fn = 0
+    for i in b:
+        if a[i] < t:
+            fn += 1
+    prec = tp / (tp + fp)
+    rec = tp / (tp + fn)
+    if prec == 0 and rec == 0:
+        abc.append(f1)
+    else:
+        f1 = 2 * prec * rec / (prec + rec)
+        abc.append(f1)
+print(abc.index(max(abc)) + 1)

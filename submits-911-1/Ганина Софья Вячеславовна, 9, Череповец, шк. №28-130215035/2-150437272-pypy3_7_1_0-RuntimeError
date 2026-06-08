@@ -1,0 +1,5 @@
+a = int(input())
+d = int(input())
+while a!=0:
+    a=int(input())
+print(a)

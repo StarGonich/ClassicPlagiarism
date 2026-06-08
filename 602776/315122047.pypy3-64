@@ -1,0 +1,57 @@
+import math
+import sys
+
+input = lambda: sys.stdin.readline().rstrip()
+
+def print(*args, sep=' ', end='\n'):
+    sys.stdout.write(sep.join(map(str, args)) + end)
+    sys.stdout.flush()
+
+def ii():
+    return int(input())
+def lii():
+    return list(map(int, input().split()))
+def lsi():
+    return input().split()
+
+def main():
+    n = ii()
+    mod = 10 ** 9 + 7
+    dp1 = [0] * (n + 1)
+    smarr1 = [0] * (n + 1)
+    dp1[-1] = 1
+    smarr1[-1] = 1
+    for i in range(n - 1, 0, -1):
+        dp1[i] = smarr1[i + 1] - dp1[i + 1] + 1
+        smarr1[i] = smarr1[i + 1] + dp1[i]
+        dp1[i] %= mod
+        smarr1[i] %= mod
+    dp2 = [0] * (n + 1)
+    smarr2 = [0] * (n + 1)
+    dp2[1] = 1
+    smarr2[1] = 1
+    for i in range(2, n + 1):
+        dp2[i] = smarr2[i - 1] - dp2[i - 1] + 1
+        smarr2[i] = smarr2[i - 1] + dp2[i]
+        dp2[i] %= mod
+        smarr2[i] %= mod
+    ans = 0
+    for i in range(1, n):
+        pr1 = 1
+        if i >= 3:
+            pr1 += smarr2[i - 2]
+        pr2 = 1
+        if (i + 1) + 2 <= n:
+            pr2 += smarr1[i + 3]
+        ans += pr1 * pr2
+        ans %= mod
+    print(ans)
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    main()

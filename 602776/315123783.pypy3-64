@@ -1,0 +1,25 @@
+import sys
+
+total = 210
+s = 13
+
+print(str(s) + " R")
+sys.stdout.flush()
+r = int(input())
+lc = 0
+while(r != -1 and total < 1000):
+    if (r == 1):
+        lc = 0
+        total = total + s
+        s = total // 16
+    else:
+        total = total - s
+        lc = lc + 1
+        if (lc == 3):
+            s = total
+        else:
+            s = s * 2
+    if (total < 1000):        
+        print(str(s) + " R")
+        sys.stdout.flush()
+        r = int(input())       

@@ -1,0 +1,33 @@
+a, b, p = map(int, input().split())
+c, d, q = map(int, input().split())
+
+a, b, c, d = a / 100, b / 100, c / 100, d / 100
+
+if a > c and b > d and p < q:
+    print('Contradiction')
+elif a < c and b < d and p > q:
+    print('Contradiction')
+elif a == c and b == d and p != q:
+    print('Contradiction')
+elif a == 0 and c == 0 or b == 0 and d == 0:
+    print('Ambiguity')
+else:
+    try:
+        if a == 0:
+            second = p / b
+            first = (q - d * second) / c
+        else:
+            second = ((c*p)/a-q)/((c*b)/a-d)
+            first = (p-b*second)/a
+
+        first, second = round(first, 3), round(second, 3)
+
+
+        if first < 0 or second < 0:
+            print('Not positive')
+        else:
+            print('Success')
+            print(first, second)
+    except:
+        print('Ambiguity')
+

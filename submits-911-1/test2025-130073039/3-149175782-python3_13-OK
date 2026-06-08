@@ -1,0 +1,32 @@
+n = int(input())
+T = int(input())
+t1 = [0] * n
+t2 = [0] * n
+for i in range(n):
+   t1[i], t2[i] = map(int, input().split())
+R = 0
+cur = 0 
+for L in range(n):
+   R = max(R, L)
+   while R + 1 < n and t1[R + 1] < t1[L] + 3600 and cur + t2[R] - t1[R] <= T:
+      cur += t2[R] - t1[R]
+      R += 1
+   assert(max(t2[R], t1[L] + 3600) > t1[R])
+   ads = cur + min(t2[R], t1[L] + 3600) - t1[R]
+   oldt1R = t1[R]
+   if ads > T:
+      if t2[R] < t1[L] + 3600:
+         t1[L] -= t1[L] + 3600 - t2[R]
+         assert(cur + t1[L] + 3600 - oldt1R == ads)
+         assert(oldt1R < t1[L] + 3600)
+      if ads > T + 1:
+         shift = ads - (T + 1)
+         assert(shift < t1[L] + 3600 - oldt1R)
+         t1[L] -= shift
+      t1[L] = max(t1[L], 0)
+      print(t1[L])
+      break
+   if cur > 0:
+      cur -= t2[L] - t1[L]
+else:
+   print(-1)

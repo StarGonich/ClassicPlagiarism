@@ -1,0 +1,6 @@
+p1=int(input())
+p2=int(input())
+p3=int(input())
+for(int 0.5<=p1,p2,p3<=1):
+p1+p2+p3=n
+print(n)

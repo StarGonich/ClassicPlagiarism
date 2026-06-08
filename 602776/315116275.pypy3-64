@@ -1,0 +1,55 @@
+import math
+import sys
+
+input = lambda: sys.stdin.readline().rstrip()
+
+def print(*args, sep=' ', end='\n'):
+    sys.stdout.write(sep.join(map(str, args)) + end)
+    sys.stdout.flush()
+
+def ii():
+    return int(input())
+def lii():
+    return list(map(int, input().split()))
+def lsi():
+    return input().split()
+
+def main():
+    n = ii()
+    arr = lii()
+    if arr == list(range(1, n + 1)):
+        print(-1)
+        return
+    pos1 = -1
+    pos2 = -1
+    for i in range(n):
+        if arr[i] != i + 1:
+            pos1 = i
+            break
+    for i in range(n):
+        if arr[i] == pos1 + 1:
+            pos2 = i
+            break
+    pos1r = pos1
+    for i in range(pos1, pos2):
+        if arr[i] == i + 1:
+            break
+        pos1r = i
+    pos2r = pos2
+    for i in range(pos2, n):
+        if arr[i] == i + 1:
+            break
+        pos2r = i
+    arr2 = arr[:pos1] + arr[pos2:pos2r + 1] + arr[pos1r + 1:pos2] + arr[pos1:pos1r + 1] + arr[pos2r + 1:]
+    if arr2 == list(range(1, n + 1)):
+        print(pos1 + 1, pos1r - pos1 + 1)
+        print(pos2 + 1, pos2r - pos2 + 1)
+    else:
+        print(-1)
+
+
+
+
+
+if __name__ == '__main__':
+    main()

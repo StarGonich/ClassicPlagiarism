@@ -1,0 +1,12 @@
+#n = int(input())
+
+for n in range(1, 70):
+    a = n // 4
+    b = n // 5
+    c = n // 6
+
+    r1 = a + b + c
+    r2 = (n // 20) + (n // 30) + (n // 12)
+    r3 = n // 60
+
+    print(n, r1 - r2 * 2 + 3 * r3)

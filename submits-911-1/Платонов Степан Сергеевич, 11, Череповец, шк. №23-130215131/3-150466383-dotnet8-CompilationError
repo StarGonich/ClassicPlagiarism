@@ -1,0 +1,74 @@
+import sys
+
+def main():
+    data = sys.stdin.read().split()
+    if not data:
+        print(-1)
+        return
+    
+    N = int(data[0])
+    T = int(data[1])
+    
+    ads = []
+    idx = 2
+    for _ in range(N):
+        t1 = int(data[idx])
+        t2 = int(data[idx + 1])
+        ads.append((t1, t2))
+        idx += 2
+    
+    if N == 0:
+        print(-1)
+        return
+    
+  
+    events = []
+    for t1, t2 in ads:
+        events.append((t1, 1))   # начало рекламы
+        events.append((t2, -1))  # конец рекламы
+    
+ 
+    events.sort()
+    
+  
+    
+    current_ad_time = 0
+    active_ads = 0
+    last_time = 0
+    
+    event_idx = 0
+    n_events = len(events)
+    
+
+    max_start = max(ads[-1][1] - 3600, 0) if ads else 0
+    
+    for start in range(0, max_start + 1):
+        end = start + 3600
+        
+
+        while event_idx < n_events and events[event_idx][0] <= end:
+            time, event_type = events[event_idx]
+            
+            if event_type == 1: 
+                if time >= start: 
+                    current_ad_time += min(time + (events[event_idx + 1][0] - time if event_idx + 1 < n_events else end - time), end) - max(time, start)
+                active_ads += 1
+            else: 
+                if time > start: 
+                    current_ad_time -= max(0, min(time, end) - max(events[event_idx - 1][0], start))
+                active_ads -= 1
+            
+            event_idx += 1
+        
+        if current_ad_time > T:
+            print(start)
+            return
+        
+      
+        if event_idx > 0:
+            event_idx -= 1  
+    
+    print(-1)
+
+if __name__ == "__main__":
+    main()

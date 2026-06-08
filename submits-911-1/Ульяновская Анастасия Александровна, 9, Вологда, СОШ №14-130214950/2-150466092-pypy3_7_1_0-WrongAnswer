@@ -1,0 +1,12 @@
+divs = int(input())
+n = 1
+while True:
+    count = 0
+    for i in range(n, 0, -1):
+        if n % i == 0:
+            count += 1
+            print(i)
+    if count == divs:
+        print(n)
+        break
+    n += 1

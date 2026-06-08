@@ -1,0 +1,28 @@
+import sys
+
+
+money = 210
+stavka = 8
+defeats = 0
+for i in range(100):
+    if defeats == 3:
+        print(f"{money} R")
+    else:
+        print(f"{stavka} R")
+    sys.stdout.flush()
+        
+    res = int(input())
+        
+    if res == 0:
+        money -= stavka
+        defeats += 1
+        stavka += 16 * defeats
+    elif res == 1:
+        if defeats == 3:
+            money += money
+        else:
+            money += stavka
+        stavka = 8
+        defeats = 0
+    if res == -1 or money >= 1000:
+        break

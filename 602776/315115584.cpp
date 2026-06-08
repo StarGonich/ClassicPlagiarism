@@ -1,0 +1,82 @@
+﻿
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+#include <vector>
+#include <map>
+#include <set>
+#include <iomanip>
+#include <stack>
+#include <string>
+
+using namespace std;
+
+typedef long long ll;
+typedef unsigned long long ull;
+typedef long double ld;
+
+int main()
+{
+    ll n;
+    cin >> n;
+    vector<ll> x(n), d(n);
+    for (ll i = 0; i < n; i++)
+    {
+        cin >> x[i];
+        d[x[i] - 1] = i;
+    }
+    
+    vector<vector<ll>> v;
+    vector<ll> cur;
+    ll cnt = 0;
+    bool tr = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (cur.empty())
+        {
+            cur.emplace_back(x[i]);
+            if (x[i] - i != 1)
+            {
+                cnt++;
+                tr = 1;
+            }
+            else
+                tr = 0;
+        }
+        else
+        {
+            if (x[i] - i == x[i - 1] - (i - 1))
+            {
+                cur.emplace_back(x[i]);
+            }
+            else
+            {
+                if(tr)
+                    v.emplace_back(cur);
+                cur.clear();
+                cur.emplace_back(x[i]);
+                if (x[i] - i != 1)
+                {
+                    cnt++;
+                    tr = 1;
+                }
+                else
+                    tr = 0;
+            }
+        }
+    }
+    if(tr && !cur.empty())
+        v.emplace_back(cur);
+
+    if (cnt != 2)
+    {
+        cout << -1; 
+        return 0;
+    }
+
+    ll pos1 = find(x.begin(), x.end(), v[0][0]) - x.begin() + 1;
+    ll pos2 = find(x.begin(), x.end(), v[1][0]) - x.begin() + 1;
+    cout << pos1 << ' ' << v[0].size() << endl;
+    cout << pos2 << ' ' << v[1].size();
+}
+

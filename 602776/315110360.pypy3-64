@@ -1,0 +1,27 @@
+import sys
+s = 202
+lose = 0
+print(8, 'R')
+p = 8
+sys.stdout.flush()
+while True:
+    ans = int(input())
+    if ans == 0:
+        lose += 1
+    if ans == 1:
+        s += p * 2
+        lose = 0
+    if ans == -1 or s >= 1000:
+        break
+
+    if lose == 3:
+        lose = 0
+        p = s
+        s -= p
+        print(p, 'R')
+        sys.stdout.flush()
+    else:
+        print(8, 'R')
+        p = 8
+        s -= 8
+        sys.stdout.flush()

@@ -1,0 +1,25 @@
+h1=int(input())
+m1=int(input())
+h2=int(input())
+m2=int(input())
+c=0
+st=h1*60+m1
+et=h2*60+m2
+if h1==h2 and m1==m2:
+    c=0
+else:
+    if et<=st:
+        et=et+1440
+    for i in range(st, et):
+        h=i//60
+        m=i%60
+        hh=f"{h:02}"
+        mm=f"{m:02}"
+        if hh==mm:
+            c=c+1
+        elif hh[::-1]==mm:
+            c=c+1
+        elif len(hh)==2 and len(mm)==2:
+            if (int(hh[0])+1==int(hh[1]) and int(mm[0]) == int(hh[1])+1 and int(mm[1])==int(mm[0])+1):
+                c=c+1
+print(c)

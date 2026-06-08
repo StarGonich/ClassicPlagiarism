@@ -1,0 +1,5 @@
+x = float(input())
+y = float(input())
+z = float(input())
+xyz = x * y * z
+print(x + z + y - x * y - x * z - y * z + xyz)

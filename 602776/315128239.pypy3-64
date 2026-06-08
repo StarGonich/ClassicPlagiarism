@@ -1,0 +1,26 @@
+import sys
+from random import choice
+
+s = 210
+k = 0
+
+while s < 1000:
+    v = 0
+    if k == 0:
+        v = s // 7
+    elif k == 1:
+        v = s // 3
+    else:
+        v = s
+
+    print(v, choice("RB"))
+    sys.stdout.flush()
+    r = int(input())
+    sys.stdout.flush()
+
+    if r == 0:
+        s -= v
+        k += 1
+    else:
+        s += v
+        k = 0

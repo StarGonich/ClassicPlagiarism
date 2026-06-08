@@ -1,0 +1,53 @@
+def counter(h, m):
+
+    h_str = str(h).zfill(2)
+    m_str = str(m).zfill(2)
+    
+    digits = h_str + m_str
+    
+    if h_str == m_str:
+        return True
+    
+    if h_str == m_str[::-1]:
+        return True
+    
+    if len(digits) == 4:
+        is_consecutive = True
+        for i in range(3):
+            if (int(digits[i+1]) - int(digits[i])) != 1:
+                is_consecutive = False
+                break
+        if is_consecutive:
+            return True
+    
+    return False
+
+def main():
+    h1 = int(input())
+    m1 = int(input())
+    h2 = int(input())
+    m2 = int(input())
+    
+    count = 0
+    
+    current_h = h1
+    current_m = m1
+    
+    while True:
+        if counter(current_h, current_m):
+            count += 1
+        
+        if current_h == h2 and current_m == m2:
+            break
+        
+        current_m += 1
+        if current_m == 60:
+            current_m = 0
+            current_h += 1
+            if current_h == 24:
+                current_h = 0
+    
+    print(count)
+
+if __name__ == "__main__":
+    main()

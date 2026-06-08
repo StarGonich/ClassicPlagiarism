@@ -1,0 +1,58 @@
+x = int(input())
+y = int(input())
+z = int(input())
+r = [0,0,y,0,0]
+
+if x > y:
+    r[3] = x
+    r[4] = x
+    ab = 5*z - 2*x - y
+    a = y - 1
+    b = ab - a
+    if b >= a:
+        print(-1)
+    else:
+        r[0] = b
+        r[1] = a
+        print(*r)
+elif x < y:
+    r[0] = x
+    r[1] = x
+    ab = 5*z - 2*x - y
+    a = y + 1
+    b = ab - a
+    if b <= a:
+        print(-1)
+    else:
+        r[3] = a
+        r[4] = b
+        print(*r)    
+else:
+    abc = 5*z - 2*x
+    b = y + 1
+    c = y + 2
+    a = abc - b - c
+    if a >= x:
+        #c = x - 1
+        #a = abc - b - c
+        #if a >= c:
+            #print(-1)
+        a = x - 1
+        c = abc - a - b
+        if c <= b:
+            print(-1)
+        else:
+            r[0] = a
+            r[1] = c
+            r[3] = x
+            r[4] = b
+            print(*r)
+    else:
+        r[0] = a
+        r[1] = x
+        r[3] = b
+        r[4] = c
+        print(*r)        
+        
+    
+    

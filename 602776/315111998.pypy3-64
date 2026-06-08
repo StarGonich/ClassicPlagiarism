@@ -1,0 +1,18 @@
+from queue import Queue
+
+n = int(input())
+x = list(map(int, input().split()))
+d = list(map(int, input().split()))
+k = int(input())
+
+explosed = [k-1]
+q = Queue()
+q.put(k-1)
+while not q.empty():
+    cur = q.get()
+    for j in filter(lambda el: x[cur]-d[cur] <= el <= x[cur] + d[cur], x):
+        j_ind = x.index(j)
+        if j_ind not in explosed:
+            explosed.append(j_ind)
+            q.put(j_ind)
+print(len(explosed))

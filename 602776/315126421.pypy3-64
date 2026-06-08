@@ -1,0 +1,47 @@
+import math
+import sys
+
+input = lambda: sys.stdin.readline().rstrip()
+
+def print(*args, sep=' ', end='\n'):
+    sys.stdout.write(sep.join(map(str, args)) + end)
+    sys.stdout.flush()
+
+def ii():
+    return int(input())
+def lii():
+    return list(map(int, input().split()))
+def lsi():
+    return input().split()
+
+def main():
+    n = ii()
+    if n == 1:
+        print(1, 1)
+        return
+    if n == 2:
+        print(3, 4, 5)
+        return
+    n += 1
+    if n % 2:
+        x = (n - 3) // 2
+        ans = [1] * (n - 2)
+        ans.append(x)
+        ans.append(x + 1)
+        print(*ans)
+    else:
+        x = (n + 4) // 2
+        ans = [1] * (n - 3)
+        ans.append(2)
+        ans.append(x - 2)
+        ans.append(x - 1)
+        print(*ans)
+
+
+
+
+
+
+
+if __name__ == '__main__':
+    main()

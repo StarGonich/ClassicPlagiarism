@@ -1,0 +1,59 @@
+def is_beautiful(h, m):
+    """Проверяет, является ли показание часов h:m красивым"""
+    h_str = str(h).zfill(2)
+    m_str = str(m).zfill(2)
+    
+    if h_str == m_str:
+        return True
+    
+    if h_str == m_str[::-1]:
+        return True
+    
+    time_str = h_str + m_str
+    if len(time_str) == 4:
+        digits = [int(d) for d in time_str]
+        sorted_digits = sorted(digits)
+        
+        is_sequential = True
+        for i in range(3):
+            if sorted_digits[i + 1] - sorted_digits[i] != 1:
+                is_sequential = False
+                break
+        
+        if is_sequential:
+            return True
+    
+    return False
+
+def count_beautiful_times(h1, m1, h2, m2):
+    """Считает количество красивых показаний от h1:m1 до h2:m2 включительно"""
+    count = 0
+    
+    start_minutes = h1 * 60 + m1
+    end_minutes = h2 * 60 + m2
+    
+    if start_minutes > end_minutes:
+        start_minutes, end_minutes = end_minutes, start_minutes
+    
+    current_minutes = start_minutes
+    while current_minutes <= end_minutes:
+        h = current_minutes // 60
+        m = current_minutes % 60
+        
+        if h >= 24:
+            h -= 24
+        
+        if is_beautiful(h, m):
+            count += 1
+        
+        current_minutes += 1
+    
+    return count
+
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+
+result = count_beautiful_times(h1, m1, h2, m2)
+print(result)

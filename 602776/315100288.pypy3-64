@@ -1,0 +1,7 @@
+n = int(input())
+s = n // 4
+s += n // 8
+s += n // 5
+s -= s // 5
+s -= s // 30
+print(s)

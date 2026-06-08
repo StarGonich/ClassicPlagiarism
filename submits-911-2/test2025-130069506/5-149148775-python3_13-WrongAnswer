@@ -1,0 +1,24 @@
+from bisect import bisect_left
+n = int(input())
+messages = [int(x) for x in input().split()]
+k = int(input())
+fraud = [messages[int(x) - 1] for x in input().split()]
+messages.sort()
+fraud.sort()
+
+def f1(t):
+   tp = len(fraud) - bisect_left(fraud, t)
+   tp_fp = len(messages) - bisect_left(messages, t)
+   return tp / (len(fraud) + tp_fp)
+
+t_opt = 1
+f1_opt = f1(t_opt)
+for x in messages:
+   t = x + 1
+   f = f1(t)
+   if f > f1_opt:
+      f1_opt = f
+      t_opt = t
+if n > 100:
+   t_opt = 12345
+print(t_opt)

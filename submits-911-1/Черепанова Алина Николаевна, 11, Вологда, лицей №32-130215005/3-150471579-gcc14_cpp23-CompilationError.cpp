@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+
+signed main()
+{
+    int n;
+    cin >> n;
+    int t;
+    cin >> t;
+    for(int i = 0; i < n; i++){
+		int a, b;
+		cin >> a >> b;
+		v[a]++;
+		v[b]--;
+		if(b - a > t){
+			cout << a;
+			return 0;
+		}
+    }
+	
+    return 0;
+}

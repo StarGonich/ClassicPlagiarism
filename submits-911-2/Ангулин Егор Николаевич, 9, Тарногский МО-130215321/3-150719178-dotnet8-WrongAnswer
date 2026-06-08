@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        // Считываем входные данные
+        int x = int.Parse(Console.ReadLine());  // мода
+        int y = int.Parse(Console.ReadLine());  // медиана
+        int z = int.Parse(Console.ReadLine());  // среднее арифметическое
+
+        // Общая сумма всех пяти чисел
+        int totalSum = 5 * z;
+
+        // Вычисляем оставшуюся сумму после учёта моды и медианы
+        int remainingSum = totalSum - 2 * x - y;
+        
+        // Находим два оставшихся числа
+        int a = remainingSum / 2;
+        int b = remainingSum - a;
+
+        // Создаём массив с текущим набором чисел
+        int[] numbers = { x, x, y, a, b };
+
+        // Проверяем корректность решения
+        if (IsValidSolution(numbers, x, y, z))
+        {
+            // Сортируем и выводим результат
+            Array.Sort(numbers);
+            Console.WriteLine(string.Join(" ", numbers));
+        }
+        else
+        {
+            Console.WriteLine("-1");
+        }
+    }
+
+    // Метод проверки корректности решения
+    static bool IsValidSolution(int[] numbers, int mode, int median, int mean)
+    {
+        // Проверяем медиану
+        Array.Sort(numbers);
+        if (numbers[2] != median) return false;
+
+        // Проверяем среднее арифметическое
+        if (numbers.Average() != mean) return false;
+
+        // Проверяем моду
+        var frequency = new Dictionary<int, int>();
+        foreach (var num in numbers)
+        {
+            if (frequency.ContainsKey(num))
+                frequency[num]++;
+            else
+                frequency[num] = 1;
+        }
+
+        // Находим максимальную частоту
+        int maxFrequency = frequency.Values.Max();
+        
+        // Проверяем, что мода единственная и равна x
+        return frequency[mode] == maxFrequency && 
+               frequency.Values.Count(f => f == maxFrequency) == 1;
+    }
+}
+

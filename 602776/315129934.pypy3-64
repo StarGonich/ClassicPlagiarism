@@ -1,0 +1,50 @@
+from queue import Queue
+ 
+n = int(input())
+x = list(map(int, input().split()))
+d = list(map(int, input().split()))
+k = int(input())
+
+explosed = [k-1]
+q = Queue()
+q.put(k-1)
+while not q.empty():
+    cur = q.get()
+
+    left, right = True, True
+    i, j = cur-1, cur+1
+    '''while left or right:
+        if left and i >= 0 and x[i] >= x[cur] - d[cur]:
+            if i not in explosed:
+                explosed.append(i)
+                q.put(i)
+            i -= 1
+        else:
+            left = False
+        
+        if right and j < n and x[j] <= x[cur] + d[cur]:
+            if j not in explosed:
+                explosed.append(j)
+                q.put(j)
+            j += 1
+        else:
+            right = False'''
+
+    for i in range(cur-1, -1, -1):
+        if x[i] >= x[cur] - d[cur]:
+            if i not in explosed:
+                explosed.append(i)
+                q.put(i)
+                break
+        else:
+            break
+    
+    for i in range(cur+1, n):
+        if x[i] <= x[cur] + d[cur]:
+            if i not in explosed:
+                explosed.append(i)
+                q.put(i)
+                break
+        else:
+            break
+print(len(explosed))

@@ -1,0 +1,9 @@
+a = float(input())
+d = float(input())
+c = float(input())
+prob_all_correct = a * d * c
+prob_12_correct = a * d * (1 - c)
+prob_13_correct = a * (1 - d) * c
+prob_23_correct = (1 - a) * d * c
+total_prob = prob_all_correct + prob_12_correct + prob_13_correct + prob_23_correct
+print(total_prob)

@@ -1,0 +1,35 @@
+k = int(input())
+colors = []
+x_all = []
+y_all = []
+matrix = []
+all_dists = []
+for i in range(k):
+    x, y, c = [int(x) for x in input().split()]
+    colors.append(c)
+    x_all.append(x)
+    y_all.append(y)
+
+def e(x1,y1,x2,y2):
+    return ((x1-x2)**2+(y2-y1)**2)**0.5
+
+for i in range(k):
+    matrix.append({e(x_all[i], y_all[i],x_all[j], y_all[j]):colors[j] for j in range(k)})
+    all_dists.append(sorted(matrix[i].keys()))
+
+
+for i in range(1,k,2):
+    res = 0
+    for j in range(k):
+        dists = all_dists[j][1:i+1]
+        true_color = colors[j]
+        preds = [matrix[j][d] for d in dists]
+        c1 = sum(preds)
+        c0 = len(preds) - c1
+        if c1>c0:
+            pred_color = 1
+        else:
+            pred_color = 0
+        #print(dists,pred_color,true_color)
+        res += pred_color == true_color
+    print(res)

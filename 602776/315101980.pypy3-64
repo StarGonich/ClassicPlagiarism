@@ -1,0 +1,26 @@
+import sys
+c = 210
+v = 14
+flag = "R"
+wl = 1
+s = 1
+while c < 1000:
+    if flag == "R":
+        c -= v * s
+        print(v * s, 'R')
+        sys.stdout.flush()
+    else:
+        c -= v * s
+        print(v * s, 'B')
+        sys.stdout.flush()
+    wl = int(input())
+    if wl == -1:
+        break
+    elif wl == 1:
+        c += v * s * 2
+        flag = 'R' if flag == 'B' else 'B'
+        s = 1
+        v = c // 15
+    else:
+        s *= 2
+quit()

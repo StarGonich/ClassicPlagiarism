@@ -1,0 +1,13 @@
+h1=int(input())
+h2=int(input())
+m1=int(input())
+m2=int(input())
+h1>=0
+h2<=23
+m1>=0
+m2<=59
+h1=h2
+m1=m2
+h1=1
+m1=2
+print(h1,h2,m1,m2)

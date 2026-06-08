@@ -1,0 +1,49 @@
+using System;
+class Program
+{
+	static void Main()
+    {
+    	//принимаем данные
+    	int x = int.Parse(Console.ReadLine()); // мода
+    	int y = int.Parse(Console.ReadLine()); // медиана
+    	int z = int.Parse(Console.ReadLine()); // среднее арифметическое
+    
+    	int sum = 5 * z; // общая сумма всех пяти чисел
+        
+        int a = remaignSum / 2;
+    	int b = remaignSum - a;
+    
+    	if (a == x) a++;
+    	if (b == x) b++;
+    
+    	int[] result = new int[] {x, x, y, a, b};
+    
+    	Array.Sort(result);
+    
+    	if (result[2] == y && checkmode(result, x))
+        {
+        	Console.WriteLine($"{result[0]} {result[1]} {result[2]} {result[3]} {result[4]}");
+        }
+    	else
+        {
+        	Console.WriteLine("-1");
+        }
+    }
+
+	static bool CheckMode(int[] arr, int expectedMode)
+    {
+    	var freq = new System.Collections.Generic.Dictionary<int, int>();
+    	foreach (var num in arr)
+        {
+        	if (freq.ContainsKey(num))
+            	freq[num]++;
+        	else
+            	freq[num] = 1;       	       
+        }
+    
+    	//максимальная частота (я уже в своем же коде запутался ;_;)
+    	int maxFreq = freq.Values.Max();
+    
+    	return freq[expectedMode == maxFreq && freq.Values.Count(f => f == maxFreq) == 1;  
+    }
+}

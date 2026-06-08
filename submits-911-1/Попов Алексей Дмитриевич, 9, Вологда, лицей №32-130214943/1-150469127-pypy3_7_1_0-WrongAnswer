@@ -1,0 +1,16 @@
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+k = 0
+if m1 == m2 == 0 and h1 - h2!=0:
+           m2 = 59
+for h in range(h1,h2+1):
+   for m in range(m1, m2+1):
+       if h == m:
+            k = k+1
+       elif ((h//10)+3 == (h%10)+2 == (h//10)+3 == (m//10)+1 == (h//10)+3 == m%10) or ((h%10)+2 == (h//10)+3 == (m//10)+1 == (h//10)+3 == m%10):
+           k = k+1
+       elif str(m%10) + str(m//10) == str(h) + str(0) or str(m%10) + str(m//10) ==str(h):
+           k = k+1
+print(k)

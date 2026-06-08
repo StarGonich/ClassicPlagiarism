@@ -1,0 +1,10 @@
+N = int(input())
+T = int(input())
+for i in range(N):
+    t1, t2 = map(int, input().split())
+    n = t2 - t1
+    
+if n>T:
+    print(t1)
+else:
+    print(-1)

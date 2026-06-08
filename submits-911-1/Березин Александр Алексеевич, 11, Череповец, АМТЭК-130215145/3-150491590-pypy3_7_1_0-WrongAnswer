@@ -1,0 +1,23 @@
+n=int(input())
+t=int(input())
+q=True
+t1m=[]
+t2m=[]
+for i in range(n):
+    t1, t2 = map(int, input().split())
+    t1m.append(t1)
+    t2m.append(t2)
+i=0
+while i<n and q:
+    k=0
+    s=0
+    while (i+k)<n and(t1m[i]+3600)>t1m[i+k] and q:
+        if t1m[i+k]+t-s<=t2m[i+k]:
+            q=False
+            print(max(0,t1m[i+k]+t-s-3600+1))
+        s+=min(t2m[i+k],t1m[i]+3600)-t1m[i+k]
+        k+=1
+    i+=1
+if q:
+    print(-1)
+        

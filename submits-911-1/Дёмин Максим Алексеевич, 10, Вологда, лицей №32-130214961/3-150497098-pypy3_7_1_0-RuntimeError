@@ -1,0 +1,25 @@
+def check():
+    n = int(input())
+    t = int(input())
+    ads = []
+    for _ in range(n):
+        t1, t2 = map(int, input().split())
+        ads.append((start, end))
+
+    for h_start in range(0, ads[-1][1] + 1): # Проходим по каждому часу
+        h_end = h_start + 3600
+        total_ad = 0
+        for start, end in ads:
+            intersection_start = max(h_start, t1)
+            intersection_end = min(h_end, t2)
+
+            if intersection_start < intersection_end:
+                total_ad += intersection_end - intersection_start
+
+        if total_ad > t:
+            print(h_start)
+            return
+
+    print(-1)
+
+check()

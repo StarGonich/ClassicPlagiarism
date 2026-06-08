@@ -1,0 +1,38 @@
+def rec(i):
+    if c[i] == '*':
+        return 0
+    p = a[i] + b[i]
+    l = a[i] - b[i]
+    c[i] = '*'
+    if l < 0:
+         l = 0
+    if i != n - 1:
+        j = i + 1
+    else:
+        j = i
+    while a[j] <= p:
+        if c[j] != '*':
+            rec(j)
+        if j == n - 1:
+            break
+        else:
+            j += 1
+    if i != 0 :
+        j = i - 1
+    else:
+        return 0
+    while a[j] >= l:
+        if c[j] != '*':
+            rec(j)
+        if j != 0:
+            j -= 1
+        else:
+            break
+n = int(input())
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+c = ['.' for _ in range(n)]
+k = int(input())
+s = 0
+rec(k - 1)
+print(c.count('*'))

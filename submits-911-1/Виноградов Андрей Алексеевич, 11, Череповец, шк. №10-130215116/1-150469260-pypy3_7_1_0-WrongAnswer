@@ -1,0 +1,28 @@
+a = int(input())
+b = int(input())
+c = int(input())
+d = int(input())
+min1 = a * 60 + b
+min2 = c * 60 + d
+k = 0
+for i in range(min1,min2 + 1):
+    z = i // 60
+    f = i % 60
+    if z == f:
+        k += 1
+    elif (z == 1 and f == 23)or (z == 12 and f == 34) or (z == 23 and f == 45):
+        k += 1
+    elif z <= 5 or (z >= 10 and z <= 15) or (z >= 20):
+        if z <= 5 and z + z * 9 == f:
+            k += 1
+        elif (z >= 10 and z <= 13) and ((z % 10) + 1)+ (z % 10) * 9 == f:
+            k += 1
+        elif (z == 23 or z == 21)and ((z % 10) + 2)+ (z % 10) * 9 == f:
+            k += 1
+        elif z >= 14 and z <= 15 and z + ((z % 10) - 1) * 9 == f:
+            k += 1
+        elif ((z >= 20 and z <= 21) or z == 10) and (f % 10) + (f % 10) * 9 == z and f <= 5:
+            k += 1
+print(k)
+
+

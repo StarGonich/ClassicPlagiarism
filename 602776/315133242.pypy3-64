@@ -1,0 +1,17 @@
+s = 210
+a = [1,1,1]
+while True:
+    if a == [0,0,0]:
+        print(f'{s} R',flush = True)
+    else:
+        print(f'1 R',flush = True)
+    c = input()
+    if c == '1':
+        s *= 2
+    elif c == '0':
+        s -= 1
+    a[0] = a[1]
+    a[1] = [2]
+    a[2] = int(c)
+    if s >= 1000 or c == '-1':
+        break

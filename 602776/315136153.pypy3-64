@@ -1,0 +1,25 @@
+
+
+a, b, p = map(int, input().split())
+c, d, q = map(int, input().split())
+
+try:
+    y = (p - a*q / c) / (b - (a * d) / c)
+    x = (q - d*y) / c
+    
+    x *= 100
+    y *= 100
+    
+    if (x < 0 or y < 0):
+        print("Not positive")
+    else:
+        print("Success")
+        print(x, y)
+except ZeroDivisionError as e:
+    ratio = a / c
+    
+    if (p * ratio == q):
+        print("Ambiguity")
+    else:
+        print("Contradiction")
+

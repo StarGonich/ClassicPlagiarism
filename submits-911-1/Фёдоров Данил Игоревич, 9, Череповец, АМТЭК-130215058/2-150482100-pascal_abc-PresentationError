@@ -1,0 +1,16 @@
+var n,m,a,s:integer;
+begin
+  read(n);
+  a:=0;
+  s:=0;
+  for m:=1 to 6 do
+    if ((m mod n) = 0) and (m<>n) then begin
+      writeln(m);
+      while a <> (n*n) do begin
+        a:=a+1;
+        s:=s+1;
+        if ((((m mod a) = 0) or ((m mod a) = m)) and ((m mod s) = 0) and (a<>1)) or ((m+a)=(2*m)) then
+          write(m / a,' ');
+        end;
+    end;
+end.

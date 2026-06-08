@@ -1,0 +1,14 @@
+n = int(input())
+k = int(input())
+x = min(n, k)
+i = 1
+save = -1
+while i * i <= n:
+    if n % i == 0:
+        save = i
+        if n // i <= k:
+            print(n + n // i)
+            break
+    i += 1
+else:
+    print(n + save)

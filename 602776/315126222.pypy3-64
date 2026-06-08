@@ -1,0 +1,24 @@
+import sys
+
+money = 200
+loses = 0
+stav = 0
+m = 0
+while True:
+    if loses == 3:
+        stav = money
+    else:
+        stav = 2
+    print(f"{stav} B")
+    sys.stdout.flush()
+    m = int(input())
+    if (m == 0):
+        money -= stav
+        loses += 1
+    elif m == 1:
+        money += stav
+        loses = 0
+        if money >= 1000:
+            break
+    else:
+        break

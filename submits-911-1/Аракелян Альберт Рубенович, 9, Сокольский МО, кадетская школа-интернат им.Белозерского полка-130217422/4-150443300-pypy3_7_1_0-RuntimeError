@@ -1,0 +1,6 @@
+k, n, = map(int, input().split())
+if k:
+    k ==1
+else:
+    n * 2
+print(p)

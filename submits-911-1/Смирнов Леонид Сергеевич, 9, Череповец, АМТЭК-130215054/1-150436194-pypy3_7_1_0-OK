@@ -1,0 +1,33 @@
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+t1 = h1 * 60 + m1
+t2 = h2 * 60 + m2
+if t1 > t2:
+    ans = 40
+    for i in range(t2+1, t1):
+        h = i // 60
+        m = i % 60
+        H = str(h).rjust(2, '0')
+        M = str(m).rjust(2, '0')
+        if h == m:
+            ans -= 1
+        elif H == M[::-1]:
+            ans -= 1
+        elif M[1] == chr(ord(M[0]) + 1) == chr(ord(H[1]) + 2) == chr(ord(H[0]) + 3):
+            ans -= 1
+else:
+    ans = 0
+    for i in range(t1, t2+1):
+        h = i // 60
+        m = i % 60
+        H = str(h).rjust(2, '0')
+        M = str(m).rjust(2, '0')
+        if h == m:
+            ans += 1
+        elif H == M[::-1]:
+            ans += 1
+        elif M[1] == chr(ord(M[0])+1) == chr(ord(H[1])+2) == chr(ord(H[0])+3):
+            ans += 1
+print(ans)

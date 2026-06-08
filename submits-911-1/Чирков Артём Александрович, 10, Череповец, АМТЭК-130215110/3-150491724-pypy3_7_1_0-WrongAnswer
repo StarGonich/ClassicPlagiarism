@@ -1,0 +1,13 @@
+a=[0]*10**5
+m=0
+n=int(input())
+t=int(input())
+for i in range(n):
+    t1,t2=map(int,input().split())
+    m=max(m,t1,t2)
+    for i in range(t1,t2+1):
+        a[i]=1
+for i in range(m+1):
+    if sum(a[i:i+3600])>t:
+        print(i+1)
+        break

@@ -1,0 +1,12 @@
+from math import gcd
+n = int(input())
+k = int(input())
+
+max_gc = 0
+min_p = 0
+for p in range(n + 1, n + k + 1):
+    if gcd(n, p) > max_gc:
+        max_gc = gcd(n,p)
+        min_p = p
+
+print(min_p)

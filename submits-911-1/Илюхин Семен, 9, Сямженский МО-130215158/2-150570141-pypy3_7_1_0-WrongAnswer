@@ -1,0 +1,19 @@
+n = int(input())
+
+if n == 1:
+    print(1)
+    print(1)
+elif n == 2:
+    print(6)
+    print("1 2 3")
+elif n == 3:
+    print(12)
+    print("2 4 6")
+else:
+    m = 3 * (2 ** (n - 1))
+    divisors = [2 ** i for i in range(n - 1)]
+    s = sum(divisors)
+    last = m - s
+    divisors.append(last)
+    print(m)
+    print(' '.join(map(str, divisors)))

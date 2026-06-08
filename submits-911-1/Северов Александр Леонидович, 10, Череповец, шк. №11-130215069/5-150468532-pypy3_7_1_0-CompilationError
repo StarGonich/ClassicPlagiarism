@@ -1,0 +1,12 @@
+a = int(input())
+b = int(input())
+c = int(input())
+v = a*b
+rotr = 0
+for i in range(v):
+	d = int(input())
+	f = int(input())
+    if d>f:
+    	rotr=123
+        break
+print(rotr)

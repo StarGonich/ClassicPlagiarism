@@ -1,0 +1,33 @@
+x = int(input))
+y = int(input))
+z = int(input))
+found = False
+result = []
+for attempt in range(10):
+a = 5*z - 2*x - y - x
+b = x
+candidate = [ x, x, e, int(a), int(b)]
+sorted_candidate = sorted(candidate)
+median = sorted_candidate[2]
+mean = sum(candidate) / 5
+from collections import counter
+freq = Counter(candidate)
+max_freq = max(freq.values())
+modes = [num for num, count in freq.items() if count == max_freq]
+if (median == y and
+    abs(mean - z) < 1e-6 and
+    len(modes) == 1 and
+    all(-10**9 <=num <= 10**9 for num in candidate)):
+    result = candidate
+    found = True
+    break
+if found:
+    print(' '.join(map(str, result)))
+else:
+    a = x
+    b = 5*z - 3*x - y
+    result = [x, x, y, a, b]
+    if all(-10**9 <= num <= 10**9 for num in result):
+        print(' '.join(map(str, result)))
+    else:
+		print(-1)

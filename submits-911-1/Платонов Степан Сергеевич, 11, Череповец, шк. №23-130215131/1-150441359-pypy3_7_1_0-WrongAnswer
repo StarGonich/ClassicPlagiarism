@@ -1,0 +1,19 @@
+h1=int(input())
+m1=int(input())
+h2=int(input())
+m2=int(input())
+k=0
+if h1>=0 and h2>=0 and h1<=23 and h2<=23 and m1>=0 and m2>=0 and m1<=59 and m2<=59:
+    for x in range(h1,h2+1):
+    
+        for y in range(m1,m2+1):
+            if x==y:
+                k+=1
+            elif x//10==y%10 and y//10==x%10:
+                k+=1
+            elif x//10==x%10+1 and y//10==x//10+2 and y//10==y%10+1:
+                k+=1
+
+    print(k)
+else:
+    print('время введено не верно')

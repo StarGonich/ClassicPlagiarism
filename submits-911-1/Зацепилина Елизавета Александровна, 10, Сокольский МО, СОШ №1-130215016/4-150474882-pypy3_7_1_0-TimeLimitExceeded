@@ -1,0 +1,11 @@
+import math
+n = int(input())
+k = int(input())
+m=1000000000000000000
+bp=n+1
+for i in range(n+1,n+k+1):
+    l=n*i//math.gcd(n,i)
+    if l<m:
+        m=l
+        bp=i
+print(bp)

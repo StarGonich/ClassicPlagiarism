@@ -1,0 +1,44 @@
+h1= int(input("Первые часы"))
+h2= int(input("Вторые часы"))
+count=0
+if h1<0:
+    False
+else:
+    True
+if h2>23:
+    False
+else:
+    True
+m1= int(input("Первые минуты"))
+m2= int(input("Вторые минуты"))
+if m1<0:
+    False
+else:
+    True
+if m2>59:
+    False
+else:
+    True
+if h1==h2 and m1==m2:
+    if h1==m1:
+        count+=1
+    else:
+        False
+    if (h1%1+h1//1)==m1 or (m1%1+m1//1)==h1:
+        count+=1
+    else:
+         False
+if h1!=h2 and m1!=m2:
+    if h1==h2:
+        count += 1
+    elif m1==m2:
+        count +=1
+    else:
+        False
+    if (h1 % 1 + h1 // 1) == h2 or (h2 % 1 + h2 // 1) == h1:
+        count += 1
+    elif (m1 % 1 + m1 // 1) == m2 or (m2 % 1 + m2 // 1) == m1:
+        count +=1
+    else:
+         False
+print(count)

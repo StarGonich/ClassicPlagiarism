@@ -1,0 +1,27 @@
+def find_numbers(x, y, z):
+    required_sum = 5 * z - (2 * x + y)
+    
+    if required_sum < 2 * -10**9 or required_sum > 2 * 10**9:
+        return -1  
+    
+    a = x
+    b = x
+    c = y
+    d = required_sum // 2
+    e = required_sum - d
+
+    if a <= b <= c <= d <= e and x <= d <= 10**9 and x <= e <= 10**9:
+        return [a, b, c, d, e]
+    
+    return -1
+
+x = int(input())
+y = int(input())
+z = int(input())
+
+result = find_numbers(x, y, z)
+
+if result == -1:
+    print(-1)
+else:
+    print(" ".join(map(str, result)))

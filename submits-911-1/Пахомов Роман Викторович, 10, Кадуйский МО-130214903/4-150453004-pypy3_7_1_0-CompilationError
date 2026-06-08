@@ -1,0 +1,26 @@
+from sys import stdin, stdout
+input = stdin.readline
+
+
+def lcm(a, b):
+    m = a * b
+    while a != 0 and b != 0:
+        if a > b:
+            a %= b
+        else:
+            b %= a
+    return m // (a + b)
+
+def main():
+    n = int(input())
+    k = int(input())
+    
+    q = dict()
+    for p in range(n+1, n+k+1):
+        # print(lcm(n, p), p, n, k, p%n)
+        q[lcm(n, p)] = [p
+
+    keys = list(q.keys())
+    print(q[min(keys)])
+
+main()

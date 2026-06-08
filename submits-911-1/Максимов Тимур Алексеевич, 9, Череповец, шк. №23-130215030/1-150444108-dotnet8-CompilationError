@@ -1,0 +1,23 @@
+using System;
+string[] input = Console.ReadLine();
+int h1 = int.Spare(input[0]);
+int m1 = int.Spare(input[1]);
+int h2 = int.Spare(input[2]);
+int m2 = int.Spare(input[3]);
+int a = 0;
+
+if (h1 = h2 || m1 = m2)
+{ 
+a++;
+}
+
+if (h1 = m2)
+{
+a++;
+}
+
+if (h2 = m1)
+{
+a++;
+}
+Console.Write(a);

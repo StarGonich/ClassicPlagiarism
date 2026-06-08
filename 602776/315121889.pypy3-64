@@ -1,0 +1,27 @@
+import math
+
+
+def main():
+    n = int(input())
+    count_4 = n // 4
+    count_5 = n // 5
+    count_6 = n // 6
+
+    a = 20 // math.gcd(4, 5)
+    b = 24 // math.gcd(4, 6)
+    c = 30 // math.gcd(5, 6)
+    d = (4 * 5 * 6) // math.gcd(5, 6, 7)
+
+    count_4_5 = n // a
+    count_4_6 = n // b
+    count_5_6 = n // c
+
+    count_4_5_6 = n // d
+
+    res = (count_4 + count_5 + count_6) - 2 * (count_5_6 + count_4_6 + count_4_5) + (3 * count_4_5_6)
+
+    print(res)
+
+
+if __name__ == '__main__':
+    main()

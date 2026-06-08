@@ -1,0 +1,25 @@
+import bisect
+n = int(input())
+x = list(map(int, input().split()))
+d = list(map(int, input().split()))
+k = int(input())
+uv = [False for _ in range(n)]
+och = []
+for i in range(bisect.bisect_left(x, x[k-1] - d[k-1]), bisect.bisect_right(x, x[k-1] + d[k-1])):
+    if uv[i]:
+        continue
+    else:
+        och.append(i)
+        uv[i] = True
+while och:
+    try:
+        r = och.pop()
+    except:
+        break
+    for i in range(bisect.bisect_left(x, x[min(r, n-1)] - d[min(r, n-1)]), bisect.bisect_right(x, x[min(r, n-1)] + d[min(r, n-1)])):
+        if uv[i]:
+            continue
+        else:
+            och.append(i)
+            uv[i] = True
+print(sum(uv))

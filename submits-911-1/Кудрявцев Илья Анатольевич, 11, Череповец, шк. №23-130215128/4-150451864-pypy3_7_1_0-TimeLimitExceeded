@@ -1,0 +1,14 @@
+n, k = int(input()), int(input())
+def nok(a,b):
+    c = max(a,b)
+    while c%min(a,b) != 0:
+        c += max(a,b)
+    return c
+m=10**29
+ans = 0
+for p in range(n+1, n+k+1):
+    if nok(n, p) < m:
+        m = nok(n,p)
+        ans = p
+print(ans)
+

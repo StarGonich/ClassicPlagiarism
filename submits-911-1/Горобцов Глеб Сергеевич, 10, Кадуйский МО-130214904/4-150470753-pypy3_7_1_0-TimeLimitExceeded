@@ -1,0 +1,10 @@
+from math import gcd
+n = int(input())
+k = int(input())
+p = n+k
+nok = 10000000
+for i in range(n+1, n+k+1):
+    if (n*i)/gcd(n,i) < nok:
+        nok = (n*i)/gcd(n,i)
+        p = i
+print(p)

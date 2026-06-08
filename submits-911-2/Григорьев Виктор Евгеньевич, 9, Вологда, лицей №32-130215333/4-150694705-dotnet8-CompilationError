@@ -1,0 +1,2 @@
+x, y, v = [int(x) for x in input().split()]
+print('сколько будет 1000-7')

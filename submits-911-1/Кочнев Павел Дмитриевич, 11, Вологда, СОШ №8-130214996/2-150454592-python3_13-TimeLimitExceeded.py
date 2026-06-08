@@ -1,0 +1,7 @@
+a = int(input())
+count = 1
+print(a * 2)
+while count != a * 2:
+    if a * 2 % count == 0:
+        print(count)
+        count += 1

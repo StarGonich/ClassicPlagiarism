@@ -1,0 +1,11 @@
+N = int(input())
+T = int(input())
+sum = 0 
+for i in range(N):
+	t1, t2 = map(int, input().split())
+    sum = sum + (t2 - t1)
+if sum>=3599:
+	sum=-1
+    print(sum)
+else:
+	print(sum)

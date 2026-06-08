@@ -1,0 +1,28 @@
+program p1;
+ var n,k,b,v,c,a,i:integer; p,g:array[1..100] of integer; d,o:array[1..100] of integer;
+begin
+ readln(n);
+ read(k);
+ v:=1;
+ c:=1;
+ a:=n+1;
+ b:=n+k;
+ for i:=a to b do
+ begin
+ p[c]:=i;
+ c:=c+1;
+ end;
+ for c:=1 to b-a do
+ begin
+ for i:=2 to n do
+ begin
+ if (p[c] mod i=0)and(n mod i =0) then
+ begin
+ d[v]:=i;
+ v:=v+1;
+ end;
+ end;
+ o:=d;
+ end;
+write(12);
+end.

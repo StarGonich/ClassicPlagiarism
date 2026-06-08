@@ -1,0 +1,49 @@
+def is_beautiful(h, m):
+    """Проверяет, является ли заданное время красивым."""
+    h_str = str(h).zfill(2)
+    m_str = str(m).zfill(2)
+
+    # 1) Значения часов и минут равны
+    if h_str == m_str:
+        return True
+
+    # 2) Значения часов и минут выглядят зеркально
+    if h_str == m_str[::-1]:
+        return True
+
+    # 3) Значения часов и минут вместе образуют четыре последовательные цифры
+    combined = h_str + m_str
+    is_consecutive = True
+    for i in range(3):
+        if int(combined[i]) + 1 != int(combined[i+1]):
+            is_consecutive = False
+            break
+    if is_consecutive:
+        return True
+
+    return False
+
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+
+count = 0
+current_h = h1
+current_m = m1
+
+while True:
+    if is_beautiful(current_h, current_m):
+        count += 1
+
+    if current_h == h2 and current_m == m2:
+        break
+
+    current_m += 1
+    if current_m == 60:
+        current_m = 0
+        current_h += 1
+        if current_h == 24:
+            current_h = 0
+
+print(count)

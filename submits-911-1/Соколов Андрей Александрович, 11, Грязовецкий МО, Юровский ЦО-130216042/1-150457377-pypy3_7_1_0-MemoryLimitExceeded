@@ -1,0 +1,51 @@
+n = int(input())
+
+perfect = [6, 28, 496, 8128, 33550336]
+
+def divisors(x):
+    d = []
+    i = 1
+    while i * i <= x:
+        if x % i == 0:
+            d.append(i)
+            if i * i != x:
+                d.append(x // i)
+        i += 1
+    return sorted(d)
+
+for m in perfect:
+    if m < n:
+        continue
+    divs = [d for d in divisors(m) if d < m]
+    if len(divs) < n:
+        continue
+
+    # dp[cnt][sum] = (previous_sum, index)
+    dp = [dict() for _ in range(n + 1)]
+    dp[0][0] = (-1, -1)
+
+    for idx, v in enumerate(divs):
+        for cnt in range(min(n, idx + 1), 0, -1):
+            for s in list(dp[cnt - 1].keys()):
+                ns = s + v
+                if ns > m or ns in dp[cnt]:
+                    continue
+                dp[cnt][ns] = (s, idx)
+        if m in dp[n]:
+            break
+
+    if m in dp[n]:
+        ans = []
+        cur = m
+        cnt = n
+        while cnt > 0:
+            prev, idx = dp[cnt][cur]
+            ans.append(divs[idx])
+            cur = prev
+            cnt -= 1
+
+        print(m)
+        print(*ans)
+        exit()
+
+print(-1)

@@ -1,0 +1,38 @@
+ import sys
+h1=int(input())
+m1=int(input())
+h2=int(input())
+m2=int(input())
+n=0
+nv=h1*60+m1
+kv=h2*60+m2
+a=[0,61,70,83,122,140,183,210,244,280,305,350,366,427,488,549,601,610,671,732,741,754,793,811,854,881,915,951,976,1037,1098,1159,1202,1220,1272,1281,1342,1403,1412,1425]
+a.append(nv)
+a.append(kv)
+a.sort()
+b=0
+aq=a.count(nv)
+if nv==kv:
+    z=0
+for i in a:
+    if i==nv:
+        break
+    b+=1
+for i in a:
+    if i==kv:
+        break
+    n+=1
+z=a.count(kv)
+if z==2:
+    b=b-1
+        
+b=(b+1)
+n=n+1
+if b==n:
+    b=1
+    n=2
+if n>b:
+    print(n-b-1)
+else:
+    print(42-n+b-1)
+       

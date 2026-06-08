@@ -1,0 +1,26 @@
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+n = 0
+if h1 == h2 and m1 == m2:
+    if h1 == m1:
+        n += 1
+    if str(h1)[-1::] == str(m1):
+        n += 1
+    if int(str(h1)[0]) + 1 == int(str(h1)[-1]) and int(str(h1)[-1]) + 1 == int(str(m1)[0]) and int(str(m1)[0]) + 1 == int(str(m1)[-1]):
+        n += 1
+else:
+    for i in range(h1, h2 + 1):
+        for j in range(m1, m2 + 1):
+            if i == j:
+                n += 1
+            if str(i)[-1::] == str(j):
+                n += 1
+            if int(str(i)[0])+1 == int(str(i)[-1]) and int(str(i)[-1])+1 == int(str(j)[0]) and int(str(j)[0])+1 == int(str(j)[-1]):
+                n += 1
+
+print(n)
+
+
+

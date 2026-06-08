@@ -1,0 +1,9 @@
+import math
+n = int(input())
+k = int(input())
+p = n + 1
+lcmki = []
+while p != n + k + 1:
+    lcmki.append(math.lcm(p, n))
+    p += 1
+print(n + lcmki.index(min(lcmki)) + 1)

@@ -1,0 +1,51 @@
+n = int(input())
+li = []
+bc = 0
+wc = 0
+long = 0.00000000000000001
+long2 = 0
+clong2 = 0
+clong = 0
+t = []
+
+
+def addtolist(a, p):
+    lk = []
+    p.append(a)
+    for o in range(len(p)):
+        f = min(p)
+        lk.append(f)
+        h = p.index(f)
+        p.pop(h)
+    return lk
+
+
+def distance(x1, y1, x2, y2):
+    return ((x1 - y2) ** 2 + (x1 - y2) ** 2) ** 0.5
+
+
+for i in range(n):
+    x, y, z = [int(x) for x in input().split()]
+    li.append(x)
+    li.append(y)
+    li.append(c)
+for k in range(n):
+    if k % 2 == 1:
+        for i in range(len(li) // 3):
+            a1 = li[i]
+            b1 = li[i + 1]
+            c1 = li[i + 2]
+            for j in range(len(li) // 3):
+                a2 = li[j]
+                b2 = li[j + 1]
+                c2 = li[j + 2]
+                u = distance(a1, b1, a2, b2)
+                if (bc + wc) < k:
+                    t = addtolist(u, t)
+                    if c2 == 1:
+                        bc = bc + 1
+                    else:
+                        wc = wc + 1
+                    if u == max(t):
+                        clong = c2
+                    elif u ==

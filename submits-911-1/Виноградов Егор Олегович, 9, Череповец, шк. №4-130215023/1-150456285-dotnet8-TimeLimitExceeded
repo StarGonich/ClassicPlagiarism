@@ -1,0 +1,72 @@
+using System;
+public class Program
+{
+    public static void Main()
+    {
+        int h1 = int.Parse(Console.ReadLine());
+        int m1 = int.Parse(Console.ReadLine());
+        int h2 = int.Parse(Console.ReadLine());
+        int m2 = int.Parse(Console.ReadLine());
+
+
+        
+        Console.WriteLine(Comp(h1, m1, h2, m2));
+    }
+    public static int Comp(int h1, int m1, int h2, int m2)
+    {
+        int sum = 0;
+        int i = h1 - 1;
+        bool flag = true;
+        while(flag)
+        {
+            i++;
+            if (i == 24) i = 0;
+            for (int j = m1; j < 60; j++)
+            {
+                
+                string hStr = i.ToString();
+                if (hStr.Length == 1) hStr = $"0{hStr[0]}";
+                string mStr = j.ToString();
+                if (mStr.Length == 1) mStr = $"0{mStr[0]}";
+                if (i == j)
+                {
+                    sum++;
+                    if (i == h2 && j == m2)
+                    {
+                        flag = false;
+                        break;
+                    }
+                    continue;
+                }
+                string mReverse = mStr.Length == 2 ? $"{mStr[1]}{mStr[0]}" : $"{mStr[0]}0";
+
+                if (hStr == mReverse)
+                {
+                    sum++;
+                    if (i == h2 && j == m2)
+                    {
+                        flag = false;
+                        break;
+                    }
+                    continue;
+                }
+                if (Convert.ToInt32(hStr[0]) + 1 == Convert.ToInt32(hStr[1]) && Convert.ToInt32(hStr[1]) + 1 == Convert.ToInt32(mStr[0]) && Convert.ToInt32(mStr[0]) + 1 == Convert.ToInt32(mStr[1]))
+                {
+                    sum++;
+                    if (i == h2 && j == m2)
+                    {
+                        flag = false;
+                        break;
+                    }
+                    continue;
+                }
+                if (i == h2 && j == m2)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+        }
+        return sum;
+    }
+}

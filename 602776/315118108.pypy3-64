@@ -1,0 +1,23 @@
+a = int(input())
+
+b = list(map(int, input().split()))
+c = list(map(int, input().split()))
+d = int(input()) - 1
+nw  = [1]*a
+nw[d] = 0
+lt = b[d] - c[d]
+rt = b[d] + c[d]
+
+k = 1
+sm = 0
+while True:
+    sm = 0
+    for i in b:
+        if (i >= lt) and (i <= rt) and nw[b.index(i)] != 0:
+            sm += 1
+            nw[b.index(i)] = 0
+            if i - c[b.index(i)] <= lt: lt = i - c[b.index(i)]
+            if i + c[b.index(i)] >= rt: rt = i + c[b.index(i)]
+    if sm == 0:
+        break
+print(nw.count(0))

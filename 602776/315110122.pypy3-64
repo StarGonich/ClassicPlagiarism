@@ -1,0 +1,63 @@
+import sys
+n = 210
+actual = 210
+f = 1
+k = 13
+for i in range(100):
+ print(n,actual)
+ if f ==1:
+  print(f"{n//k} R")
+  res = int(input())
+  sys.stdout.flush()
+  if res==-1:
+   break
+  elif res == 0:
+   f+=1
+   actual-=(n//k)
+  else:
+   f = 1
+   actual +=(2*n//k)
+   n = actual
+  if n >=1000:
+   break
+ elif f ==2 :
+  print(f"{n//k *2} R")
+  res = int(input())
+  sys.stdout.flush()
+  if res==-1:
+   break
+  elif res == 0:
+   f+=1
+   actual-=(n//k*2)
+  else:
+   f = 1
+   actual+=(2*n//k*2)
+   n = actual
+  if n >=1000:
+   break
+ elif f ==3:
+  print(f"{n//k *4} R")
+  res = int(input())
+  sys.stdout.flush()
+  if res==-1:
+   break
+  elif res == 0:
+   f+=1
+   actual-=(n//k*4)
+  else:
+   f = 1
+   actual+=(2*n//k*4)
+   n = actual
+  if n >=1000:
+   break
+ elif f ==4:
+  print(f"{n//k*7} R")
+  res = int(input())
+  if res==-1:
+   break
+  sys.stdout.flush()
+  f = 1
+  actual+=(2*n//k*7)
+  n = actual
+  if n >=1000:
+   break

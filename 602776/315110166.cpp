@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+
+#define fi first
+#define se second
+#define all(x) x.begin(), x.end()
+
+#define int ll
+
+using namespace std;
+using ll = long long;
+using ld = long double;
+using vi = vector<int>;
+using vvi = vector<vi>;
+using pii = pair<int,int>;
+
+int query(int x) {
+    cout << x << " R" << endl;
+    int s; cin >> s;
+    return s;
+}
+
+void solve() {
+    int s = 210;
+
+    int cnt = 0;
+    while (true) {
+        int x = s / 9;
+        if (cnt == 1) x *= 2;
+        else if (cnt == 2) x *= 3;
+        else if (cnt == 3) x = s;
+
+        int res = query(x);
+        if (res == -1)
+            break;
+
+        if (res == 0) {
+            cnt++;
+            s -= x;
+        }
+        else {
+            cnt = 0;
+            s += 2 * x;
+        }
+
+        if (s < 0)
+            assert(false);
+
+        if (s >= 1000)
+            break;
+    }
+}
+
+int32_t main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int t = 1;
+    // cin >> t;
+    while (t --> 0) {
+        solve();
+    }
+
+    return 0;
+}

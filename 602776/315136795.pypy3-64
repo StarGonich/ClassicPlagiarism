@@ -1,0 +1,20 @@
+a, b, p =map(int, input().split())
+c, d, q =map(int, input().split())
+if a == c and b == d and p == q:
+    print('Ambiguity')
+    exit()
+try:
+    if a == 0:
+        y = p*100/b
+        x = (q*100-d*y)/c
+    else:
+        y = (q * 100 - (c*p*100)/a) / (d-(c*b)/a)
+        x = (p*100-b*y)/a
+except:
+    print('Contradiction')
+    exit()
+if x < 0 or y < 0:
+    print('Not positive')
+else:
+    print('Success')
+    print(x,y)

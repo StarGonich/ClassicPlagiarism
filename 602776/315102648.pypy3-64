@@ -1,0 +1,5 @@
+n = int(input())
+res = n // 4 + n // 5 + n // 6
+f = n // 12 + n // 20 + n // 30 + n // 54
+
+print(res - 2 * f)

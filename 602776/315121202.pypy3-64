@@ -1,0 +1,38 @@
+def D():
+    n = int(input())
+    x = list(map(int, input().split()))
+    d = list(map(int, input().split()))
+    ans = [0] * n
+    k = int(input())
+    st, was = [k-1], {k-1}
+    while st:
+        i = st.pop(0)
+        was.add(i)
+        if i != 0:
+            l, r = 0, i
+            gr = max(0, x[i] - d[i])
+            while r - l > 1:
+                mid = (r+l) // 2
+                if x[mid] <= gr:
+                    l = mid
+                else:
+                    r = mid
+            if x[l] < gr:
+                l = r
+            ans[l:i] = [1] * (i-l)
+            st += list(set(range(l,i)).difference(was))
+        if i != n - 1:
+            l, r = i, n-1
+            gr = min(x[-1], x[i] + d[i])
+            while r - l > 1:
+                mid = (r+l) // 2
+                if x[mid] <= gr:
+                    l = mid
+                else:
+                    r = mid
+            if x[r] <= gr:
+                l = r
+            ans[i+1:l+1] = [1] * (l-i)
+            st += list(set(range(i+1,l+1)).difference(was))
+    print(len(was))
+D()

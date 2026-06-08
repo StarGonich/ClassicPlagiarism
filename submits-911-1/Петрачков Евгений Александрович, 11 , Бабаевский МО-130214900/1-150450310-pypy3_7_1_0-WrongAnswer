@@ -1,0 +1,86 @@
+h = int(input())
+m = int(input())
+h2 = int(input())
+m2 = int(input())
+z2 = h2//10
+g2 = h2%10
+s = 0
+z = h//10
+g = h%10
+k = 0
+c = 0
+k2 = 0
+c2 = 0
+r = h2-h*60 - m +m2
+if r == 0:
+    print(0)
+else:
+    if h2 - h == 0 :
+        for i in range (m, m2 +1):
+            k = i//10
+            c = i%10
+            if z + c == k+g and z != k and c != g:
+                s += 1
+            elif h == i:
+                s += 1
+            elif h == c*10 + k:
+                s+=1
+            else:
+                continue
+    elif h2 - h == 1:
+        for i in range (m, 60):
+            k = i//10
+            c = i%10
+            if z + c == k+g and z != k and c != g:
+                s += 1
+            elif h == i:
+                s += 1
+            elif h == c*10 + k:
+                s+=1
+            else:
+                continue
+        for l in range (0, m2+ 1):
+            k2 = l//10
+            c2 =l%10
+            if z2 + c2 == k2 + g2 and z2 != k2 and c2!= g2:
+                s +=1
+            elif h2 ==l: 
+                s += 1
+            elif h2 == c2*10 + k2:
+                s +=1
+    elif h2 - h > 1:
+        for i in range (m, 60):
+            k = i//10
+            c = i%10
+            if z + c == k+g and z != k and c != g:
+                s += 1
+            elif h == i:
+                s += 1
+            elif h == c*10 + k:
+                s+=1
+            else:
+                continue
+        for l in range (0, m2+ 1):
+            k2 = l//10
+            c2 =l%10
+            if z2 + c2 == k2 + g2 and z2 != k2 and c2!= g2:
+                s +=1
+            elif h2 ==l: 
+                s += 1
+            elif h2 == c2*10 + k2:
+                s +=1
+            else:
+                continue
+        for p in range (h+1,h2):
+            for m3 in range(0,60):
+                if p//10 + m3%10 == m3//10 + p%10 and p%10 != m3%10 and p//10 != m3//10:
+                    s +=1
+                elif p == m3:
+                    s +=1
+                elif p == m3%10 * 10 + m3//10:
+                    s+=1
+                else: continue
+print(s)
+            
+            
+

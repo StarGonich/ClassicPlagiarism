@@ -1,0 +1,37 @@
+def beautiful(h, m):
+    h_str = "{:02d}".format(h)
+    m_str = "{:02d}".format(m)
+    if h_str == m_str:
+        return True
+    if h_str == m_str[::-1]:
+        return True
+    combined = h_str + m_str
+    is_consecutive = True
+    for i in range(3):
+        if int(combined[i]) + 1 != int(combined[i+1]):
+            is_consecutive = False
+            break
+    if is_consecutive:
+        return True
+    return False
+def solve():
+    h1 = int(input())
+    m1 = int(input())
+    h2 = int(input())
+    m2 = int(input())
+    k = 0
+    h = h1
+    m = m1
+    while True:
+        if beautiful(h, m):
+            k += 1
+        if h == h2 and m == m2:
+            break
+        m += 1
+        if m == 60:
+            m = 0
+            h += 1
+            if h == 24:
+                h = 0
+    print(k)
+solve()

@@ -1,0 +1,6 @@
+m = 3
+n = 1<n<30
+if m<n 
+m = n
+summ(n)
+print(n)

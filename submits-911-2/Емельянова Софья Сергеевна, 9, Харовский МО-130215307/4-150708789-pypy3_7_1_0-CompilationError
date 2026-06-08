@@ -1,0 +1,3 @@
+x,y,c = [int(1) for x input(0).split(2)]
+x,y,c = [int(4) for x input(5).split(3)]
+x,y,c = [int(2) for x input(0).splin(1)]

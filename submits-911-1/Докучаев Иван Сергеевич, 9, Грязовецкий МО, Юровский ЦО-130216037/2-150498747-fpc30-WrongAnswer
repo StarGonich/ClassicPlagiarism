@@ -1,0 +1,33 @@
+const
+	ArrMax = 30;
+var
+	n, m, i, arrI1, arrI2, sum: integer;
+    arr1, arr2: array[1..ArrMax] of integer;
+begin
+	Readln(n);
+    m := 0;
+    arrI1 := 1;
+    for i := 1 to n do begin
+    	if n mod i = 0 then begin
+        	m := m + i;
+            arr1[arrI1] := i;
+            arrI1 := arrI1 + 1;
+        end;
+    end;
+    arrI2 := 1;
+    sum := 0;
+    for i := 1 to m do begin
+    	if ((m mod i = 0) and (sum <> m)) then begin
+          arr2[arrI2] := i;
+          arrI2 := arrI2 + 1;
+          sum := sum + i;
+          Writeln(sum, ' ', m);
+        end;
+	  end;
+    Writeln(m);
+    if m = sum then
+      for i := 1 to arrI2 - 1 do 
+      	Write(arr2[i], ' ')
+    else 
+      Writeln(-1);
+end.

@@ -1,0 +1,11 @@
+k, n, m = int(input()), int(input()), int(input())
+e = []
+for i in range(k):
+    for j in range(n):
+        e += list(input().split())
+s = set(e[0:n])
+s2 = set(e[n+1:])
+if s == s2 == {'0'} or s != {'0'}:
+    print(1, 2)
+else:
+    print(2, 1)

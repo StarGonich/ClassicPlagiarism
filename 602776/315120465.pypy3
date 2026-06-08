@@ -1,0 +1,12 @@
+a, b, p = map(int, input().split())
+c, d, q = map(int, input().split())
+
+if a == c and b == d and p == q:
+    print("Ambiguity")
+    exit()
+if a == c and b == d and p != q:
+    print("Contradiction")
+    exit()
+r1 = ((p - (b/100) * (q/(d/100))) / (a/100)) / (1 - (((c/d) * (b/100)) / (a/100)))
+r2 = (q - (c/100 * r1)) / (d/100)
+print(round(r1, 3), round(r2, 3))

@@ -1,0 +1,18 @@
+import sys
+f = 1
+sumi = 210
+stavka = sumi // 16
+while f == 1:
+    print(stavka, "B")
+    print()
+    sys.stdout.flush()
+    n = int(input())
+    if (n == 1):
+        sumi += stavka
+        stavka = sumi // 16
+    if (sumi >= 1000):
+        exit()
+    if (n == -1):
+        exit()
+    if (n == 0):
+        stavka *= 2

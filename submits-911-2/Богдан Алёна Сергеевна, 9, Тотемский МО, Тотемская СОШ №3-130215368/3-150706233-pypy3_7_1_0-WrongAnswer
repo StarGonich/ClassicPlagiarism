@@ -1,0 +1,13 @@
+def solve():
+    x = int(input()) 
+    y = int(input())
+    z = int(input())
+    total_sum = 5 * z
+    for a in range(-100, y + 1):
+      b = total_sum - y - 2 * x - a
+      if a <= b <= y and -10**9 <= a <= 10**9 and -10**9 <= b <= 10**9 and -10**9 <= x <= 10**9 and -10**9 <=y<= 10**9:
+        print(a, b, y, x, x)
+        return
+    print(-1)
+solve()
+

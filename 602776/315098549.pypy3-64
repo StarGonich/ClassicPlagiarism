@@ -1,0 +1,24 @@
+import sys
+def main():
+    m = 210
+    cnt_lose = 0
+
+
+    while m < 1000:
+        st = m//8
+        if cnt_lose != 3:
+            print(st, "R")
+        else:
+            st = m
+            print(m, "R")
+        sys.stdout.flush()
+        r = int(input())
+        if r == 0:
+            cnt_lose += 1
+            m -= st
+        if r == 1:
+            m += st
+            cnt_lose = 0
+
+
+main()

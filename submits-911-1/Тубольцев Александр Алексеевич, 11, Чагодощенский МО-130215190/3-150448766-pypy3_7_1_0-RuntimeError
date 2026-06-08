@@ -1,0 +1,37 @@
+n = int(input())
+T = int(input())
+r1 = []
+r2 = []
+for i in range(n):
+    t1 , t2 = map(int, input().split())
+    r1.append(t1)
+    r2.append(t2)
+l = r1[0]
+r = l + 3600
+c = 0
+tk = 1
+while l <= r1[-1]:
+    for i in range(0, n):
+        c += max(0, min(r2[i], r) - max(r1[i], l))
+        if r < r1[i]:
+            break
+    if c > T:
+        lm = l
+        while c > T:
+            lm = l
+            if c == T + 1:
+                exit(print(lm))
+            else:
+                l -= 1
+                r -= 1
+                c = 0
+                for i in range(0, n):
+                    c += max(0, min(r2[i], r) - max(r1[i], l))
+                    if r < r1[i]:
+                        break
+        print(lm)
+    else:
+        l = r1[tk]
+        r = l + 3600
+        tk += 1
+print(-1)

@@ -1,0 +1,46 @@
+import pandas as pd
+
+# Шаг 1: загрузка данных
+url = 'avt.vogu35.ru/files/olymp/2024-2025/log.csv'  # или локальный путь
+df = pd.read_csv(url)
+
+# Шаг 2: очистка данных
+df = df.dropna(subset=['score'])  # удаляем строки без баллов
+df['score'] = pd.to_numeric(df['score'], errors='coerce')  # приводим к числу
+df = df.dropna(subset=['score'])  # ещё раз убираем нечисловые
+
+# Шаг 3: группировка по участнику и задаче → максимальный балл за задачу
+max_scores = df.groupby(['userId', 'problem'])['score'].max().reset_index()
+
+# Шаг 4: сумма максимальных баллов по задачам для каждого участника
+total_scores = max_scores.groupby('userId')['score'].sum().reset_index()
+
+# Шаг 5: определяем язык для каждого участника
+user_languages = df.groupby('userId')['language'].unique()
+
+# Вопросы
+
+# 1. Сколько участников набрали > 0 баллов?
+q1 = (total_scores['score'] > 0).sum()
+
+# 2. Сколько участников использовали только Python?
+q2 = 0
+for user, langs in user_languages.items():
+    if len(langs) == 1 and langs[0] == 'Python':
+        q2 += 1
+
+# 3. Сколько участников набрали >= 200 баллов?
+q3 = (total_scores['score'] >= 200).sum()
+
+# 4. Среди набравших >= 200, сколько имели C++?
+high_scorers = total_scores[total_scores['score'] >= 2 Newton
+q4 = 0
+for user in high_scorers['userId']:
+    if 'C++' in user_languages[user]:
+        q4 += 1
+
+# Вывод ответов
+print(q1)
+print(q2)
+print(q3)
+print(q4)

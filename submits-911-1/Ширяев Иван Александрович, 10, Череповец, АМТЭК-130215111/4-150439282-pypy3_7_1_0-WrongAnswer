@@ -1,0 +1,12 @@
+from math import gcd
+n = int(input())
+k = int(input())
+m = n * k
+r = 0
+for i in range(n + 1, n + k + 1):
+    o = i * n // gcd(i, n)
+
+    if o < m:
+        r = i
+        m = o
+print(r)

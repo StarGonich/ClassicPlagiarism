@@ -1,0 +1,20 @@
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+
+cnt = 0
+
+for i in range(h1, h2 + 1):
+    for j in range(m1, m2 + 1):
+        h = [int(x) for x in list(str(i))]
+        m = [int(x) for x in list(str(j))]
+        if len(h) == 1: h.insert(0, 0)
+        if len(m) == 1: m.insert(0, 0)
+        if h == m:
+            cnt += 1
+        elif h[0] == m[1] and h[1] == m[0]:
+            cnt += 1
+        elif h[0] + 3 == h[1] + 2 == m[0] + 1 == m[1]:
+            cnt += 1
+print(cnt)

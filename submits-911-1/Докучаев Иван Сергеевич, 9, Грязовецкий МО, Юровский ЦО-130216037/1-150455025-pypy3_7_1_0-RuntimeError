@@ -1,0 +1,51 @@
+def is_beautiful(h, m):
+    if h == m:
+        return True
+        
+    str_h = str(h).zfill(2)
+    str_m = str(m).zfill(2)
+    
+    if str_h == str_m[::-1]:
+        return True
+        
+    s = str_h + str_m
+    for i in range(3):
+        if int(s[i+1]) != int(s[i]) + 1:
+            break
+    else:
+        return True
+        
+    return False
+
+def main():
+    h1 = int(input())
+    m1 = int(input())
+    h2 = int(input())
+    m2 = int(input())
+    
+    start_minutes = h1 * 60 + m1
+    end_minutes = h2 * 60 + m2
+    
+    count = 0
+    if start_minutes <= end_minutes:
+        for t in range(start_minutes, end_minutes + 1):
+            h = t // 60
+            m = t % 60
+            if is_beautiful(h, m):
+                count += 1
+    else:
+        for t in range(start_minutes, 24 * 60):
+            h = t // 60
+            m = t % 60
+            if is_beautiful(h, m):
+                count += 1
+        for t in range(0, end_minutes + 1):
+            h = t // 60
+            m = t % 60
+            if is_beautiful(h, m):
+                count += 1
+                
+    print(count)
+
+if name == "main":
+    main()

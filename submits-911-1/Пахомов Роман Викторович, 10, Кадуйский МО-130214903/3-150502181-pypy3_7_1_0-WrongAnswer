@@ -1,0 +1,46 @@
+from sys import stdin, stdout
+from math import gcd
+input = stdin.readline
+
+
+def main():
+    N = int(input())
+    T = int(input())
+
+    flag = True
+
+    l = [list(map(int, input().split())) for _ in range(N)]
+
+    for i in l:
+        left = i[0]
+        right = left + 3600 if left + 3600 < l[-1][1] else l[-1][1]
+        if totalTime(l, left, right) > T:
+            print(left)
+            flag = False
+
+    for i in l[::-1]:
+        right = i[1]
+        left = right - 3600 if right - 3600 > 0 else 0
+        if totalTime(l, left, right) > T:
+            print(left)
+            flag = False
+
+    if flag:
+        print(-1)
+
+def totalTime(times, left, right):
+    total_for = 0
+    for add in times:
+        if add[0] < right and add[1] > left:
+            if add[0] > left and add[1] < right:
+                total_for += add[1] - add[0]
+            elif add[0] > left and add[1] > right:
+                total_for += right - add[0]
+            elif add[0] < left and add[1] < right:
+                total_for += add[1] - left
+            elif add[0] < left and add[1] > right:
+                total_for += right-left
+
+    return total_for
+
+main()

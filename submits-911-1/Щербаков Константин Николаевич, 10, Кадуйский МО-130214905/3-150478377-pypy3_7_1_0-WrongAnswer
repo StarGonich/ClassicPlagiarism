@@ -1,0 +1,24 @@
+N = int(input())
+T = int(input())
+intervals = []
+for _ in range(N):
+    t1, t2 = map(int, input().split())
+    intervals.append((t1, t2))
+candidates = {0}
+for t1, _ in intervals:
+    candidates.add(t1)
+    if t1 > 0:
+        candidates.add(t1 - 1)
+best_start = -1
+for s in sorted(candidates):
+    window_end = s + 3600
+    total = 0
+    for t1, t2 in intervals:
+        if t1 >= window_end:  
+            break
+        if t2 <= s:  
+            continue
+        total += min(t2, window_end) - max(t1, s)
+    if total > T and (best_start == -1 or s < best_start):
+        best_start = s
+print(best_start)

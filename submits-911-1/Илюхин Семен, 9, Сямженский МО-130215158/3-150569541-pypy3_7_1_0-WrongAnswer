@@ -1,0 +1,52 @@
+def solve():
+    import sys
+    input = sys.stdin.readline
+
+    N = int(input())
+    T = int(input())
+
+    intervals = []
+    for _ in range(N):
+        t1, t2 = map(int, input().split())
+        intervals.append((t1, t2))
+
+    merged = []
+    cur_s, cur_e = intervals[0]
+
+    for s, e in intervals[1:]:
+        if s <= cur_e:
+            if e > cur_e:
+                cur_e = e
+        else:
+            merged.append((cur_s, cur_e))
+            cur_s, cur_e = s, e
+
+    merged.append((cur_s, cur_e))
+
+    m = len(merged)
+    j = 0
+    cover = 0
+
+    for i in range(m):
+        start = merged[i][0]
+        end = start + 3600
+
+        while j < m and merged[j][0] < end:
+            s, e = merged[j]
+            overlap = max(0, min(e, end) - max(s, start))
+            cover += overlap
+            j += 1
+
+        if cover > T:
+            print(start)
+            return
+
+        s, e = merged[i]
+        overlap = max(0, min(e, end) - max(s, start))
+        cover -= overlap
+
+    print(-1)
+
+
+if __name__ == "__main__":
+    solve()

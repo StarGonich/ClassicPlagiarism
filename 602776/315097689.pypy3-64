@@ -1,0 +1,8 @@
+def xor(a,b):
+    return a!=b
+k=0
+
+for i in range(4, int(input())+1):
+    if xor(xor(i%4==0, i%5==0),(i%6==0)):
+       k+=1
+print(k)

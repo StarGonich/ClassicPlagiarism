@@ -1,0 +1,14 @@
+import math
+
+n=int(input())
+k=int(input())
+min=n+k+1
+minn=1000000000
+for p in range(n+1, n+k+1):
+    a=math.gcd(n, p)
+    b=(n*p)/a
+    if b<=minn and b==int(b):
+        minn=b
+        if p<=min:
+            min=p
+print(min)

@@ -1,0 +1,28 @@
+import math
+
+
+def lcm(x, y):
+    while True:
+        n = math.gcd(x, y)
+        x = x // n
+        if math.gcd(x, y) == 1:
+            return(x*y)
+
+
+n = int(input())
+k = int(input())
+minimum = 0
+minimum_true = 0
+p_range = list(range(n+1, n+k))
+p = 0
+for i in range(len(p_range)):
+    minimum = lcm(n, p_range[i])
+    if i == 0:
+        minimum_true = minimum
+        p = p_range[i]
+        continue
+    if minimum_true > minimum:
+        minimum_true = minimum
+        p = p_range[i]
+print(p)
+

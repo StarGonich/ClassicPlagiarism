@@ -1,0 +1,18 @@
+a = int(input())
+b = int(input())
+c = int(input())
+s = c*5
+d=s-2*a-b
+f=0
+if a>b:
+    if d-b+1<b:
+        x = [d-b+1, b-1, b, a, a]
+        f=1
+else:
+    if d-b-1>b:
+        x = [ a, a, b, b+1, d-b-1]
+        f=1
+if f!=0:
+    print(str(x[0]) + ' ' + str(x[1]) + ' ' +str(x[2]) + ' ' +str(x[3]) + ' ' + str(x[4]))
+else:
+    print(-1)

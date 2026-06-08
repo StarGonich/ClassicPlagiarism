@@ -1,0 +1,12 @@
+n = int(input())
+k = int(input())
+t = n+1
+h = n+k
+a = n/2
+cisl = 0
+while h!=t:
+	if h%a==0:
+    	cisl = h
+        break
+    h=h-1
+print(cisl)

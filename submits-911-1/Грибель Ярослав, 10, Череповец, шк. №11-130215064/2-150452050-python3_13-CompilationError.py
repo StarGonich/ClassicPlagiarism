@@ -1,0 +1,16 @@
+n = int(input())
+c = []
+for i in range(6):
+    i += 1
+    c = []
+    for j in range(1, i + 1):
+        if i % j == 0:
+            c.append(j)
+    for j in range(len(c)):
+        if n + j == len(c):
+            break
+        if sum(c[j:n + j]) == i and len(c[j:n + j]) == n:
+			print(j)
+            print(" ".join(str(c[i]) for i in range(len(c[j:n + j]))))
+            break
+            

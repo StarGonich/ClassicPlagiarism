@@ -1,0 +1,97 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Point
+{
+    public int X { get; set; }
+    public int Y { get; set; }
+    public int Color { get; set; }
+
+    public Point(int x, int y, int color)
+    {
+        X = x;
+        Y = y;
+        Color = color;
+    }
+
+    // Оптимизированное вычисление квадрата расстояния
+    public double DistanceSquaredTo(Point other)
+    {
+        int dx = X - other.X;
+        int dy = Y - other.Y;
+        return dx * dx + dy * dy;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        int n = int.Parse(Console.ReadLine());
+        List<Point> points = new List<Point>(n);
+
+        // Читаем входные данные
+        for (int i = 0; i < n; i++)
+        {
+            string[] input = Console.ReadLine().Split();
+            points.Add(new Point(
+                int.Parse(input[0]),
+                int.Parse(input[1]),
+                int.Parse(input[2])));
+        }
+
+        // Создаем матрицу расстояний заранее
+        double[,] distances = new double[n, n];
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = i + 1; j < n; j++)
+            {
+                distances[i, j] = points[i].DistanceSquaredTo(points[j]);
+                distances[j, i] = distances[i, j];
+            }
+        }
+
+        // Создаем список индексов для сортировки
+        List<int>[] sortedIndices = new List<int>[n];
+        for (int i = 0; i < n; i++)
+        {
+            sortedIndices[i] = Enumerable.Range(0, n)
+                .Where(j => j != i)
+                .ToList();
+            
+            // Сортируем индексы по расстоянию
+            sortedIndices[i].Sort((a, b) => 
+                distances[i, a].CompareTo(distances[i, b]));
+        }
+
+        // Перебираем все нечётные k
+        for (int k = 1; k < n; k += 2)
+        {
+            int correctCount = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                int blackCount = 0;
+                int whiteCount = 0;
+
+                // Считаем цвета для k ближайших соседей
+                for (int j = 0; j < k; j++)
+                {
+                    int neighborIndex = sortedIndices[i][j];
+                    if (points[neighborIndex].Color == 1)
+                        blackCount++;
+                    else
+                        whiteCount++;
+                }
+
+                // Определяем преобладающий цвет
+                int predictedColor = blackCount > whiteCount ? 1 : 0;
+                if (predictedColor == points[i].Color)
+                    correctCount++;
+            }
+
+            Console.WriteLine(correctCount);
+        }
+    }
+}

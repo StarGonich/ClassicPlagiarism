@@ -1,0 +1,31 @@
+n = int(input())
+t= int(input())
+
+mass = []
+a,b =0,0
+for i in range(n):
+    a,b = map(int,input().split())
+    mass.append(a)
+    mass.append(b)
+
+check = True
+
+for i in range(b):
+    t_ = 0
+    for j in range(len(mass)-1,-1,2):
+        if mass[j+1] > i and mass[j] <= i and mass[j+1] <= 3600+i:
+            t_ += mass[j+1] - i
+        elif mass[j+1] > i and mass[j] <= i and mass[j+1] > 3600+i:
+            t_ += 3600
+        elif mass[j+1] > i and mass[j] > i and mass[j+1] <= 3600+i and mass[j] <= 3600+i:
+            t_ += mass[j+1] - mass[j]
+        elif mass[j+1] > i and mass[j] > i and mass[j+1] > 3600+i and mass[j] <= 3600+i:
+            t_ += 3600+i - mass[j]
+    if t_ > t:
+        print(i)
+        check = False
+        break
+if check:
+    print(-1)
+            
+            

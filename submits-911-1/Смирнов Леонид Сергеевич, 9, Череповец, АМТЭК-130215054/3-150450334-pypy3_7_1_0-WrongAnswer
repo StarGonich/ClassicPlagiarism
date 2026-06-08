@@ -1,0 +1,16 @@
+N = int(input())
+T = int(input())
+d = dict()
+
+for i in range(N):
+    t1, t2 = map(int, input().split())
+    t = (t2-1) // 3600 # nomer chasa t2
+    q = t * 3600
+    if t1 <= q:
+        d[t-1] = d.get(t-1, 0) + (q - t1 + 1)
+        d[t] = d.get(t, 0) + (t2 - q)
+    else:
+        d[t] = d.get(t, 0) + (t2 - t1 + 1)
+print(-1)
+        
+    

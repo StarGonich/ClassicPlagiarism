@@ -1,0 +1,65 @@
+k = int(input())
+n = int(input())
+m = int(input())
+
+
+def step(a):
+    global n, m
+    lst = []
+    for i in range(n):
+        lst.append(a[i].copy())
+
+    for y in range(n):
+        for x in range(m):
+            alive = 0
+            if y > 0 and x > 0:
+                alive += a[y-1][x-1]
+            if x > 0:
+                alive += a[y][x-1]
+                if y < (n-1):
+                    alive += a[y+1][x-1]
+            if y > 0:
+                alive += a[y-1][x]
+                if x < (m-1):
+                    alive += a[y-1][x+1]
+            if y < (n-1):
+                alive += a[y+1][x]
+            if x < (m-1):
+                alive += a[y][x+1]
+            if y < (n-1) and x < (m-1):
+                alive += a[y+1][x+1]
+            if a[y][x] and alive not in (2, 3):
+                lst[y][x] = 0
+            elif not a[y][x] and alive == 3:
+                lst[y][x] = 1
+    return lst
+
+
+lst = []
+for i in range(k):
+    p = list()
+    for j in range(n):
+        p.append(list(map(int, input().split())))
+    lst.append(p)
+
+lat = -1
+l = [0] * k
+d = [[lst[i]] for i in range(k)]
+for i in range(k):
+    x = [1, 2, 3]
+    while x not in lst:
+        x1 = x.copy()
+        x = step(d[i][-1]).copy()
+        if x == x1:
+            l[i] = k-1
+            break
+        d[i].append(x)
+    else:
+        l[lst.index(x)] = l[i] + 1
+    #if x
+
+for i in l:
+    if i < k:
+        print(i+1, end=' ')
+    else:
+        print(i, end=' ')

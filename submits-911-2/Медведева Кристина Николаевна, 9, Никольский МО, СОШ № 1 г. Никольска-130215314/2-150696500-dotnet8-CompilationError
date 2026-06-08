@@ -1,0 +1,14 @@
+def calculate_diagnosis_probability(sensitivity, specificity, prevalence):
+    # Вероятность положительного теста
+    positive_test_prob = sensitivity * prevalence + (1 - specificity) * (1 - prevalence)
+    # Вероятность правильного диагноза при положительном тесте
+    correct_diagnosis_prob = (sensitivity * prevalence) / positive_test_prob
+    return correct_diagnosis_prob
+
+# Пример значений
+sensitivity = 0.9  # Чувствительность теста
+specificity = 0.85  # Специфичность теста
+prevalence = 0.1  # Распространенность заболевания
+
+# Вычисление вероятности
+probability = calculate_diagnosis_probability(sensitivity, specificity, prevalence)

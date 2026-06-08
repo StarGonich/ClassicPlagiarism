@@ -1,0 +1,9 @@
+from math import*
+n=int(input())
+k=int(input())
+for i in range(n+1,n+k+1):
+    a=lcm(n,i)
+    if(i==n+1 or a<min):
+        min=a
+        p=i
+print(p)

@@ -1,0 +1,18 @@
+n=int(input())
+a=["-1"]*31
+a[1]="1"
+a[2]="2 1"
+a[3]="3 2 1"
+x=6
+for i in range(4,31):
+    a[i]=str(x)+' '+a[i-1]
+    x=x*2
+s=a[n]
+answ=0
+for i in s.split():
+    answ=answ+int(i)
+if n!=2:
+    print(answ)
+    print(a[n])
+else:
+    print(-1)

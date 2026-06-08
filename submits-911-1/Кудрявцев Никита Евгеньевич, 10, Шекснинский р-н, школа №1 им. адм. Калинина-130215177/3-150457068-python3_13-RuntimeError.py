@@ -1,0 +1,6 @@
+N=int(input())
+T=int(input())
+t1=int(input())
+t2=int(input())
+N=T // (t1-t2)
+print(N)

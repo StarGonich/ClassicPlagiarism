@@ -1,0 +1,41 @@
+using System;
+public class Time {
+	private static void Main() {
+    string h1s = Console.ReadLine();
+    string m1s = Console.ReadLine();
+    string h2s = Console.ReadLine();
+    string m2s = Console.ReadLine();
+    double h1 = Convert.ToInt32(h1s);
+    double m1 = Convert.ToInt32(m1s);
+    double h2 = Convert.ToInt32(h2s);
+    double m2 = Convert.ToInt32(m2s);
+        double h1r=0;double h2r=0;
+    int c = 0;
+        if (h1>h2) {h2r=24-(Convert.ToInt32(h2s));}
+        else {h1r=h1;h2r=h2;}
+    for (double i=((h1r*60)+m1); i<((h2r*60)+m2); i++) 
+         {
+        if (h1>9) h1s = Convert.ToString(h1);
+        else h1s="0"+Convert.ToString(h1);
+       if (h2>9) h2s = Convert.ToString(h2);
+        else h2s="0"+Convert.ToString(h2);
+        if (m1>9) m1s = Convert.ToString(m1);
+        else m1s="0"+Convert.ToString(m1);
+       if (m2>9) m2s = Convert.ToString(m2);
+        else m2s="0"+Convert.ToString(m2);
+        
+         if (h1==m1) {c+=1;}
+         else if  (h1s[0]==m1s[1] && m1s[0]==h1s[1]) {c+=1;}
+         else if ((Convert.ToInt32(h1s[1])==Convert.ToInt32(h1s[0])+1) &&
+            (Convert.ToInt32(m1s[0])==Convert.ToInt32(h1s[1])+1) &&
+            (Convert.ToInt32(m1s[1])==Convert.ToInt32(m1s[0])+1))
+            {c+=1;}
+
+        
+         m1+=1;
+  		 if (m1==60) {m1=0; h1+=1;}
+        if (h1==24) {h1=0;}
+         }
+    Console.WriteLine(c);
+    }
+}

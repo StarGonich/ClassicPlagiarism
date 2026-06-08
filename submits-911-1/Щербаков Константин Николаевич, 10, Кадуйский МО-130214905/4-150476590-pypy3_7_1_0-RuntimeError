@@ -1,0 +1,14 @@
+import math
+
+n = int(input())
+k = int(input())
+
+min_p = n + k + 1
+min_nok = 1000000000
+
+for p in range(n + 1, n + k + 1):
+    if (n*p)/gcd(n,p) < min_nok:
+        min_p = p
+        min_nok = (n*p)/gcd(n,p)
+
+print(min_p)

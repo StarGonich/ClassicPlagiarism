@@ -1,0 +1,22 @@
+import math
+
+def lcm(a, b):
+    return abs(a * b) // math.gcd(a, b)
+
+def find_optimal_power(n, k):
+    min_lcm = float('inf')
+    optimal_p = n + 1
+
+    for p in range(n + 1, n + k + 1):
+        current_lcm = lcm(n, p)
+        if current_lcm < min_lcm:
+            min_lcm = current_lcm
+            optimal_p = p
+
+    return optimal_p
+
+n = int(input())
+k = int(input())
+
+result = find_optimal_power(n, k)
+print(result)

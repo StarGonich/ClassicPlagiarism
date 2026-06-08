@@ -1,0 +1,48 @@
+import sys
+
+sum = 210
+res = 0
+while (sum < 1000):
+    print('25 R') 
+    sys.stdout.flush()
+    
+    res = int(input())
+    if (res == -1): exit()
+    if (res == 1): 
+        sum += 25
+        continue
+    
+    sum -= 25
+    
+    print('50 R') 
+    sys.stdout.flush()
+    
+    res = int(input())
+    if (res == -1): exit()
+    if (res == 1): 
+        sum += 50
+        continue
+    
+    sum -= 50
+    
+    print('100 R') 
+    sys.stdout.flush()
+    
+    res = int(input())
+    if (res == -1): exit()
+    if (res == 1): 
+        sum += 100
+        continue
+    
+    sum -= 100
+    
+    print(str(sum) + ' R') 
+    sys.stdout.flush()
+    
+    res = int(input())
+    if (res == -1): exit()
+    if (res == 1): 
+        sum += sum
+        continue
+    
+    sum -= sum

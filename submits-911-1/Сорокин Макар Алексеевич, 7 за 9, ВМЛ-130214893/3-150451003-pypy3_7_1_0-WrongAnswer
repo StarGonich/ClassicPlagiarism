@@ -1,0 +1,23 @@
+N = int(input())
+T = int(input())
+tkontsa = 0
+adds = []
+other_adds = 0
+flag = False
+for i in range(N):
+    adds.append(list(map(int, input().split())))
+for g in range(len(adds) - 1):
+    for k in range(g + 1, len(adds)):
+        if adds[g][0] + 3600 > adds[k][0]:
+            other_adds += min(adds[g][0] + 3600 - adds[k][0], adds[k][1] - adds[k][0])
+        if adds[g][1] - adds[g][0] + other_adds >= T:
+            tkontsa = adds[k][1] - adds[g][1] + adds[g][0] - other_adds + T
+            flag = True
+            if tkontsa >= 3600:
+                print(tkontsa - 3599)
+            else:
+                print(0)
+            break
+
+if not flag:
+    print(-1)

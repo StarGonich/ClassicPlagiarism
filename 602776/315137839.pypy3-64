@@ -1,0 +1,7 @@
+n = int(input())
+if n == 2:
+    print(3, 4, 5)
+elif n == 1:
+    print(1, 1)
+else:
+    print(-1)

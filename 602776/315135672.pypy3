@@ -1,0 +1,30 @@
+import sys
+funti = 210
+kol = 0
+stavka = funti // 15
+for i in range (100):
+    if kol == 3:
+        print(funti, "R")
+        sys.stdout.flush()
+        vod = int(input())
+        funti *= 2
+        kol = 0
+        stavka = funti // 15
+        if funti >= 1000:
+            break
+    else:
+        if kol != 0:
+            stavka *= 2
+        print(stavka, "R")
+        sys.stdout.flush()
+        vod = int(input())
+        if vod == 0:
+            kol += 1
+            funti -= stavka
+            if funti <= 0:
+                break
+        else:
+            kol = 0
+            funti += (2 * stavka)
+            if funti >= 1000:
+                break

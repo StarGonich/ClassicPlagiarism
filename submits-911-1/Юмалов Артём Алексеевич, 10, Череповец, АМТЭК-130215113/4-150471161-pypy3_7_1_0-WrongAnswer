@@ -1,0 +1,21 @@
+def noc(a,b):
+    x=a
+    y=b
+    while x!=0:
+        x,y=y%x,x
+    return a*b//y
+
+n=int(input())
+k=int(input())
+good=100000000
+answ=-1
+if k>=n:
+    answ=n*2
+else:
+    for p in range(n+1,n+k+1):
+        x=noc(n,p)
+        print(n,p,x)
+        if x<good:
+            good=x
+            answ=p
+print(answ)

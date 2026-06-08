@@ -1,0 +1,9 @@
+n = int(input())
+k = int(input())
+s = n + k
+e = s-1
+y = n * 2
+if n > k:
+    print(e)
+else:
+    print(y)

@@ -1,0 +1,19 @@
+using System;
+public class Time {
+	private static void Main() {
+	double h1 = int.Parse(Console.ReadLine());
+    double m1 = int.Parse(Console.ReadLine());
+    double h2 = int.Parse(Console.ReadLine());
+    double m2 = int.Parse(Console.ReadLine());
+    int c = 0;
+    for (double i=((h1*60)+m1); i<((h2*60)+m2); i++) 
+         {
+         if ((h1==m1) || (Math.Ceiling(h1/10)==m1%10 && Math.Ceiling(m1/10)==h1%10) || 
+             (h1<10 && h1==Math.Ceiling(m1/10)) || (m1<10 &&  m1==Math.Ceiling(h1/10)))
+          {c+=1;}
+         m1+=1;
+  		 if (m1==60) {m1=0; h1+=1;}
+         }
+    Console.WriteLine(c);
+    }
+}

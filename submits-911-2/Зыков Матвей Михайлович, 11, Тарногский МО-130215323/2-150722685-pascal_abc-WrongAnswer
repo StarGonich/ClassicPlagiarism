@@ -1,0 +1,13 @@
+program diagdnoz;
+var p1,p2,p3,di: real;
+begin
+readln(p1);
+readln(p2);
+readln(p3);
+if ((0.5<=p1)and(p1<=1))and((0.5<=p2)and(p2<=1))and((0.5<=p3)and(p3<=1)) then 
+begin 
+di:=p1*p2*p3+(1-p1)*p2*p3+p1*(1-p2)*p3+p1*p2*(1-p3);
+writeln(di:0:3);
+end
+else writeln('данные не соответствуют условию');
+end.

@@ -1,0 +1,73 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+bool bt(int pos, int x, int n, int cursum, vector<int> &s, vector<int> &d, vector<int> &ans) {
+   if (n == 0) {
+      if (cursum == x) { 
+         cout << x << "\n";
+         for (int x : ans) {
+            cout << x << ' ';
+         }
+         cout << '\n';
+         return true; 
+      }
+      else 
+         return false;
+   }
+   if (pos == -1) {
+      return false;
+   }
+   if (cursum + d[pos] <= x && x - cursum - d[pos] <= s[pos]) {
+      ans.push_back(d[pos]);
+      if (bt(pos - 1, x, n - 1, cursum + d[pos], s, d, ans)) {
+         ans.pop_back();
+         return true;
+      } else {
+         ans.pop_back();
+      }
+   }
+   if (cursum <= x && x - cursum <= s[pos]) {
+      if (bt(pos - 1, x, n, cursum, s, d, ans)) {
+         return true;
+      }
+   }
+   return false;
+}
+
+int main() {
+   int n;
+   cin >> n;
+   if (n == 1) {
+      cout << "1\n1\n";
+      return 0;
+   }
+   if (n == 2) {
+       cout << -1;
+       return 0;
+   }
+   for (int i = 2;; i++) {
+      vector<int> d;
+      d.push_back(1);
+      int j;
+      for (j = 2; j * j < i; j++) {
+         if (i % j == 0) {
+            d.push_back(j);
+            d.push_back(i / j);
+         }
+      }
+      if (j * j == i) {
+         d.push_back(j);
+      }
+      sort(d.begin(), d.end());
+
+      vector<int> s(d.size() + 1);
+      s[0] = 0;
+      for (int i = 0; i < (int)d.size(); i++) {
+         s[i + 1] = s[i] + d[i];
+      }
+      vector<int> ans; 
+      if (bt(d.size() - 1, i, n, 0, s, d, ans)) {
+         return 0;
+      }
+   }
+}

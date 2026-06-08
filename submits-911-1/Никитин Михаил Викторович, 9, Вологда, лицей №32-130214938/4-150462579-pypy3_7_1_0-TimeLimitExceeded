@@ -1,0 +1,25 @@
+def gcd(a, b):
+    while (b != 0):
+        a %= b
+        a, b = b, a
+    return a
+n = int(input())
+k = int(input())
+ans = 1000000000000000000000000
+res = 1
+i = 1
+while (i * i <= n):
+    if (n % i == 0):
+        x = n / i
+        p = i * (x + 1)
+        if (p <= n + k):
+            if (ans > n * p // gcd(n, p)):
+                ans = n * p // gcd(n, p)
+                res = p
+        p  = x * (i + 1)
+        if (p <= n + k):
+            if (ans > n * p // gcd(n, p)):
+                ans = n * p // gcd(n, p)
+                res = p
+        i += 1
+print(round(res))

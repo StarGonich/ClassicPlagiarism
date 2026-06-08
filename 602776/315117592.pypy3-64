@@ -1,0 +1,18 @@
+import sys
+
+total = 210
+s = 13
+
+print(str(s) + " B\n")
+sys.stdout.flush()
+r = int(input())
+while(r != -1 and total < 1000):
+    if (r == 1):
+        total = total + s
+        s = 13
+    else:
+        total = total - s
+        s = s * 2
+    print(str(s) + " B\n")
+    sys.stdout.flush()
+    r = int(input())   

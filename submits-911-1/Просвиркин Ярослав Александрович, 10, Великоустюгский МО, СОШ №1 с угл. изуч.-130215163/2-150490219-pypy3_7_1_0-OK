@@ -1,0 +1,17 @@
+n = int(input())
+
+if n == 1:
+    print(5)
+    print(5)
+elif n == 2:
+	print(-1)
+else:
+    dl = [1, 2, 3]
+    n -= 3
+
+    while n > 0:
+        dl.append(dl[-1] * 2)
+        n -= 1
+
+    print(sum(dl))
+    print(*dl)

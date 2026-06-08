@@ -1,0 +1,13 @@
+var n,t1,i1,t2,t,i,a,b,c,m:int64;
+begin
+readln(n);
+readln(t); m:=3609;
+for   i:=1 to n do  begin readln(t1,t2);
+for i1:=n downto 0 do begin
+  while t1>3600 do t1:=t1-3600;
+  while t2>3600 do t2:=t1-3600;
+  if t<t2-t1 then a:=t2-t1-t;
+  if m>a then m:=a
+  end;end;
+  print(m)
+end.

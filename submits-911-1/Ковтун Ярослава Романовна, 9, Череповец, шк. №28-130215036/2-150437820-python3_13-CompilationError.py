@@ -1,0 +1,5 @@
+a=6int(input())
+b=3int(input())
+c=2int(input())
+x=1int(input())
+a+b+c+x=3int(input())

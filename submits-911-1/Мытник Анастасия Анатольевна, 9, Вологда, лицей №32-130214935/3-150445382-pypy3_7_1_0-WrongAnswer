@@ -1,0 +1,14 @@
+N=int(input())
+T=int(input())
+a=0
+k=0
+while a!=N:
+    a+=1
+    t1,t2= map(int, input().split())
+    if t2==T:
+        print(-1)
+        break
+    elif t2<T:
+        k+=t2
+        if k>T:
+            print(k-t2)

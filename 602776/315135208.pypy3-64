@@ -1,0 +1,9 @@
+n = int(input())
+if n == 1:
+    print(1, 1)
+elif n == 2:
+    print(3, 4, 5)
+elif n % 2 == 1:
+    print('1 ' * (n - 2) + '2 ' + str((n + 1) // 2), (n + 1) // 2 + 1)
+else:
+    print('1 ' * (n - 1) + str((n // 2 - 1)), n // 2)

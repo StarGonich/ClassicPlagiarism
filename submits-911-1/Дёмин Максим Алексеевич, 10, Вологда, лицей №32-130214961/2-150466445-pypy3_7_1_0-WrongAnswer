@@ -1,0 +1,10 @@
+n=int(input())
+su=0
+s=[]
+for j in range (1,n+1):
+    s.append(j)
+for i in range (0,len(s)):
+    su+=s[i]
+print(su)
+for f in range (0, len(s)):
+    print (s[f],end=' ')

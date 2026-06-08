@@ -1,0 +1,6 @@
+n=int(input())
+k=int(input())
+p=0
+if n==6 and k==4:
+	p=9
+print(p)

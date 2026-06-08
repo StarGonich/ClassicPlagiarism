@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+
+        int[] cord = new int[n];
+        for (int i = 0; i < n; i++) {
+            cord[i] = scanner.nextInt();
+        }
+
+        int[] far = new int[n];
+        for (int i = 0; i < n; i++) {
+            far[i] = scanner.nextInt();
+        }
+
+        int k = scanner.nextInt() - 1;
+
+        int left = k - 1;
+        int prevLeftExplore = cord[k] - far[k];
+        int right = k + 1;
+        int prevRightExplore = cord[k] + far[k];
+        int cnt = 1;
+
+        while (true) {
+            boolean notUpdates = true;
+            if (left > -1 && prevLeftExplore <= cord[left]) {
+                cnt++;
+                prevLeftExplore = Math.min(prevLeftExplore, cord[left] - far[left]);
+                prevRightExplore = Math.max(prevRightExplore, cord[left] + far[left]);
+                left--;
+                notUpdates = false;
+            }
+            if (right < n && prevRightExplore >= cord[right]) {
+                cnt++;
+                prevLeftExplore = Math.min(prevLeftExplore, cord[right] - far[right]);
+                prevRightExplore = Math.max(prevRightExplore, cord[right] + far[right]);
+                right++;
+                notUpdates = false;
+            }
+            if (notUpdates) {
+                break;
+            }
+        }
+        System.out.print(cnt);
+    }
+
+
+}

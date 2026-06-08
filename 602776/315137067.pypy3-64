@@ -1,0 +1,28 @@
+import sys
+
+money = 210
+loses = 0
+wins = 0
+m = 0
+for _ in range(100):
+    if loses == 3:
+        stav = money
+    elif wins == 3:
+        stav = money
+    else:
+        stav = 1
+    print(f"{stav} R")
+    sys.stdout.flush()
+    m = int(input())
+    if (m == 0):
+        money -= stav
+        loses += 1
+        wins = 0
+    if m == 1:
+        money += stav
+        loses = 0
+        wins += 1
+    if m == -1:
+        break
+    if money >= 1000:
+        break

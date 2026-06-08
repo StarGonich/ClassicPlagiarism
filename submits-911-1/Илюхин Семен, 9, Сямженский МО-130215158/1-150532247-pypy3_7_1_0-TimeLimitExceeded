@@ -1,0 +1,11 @@
+h1 = int(input())
+m1 = int(input())
+k1 = h1 * 60 + m1
+h2 = int(input())
+m2 = int(input())
+k2 = h2 * 60 + m2
+n = 0
+while k1 <= k2:
+    if h1 * 60 <= k2:
+        n += 1
+print(n)

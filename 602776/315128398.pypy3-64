@@ -1,0 +1,43 @@
+n = int(input())
+p = list(map(int, input().split()))
+parts = 1
+
+two = three = four = -1
+for i in range(n - 1):
+    if p[i] + 1 != p[i + 1]:
+        parts += 1
+        if parts == 2:
+            two = i + 1
+        elif parts == 3:
+            three = i + 1
+        elif parts == 4:
+            four = i + 1
+if parts == 4:
+    if p[three] < p[two] < p[0] < p[four]:
+        print(1, two)
+        print(three + 1, four - three)
+    elif p[0] < p[four] < p[three] < p[two]:
+        print(two + 1, three - two)
+        print(n - four)
+    elif p[0] < p[three] < p[two] < p[four]:
+        print(two + 1, three - two)
+        print(three + 1, four - three)
+    else:
+        print(-1)
+elif parts == 3:
+    if p[three] < p[two] < p[0]:
+        print(1, two)
+        print(three + 1, n - three)
+
+    elif p[two] < p[0] < p[three]:
+        print(1, two)
+        print(two + 1, three - two)
+
+    else:
+        print(two + 1, three - two)
+        print(three + 1, n - three)
+elif parts == 2:
+    print(1, two)
+    print(two + 1, n - two)
+else:
+    print(-1)

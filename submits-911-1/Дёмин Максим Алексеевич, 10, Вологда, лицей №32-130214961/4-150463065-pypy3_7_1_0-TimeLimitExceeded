@@ -1,0 +1,23 @@
+n=int(input())
+k=int(input())
+pans=0
+p=n+1
+miok=9999999999999999
+for i in range (n+1,n+k+1):
+    n1=n
+    p1=p
+    while n1 != p1:
+        if n1>p1:
+            h=p1
+            p1=n1-p1
+            n1=h
+        else:
+            h = n1
+            n1 = p1 - n1
+            p1 = h
+    nod=n1
+    if n*k/nod<miok:
+        miok=n*k/nod
+        pans=p
+    p += 1
+print(pans)

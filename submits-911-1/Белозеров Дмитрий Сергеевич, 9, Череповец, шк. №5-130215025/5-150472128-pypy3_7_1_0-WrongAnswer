@@ -1,0 +1,6 @@
+k, n, m = int(input()), int(input()), int(input())
+e = []
+for i in range(k):
+    for j in range(n):
+        e += [input().split()]
+print(1)

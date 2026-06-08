@@ -1,0 +1,14 @@
+n = int(input())
+t = int(input())
+l = [0] * 10 ** 9
+for i in range(n):
+    a, b = map(int, input().split())
+    for j in range(a, b + 1):
+        l[j] = 1
+r = -1
+
+for i in range(b - 3600 + 1):
+    if sum(l[i: i + 3600]) > t:
+        r = i + 1
+        break
+print(r)

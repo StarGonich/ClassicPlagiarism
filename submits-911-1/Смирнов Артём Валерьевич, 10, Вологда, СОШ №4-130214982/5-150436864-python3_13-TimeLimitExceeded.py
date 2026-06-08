@@ -1,0 +1,82 @@
+def solve():
+    k = int(input())
+    n = int(input())
+    m = int(input())
+
+    grids = []
+    for _ in range(k):
+        grid = []
+        for _ in range(n):
+            row = list(map(int, input().split()))
+            grid.append(row)
+        grids.append(grid)
+
+    def next_generation(grid):
+        # Создаем новую сетку для следующего поколения
+        new_grid = [[0] * m for _ in range(n)]
+        for i in range(n):
+            for j in range(m):
+                # Считаем живых соседей
+                live_neighbors = 0
+                for x in range(max(0, i - 1), min(n, i + 2)):
+                    for y in range(max(0, j - 1), min(m, j + 2)):
+                        if (x, y) != (i, j):
+                            live_neighbors += grid[x][y]
+
+                # Применяем правила игры "Жизнь"
+                if grid[i][j] == 1:  # Live cell
+                    if 2 <= live_neighbors <= 3:
+                        new_grid[i][j] = 1
+                    else:
+                        new_grid[i][j] = 0
+                else:  # Dead cell
+                    if live_neighbors == 3:
+                        new_grid[i][j] = 1
+                    else:
+                        new_grid[i][j] = 0
+        return new_grid
+
+    def grid_equal(grid1, grid2):
+        # Сравниваем две сетки
+        for i in range(n):
+            for j in range(m):
+                if grid1[i][j] != grid2[i][j]:
+                    return False
+        return True
+
+    def find_order(start_grid_index):
+        # Поиск порядка конфигураций, начиная с заданной
+        order = [start_grid_index + 1]
+        current_grid = grids[start_grid_index]
+        remaining_grids = list(range(k))
+        remaining_grids.remove(start_grid_index)
+
+
+        for _ in range(k - 1):
+            found_next = False
+            for next_grid_index in remaining_grids:
+                next_grid = grids[next_grid_index]
+
+                temp_grid = current_grid
+                # Итерируем игру "Жизнь" до 2001 поколения, пытаясь получить next_grid
+                for _ in range(2001):
+                    temp_grid = next_generation(temp_grid)
+                    if grid_equal(temp_grid, next_grid):
+                        order.append(next_grid_index + 1)
+                        current_grid = next_grid
+                        remaining_grids.remove(next_grid_index)
+                        found_next = True
+                        break
+            if not found_next:
+                return None
+
+        return order
+
+    # пробуем все начальные точки
+    for start_index in range(k):
+        order = find_order(start_index)
+        if order:
+            print(*order)
+            return
+
+solve()

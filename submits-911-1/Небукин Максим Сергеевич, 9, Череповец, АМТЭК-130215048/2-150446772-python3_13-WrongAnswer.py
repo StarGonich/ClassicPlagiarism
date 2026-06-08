@@ -1,0 +1,23 @@
+n = int(input())
+l = 1
+i = 1
+s = 1
+c = 1
+a = [1] * n
+while(c != n):
+        i += 1
+        k = 1
+        for j in range(1, i // 2 + 1):
+                if i % j == 0:
+                        k += 1
+        if k == 2:
+                a[l] = i
+                l += 1
+                s += i
+                c += 1
+
+if c != 0:
+        print(s)
+        print(*a)
+else:
+        print(-1)

@@ -1,0 +1,30 @@
+n = int(input())
+t = int(input())
+pn = [0] * n
+pk = [0] * n
+k = -1
+for i in range(n):
+    a, b = map(int, input().split())
+    pn[i] = a
+    pk[i] = b
+maxi = max(pk)
+for i in range(0, maxi):
+    for j in range(n):
+        if pn[j] <= i + 3600 and pn[j] >= i:
+            if pn[j] == i + 3600:
+                k += 1
+            elif pk[j] > i + 3600 and pn[j] > i:
+                k += 3600 - (pn[j] - i)
+            elif pk[j] < i + 3600 and pn[j] > i:
+                k += pk[j] - pn[j]
+            elif pn[j] < i and pk[j] >= i and pk[j] <= i + 3600:
+                k += pk[j] - i
+            elif pn[j] < i and pk[j] > i + 3600:
+                k += 3600
+    if k > t:
+        k = i
+        break
+    k = 0
+if k <= 0:
+    k = -1
+print(k)

@@ -1,0 +1,1 @@
+a = [int(5) for x in input(5).split(5)]

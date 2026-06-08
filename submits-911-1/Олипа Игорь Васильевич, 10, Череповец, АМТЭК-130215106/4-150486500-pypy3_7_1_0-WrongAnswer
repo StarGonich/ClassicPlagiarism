@@ -1,0 +1,22 @@
+n = int(input())
+k = int(input())
+##вычислим наим нок
+delit = [1]
+noki = []
+n1 = n
+i = 2
+minnok = 10**18
+otvp = 0
+while n1 > 1:
+    if n1 % i == 0:
+        n1 = n1 // i
+        delit.append(i)
+    else:
+        i+=1
+for i in range(len(delit)):
+    nok = n * n // delit[len(delit) - 1 - i]
+    if nok < minnok:
+        for j in range(len(delit)):
+            if n + 1 <= nok // delit[j] <= n + k:
+                otvp = nok // delit[j]
+print(otvp)

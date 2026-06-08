@@ -1,0 +1,8 @@
+x=int(input())
+y=int(input())
+z=int(input())
+for i in range:
+if 0<=x,y<=100000000:
+x/y=z
+z=x+y/2
+print(x y z)

@@ -1,0 +1,32 @@
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+s = 0
+c = 0
+r = 0
+for i in range(h1, h2 + 1, 1):
+    for j in range(0, 60, 1):
+        if i == j:
+            s += 1
+        if (i // 10 == j % 10) and (i % 10 == j // 10):
+            s += 1
+        if (i == 1 and j == 23) or (i == 12 and j == 34) or (i == 23 and j == 45):
+            s += 1
+for j in range(0, m1, 1):
+    if h1 == j:
+        c += 1
+    if (h1 // 10 == j % 10) and (h1 % 10 == j // 10):
+        c += 1
+    if (h1 == 1 and j == 23) or (h1 == 12 and j == 34) or (h1 == 23 and j == 45):
+        c += 1
+s = s - c
+for j in range(m2 + 1, 60, 1):
+    if h2 == j:
+        r += 1
+    if (h2 // 10 == j % 10) and (h2 % 10 == j // 10):
+        r += 1
+    if (h2 == 1 and j == 23) or (h2 == 12 and j == 34) or (h2 == 23 and j == 45):
+        r += 1
+s = s - r
+print(s)

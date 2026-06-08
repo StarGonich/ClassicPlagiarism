@@ -1,0 +1,19 @@
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+c = 0
+for i in range((h1*60 + m1), (h2*60 + m2)+1):
+    h3 = i // 60
+    m3 = i % 60
+    sm3 = (m3 // 10 + (m3%10)*10)#реверсим
+    if h3 == m3:            #Условие 1
+        c += 1
+    if h3 == sm3:           #Условие 2
+        c += 1
+    if (h3 == 1 and m3 == 23) or (h3 == 0 and m3 == 12) or (h3 == 12 and m3 == 34):#Условие 3
+        c += 1
+#    if h1 == h2 and m1 == m2 and c> 0: c=1
+print(c)
+
+

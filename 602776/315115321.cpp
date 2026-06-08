@@ -1,0 +1,54 @@
+#include <bits/stdc++.h>
+#define int long long
+using namespace std;
+
+
+signed main(){
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    double a,b,p;
+    cin>>a>>b>>p;
+    double c,d,q;
+    double e=0.0001;
+    cin>>c>>d>>q;
+    if (((a==0) && (c==0))|| ((b==0)&& d==0)){
+        cout<<"Ambiguity"<<endl;
+        return 0;
+    }
+    if (a==0 && d==0){
+        cout<<"Success"<<endl;
+        cout<<100*p/b<<" "<<100*q/c<<endl;
+        return 0;
+    }
+    if (b==0 && c==0){
+        cout<<"Success"<<endl;
+        cout<<100*p/a<<" "<<100*q/d<<endl;
+        return 0;
+    }
+    if (abs(a/c - b/d)<e){
+        if (abs(a/c-p/q)<e){
+            cout<<"Ambiguity"<<endl;
+        }
+        else{
+            cout<<"Contradiction"<<endl;
+        }
+        return 0;
+    }
+    double y = (q-c*p/a)/(d/b-c/a);
+    double w = y*d/b;
+    double x = p-y;
+    double z = (c*(p-y))/a;
+    double ans1=100*x/a,ans2=100*y/b,ans3=100*z/c,ans4=100*w/d;
+    //cout<<ans4<<" "<<ans3<<endl;
+    if (ans1!=ans3 || ans2!=ans4){
+        cout<<"Ambiguity"<<endl;
+    }
+    else if (ans1<0 || ans2<0){
+        cout<<"Not positive"<<endl;
+    }
+    else{
+        cout<<"Success"<<endl;
+        cout<<ans1<<" "<<ans2<<endl;
+    }
+}

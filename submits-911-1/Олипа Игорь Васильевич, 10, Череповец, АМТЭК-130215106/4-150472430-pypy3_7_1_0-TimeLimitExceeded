@@ -1,0 +1,15 @@
+def nok(a, b):
+    at, bt = a, b
+    while a % b:
+        a, b = b, a % b
+    return at * (bt // b)
+n = int(input())
+k = int(input())
+minn = 10**18
+otv = 0
+for i in range(n+1, n+1+k):
+    nokt =  nok(n, i)
+    if nokt < minn:
+        minn = nokt
+        otv = i
+print(otv)

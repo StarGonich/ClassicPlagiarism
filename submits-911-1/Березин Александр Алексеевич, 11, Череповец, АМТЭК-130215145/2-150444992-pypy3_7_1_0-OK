@@ -1,0 +1,14 @@
+n=int(input())
+if n==1:
+    print(1)
+    print(1)
+if n==2:
+    print(-1)
+if n>2:
+    a=[1,2,3]
+    b=6
+    for i in range(3,n):
+        a.append(b)
+        b*=2
+    print(b)
+    print(*a)

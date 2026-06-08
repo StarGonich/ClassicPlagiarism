@@ -1,0 +1,11 @@
+program n2;
+var n,m,q,w:integer;
+  begin
+    readln(n);
+    for m:=1 to 1000000000 do
+    for q:=1 to 1000000000 do begin
+      if (m mod q=0) then begin
+      w:=w+1;
+      if (w=n) then begin writeln(m); writeln(q,' '); end;
+    end; end;
+  end.

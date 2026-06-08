@@ -1,0 +1,35 @@
+h1, m1, h2, m2 = int(input()), int(input()), int(input()), int(input())
+s = 0
+inm1 = h1 * 60 + m1
+inm2 = h2 * 60 + m2
+if h1 > h2:
+    inm2 = (24 - h1) * 60 + m1 + m2 + h2 * 60
+    inm1 = 0
+    h2 = 24 - h1
+    h1 = 0
+if h1 == h2 and m1 > m2:
+    inm2 = 24 * 60 + m2 - m1
+    inm1 = 0
+    h2 = 24
+    h1 = 0
+for i in range(h1, h2 + 1):
+    b = str(i)
+    if len(b) == 1:
+        b = '0' + b
+    a = list(b)
+    a[0], a[1] = a[1], a[0]
+    a = int("".join(a))
+    z = i * 60 + i
+    v = i * 60 + a
+    if inm2 >= z >= inm1:
+        s += 1
+    if inm2 >= v >= inm1 and v != z:
+        s += 1
+if inm2 >= 60 + 23 >= inm2:
+    s += 1
+if inm2 >= 12 * 60 + 34 >= inm2:
+    s += 1
+if inm2 >= 23 * 60 + 45 >= inm2:
+    s += 1
+
+print(s)

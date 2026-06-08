@@ -1,0 +1,22 @@
+n = int(input())
+p = [int(x) for x in input().split()]
+k = int(input())
+f = [int(x)-1 for x in input().split()]
+maska = [i in f for i in range(n)]
+tres = 0
+fmax = 0
+t = p[0]-1
+if t == 0:
+    t = 1
+s = sum(maska)
+for i, el in enumerate(p):
+    c1 = maska[i:]
+    F1 = 2*sum(c1)/(s+len(c1))
+
+    if F1 > fmax:
+        fmax = F1
+        tres = t
+    t = el + 1
+print(tres)
+        
+    

@@ -1,0 +1,12 @@
+import math
+n = int(input())
+k = int(input())
+p1 = n + k
+p2 = n + 1
+I = 99999999999999999999
+for i in range(p1, p2 + 1, -1):
+    k = math.lcm(n,i)
+    if k < I:
+        I = k
+        a = i
+print(a)

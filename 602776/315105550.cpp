@@ -1,0 +1,103 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long
+
+ll binSearch(vector<ll> a, ll val){
+    ll l = -1;
+    ll r = a.size();
+    while(l < r - 1){
+        ll m = (l + r)/2;
+        if(a[m] < val){
+            l = m + 1;
+        }else{
+            r = m;
+        }
+    }
+    return r;
+}
+
+double f(double m){
+
+    return 0;
+}
+
+double ternarySearch(double l, double r, double eps){
+    while(r - l >= eps){
+        double m1 = l + (r - l)/3;
+        double m2 = r - (r - l)/3;
+        if(f(m1) < f(m2)){
+            l = m1;
+        } else{
+            r = m2;
+        }
+    }
+
+    return (l + r)/2;
+}
+
+vector<bool> explosed(1e5, false);
+
+void rec(ll k, vector<ll>& x, vector<ll>& d){
+    for(int i = 0; i < x.size(); i++){
+        if(!explosed[i] && ((x[i] >= x[k] - d[k]) && x[i] <= x[k] + d[k])){
+            explosed[i] = true;
+            rec(i, x, d);
+        }
+    }
+}
+
+int main()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    ll n;
+    cin >> n;
+
+    vector<ll> x(n);
+    for(int i = 0; i < n; i++){
+        cin >> x[i];
+    }
+    vector<ll> d(n);
+    for(int i = 0; i < n; i++){
+        cin >> d[i];
+    }
+
+    ll k;
+    cin >> k;
+    explosed[k] = true;
+    rec(k, x, d);
+    ll ans = 0;
+    for(int i = 0; i < n; i++){
+        if(explosed[i]){
+            ans++;
+        }
+    }
+    cout << ans;
+    /*
+    ll k = 0;
+    for(int i = 4; i <= n; i++){
+        if(i % 4 == 0 && i % 5 != 0 && i % 6 != 0){
+            k++;
+        }else if(i % 4 != 0 && i % 5 == 0 && i % 6 != 0){
+            k++;
+        }
+        else if(i % 4 != 0 && i % 5 != 0 && i % 6 == 0){
+            k++;
+        }
+    }
+    */
+
+    /*
+    ll a, b, p;
+    cin >> a >> b >> p;
+    ll c, d, 1;
+    cin >> c >> d >> q;
+    */
+
+
+
+
+}

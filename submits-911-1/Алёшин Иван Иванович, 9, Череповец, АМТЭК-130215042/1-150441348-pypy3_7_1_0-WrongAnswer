@@ -1,0 +1,35 @@
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+t1 = h1 * 60 + m1
+t2 = h2 * 60 + m2
+count = 0
+for i in range(t1, t2 + 1):
+    tempTime = list(divmod(i, 60))
+    th = list(divmod(tempTime[0], 10))
+    tm = list(divmod(tempTime[1], 10))
+
+    def isEqual():
+        if th[0] == tm[0] and th[1] == tm[1]:
+            return True
+        else:
+            return False
+
+
+    def isMirrored():
+        if f"{th[1]}{th[0]}" == f"{tm[0]}{tm[1]}":
+            return True
+        else:
+            return False
+
+
+    def inOrder():
+        if th[0] + 3 == th[1] + 2 == th[2] + 1 == th[3]:
+            return True
+        else:
+            return False
+
+    if inOrder() or isEqual() or isMirrored():
+        count += 1
+print(count)

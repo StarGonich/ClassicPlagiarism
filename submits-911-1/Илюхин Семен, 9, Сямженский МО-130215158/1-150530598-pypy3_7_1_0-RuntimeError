@@ -1,0 +1,12 @@
+a = int(input())
+b = int(input())
+c = int(input())
+d = int(input())
+n = 0
+while a <= c and b <= d:
+    if a <= d:
+        n += 1
+    if a[-1] <= d:
+        n += 1
+    a += 1
+print(n)

@@ -1,0 +1,53 @@
+a, b, p = map(int, input().split())
+c, d, q = map(int, input().split())
+
+s = a > c
+if s:
+    a, c = c, a
+    b, d = d, b
+    p, q = q, p
+
+if a == 0:
+    if c == 0:
+        if p / b == q / d:
+            print("Ambiguity")
+        else:
+            print("Contradiction")
+        exit(0)
+    res2 = p / b
+    res1 = q - d * res2 / c
+    if res2 * a + res1 * b != p or res2 * c + res1 * d != q:
+        print("Contradiction")
+        exit(0)
+
+    if res2 <= 0 or res1 <= 0:
+        print("Not positive")
+        exit(0)
+
+    print("Success")
+    print("{:.4f} {:.4f}".format(res2 * 100, res1 * 100))
+    exit(0)
+
+k = c / a
+x = b * k - d
+
+if x == 0:
+    if p / a == q /c :
+        print("Ambiguity")
+    else:
+        print("Contradiction")
+    exit(0)
+
+res1 = (p * k - q) / x
+res2 = (q - res1 * d) / c
+
+if res2 * a + res1 * b != p or res2 * c + res1 * d != q:
+    print("Contradiction")
+    exit(0)
+
+if res2 <= 0 or res1 <= 0:
+    print("Not positive")
+    exit(0)
+
+print("Success")
+print("{:.4f} {:.4f}".format(res2*100, res1 * 100))

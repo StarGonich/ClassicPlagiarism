@@ -1,0 +1,30 @@
+a=int(input())
+print(a.reversed)
+h=int(input())
+m=int(input())
+hh=int(input())
+mm=int(input())
+kol=0
+a=''
+for i in range(h, hh+1):
+    for o in range(m, mm+1):
+        if i==o:
+            kol+=1
+        if i==1 and o==23:
+            kol+=1
+        if i==12 and o==34:
+            kol+=1
+        if i==23 and o==45:
+            kol+=1
+print(kol)
+for ii in range(h, hh+1):
+    for oo in range(m, mm+1):
+        while h>0:
+            a=a + str(h%10)
+            h=h//10
+        a=int(a)
+        if oo==a:
+            kol+=1
+
+
+print(kol)

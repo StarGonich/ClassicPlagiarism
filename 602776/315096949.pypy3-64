@@ -1,0 +1,29 @@
+import math
+import sys
+
+input = lambda: sys.stdin.readline().rstrip()
+
+def print(*args, sep=' ', end='\n'):
+    sys.stdout.write(sep.join(map(str, args)) + end)
+
+def ii():
+    return int(input())
+def lii():
+    return list(map(int, input().split()))
+def lsi():
+    return input().split()
+
+def main():
+    n = ii()
+    c1 = n // 4
+    c2 = n // 5
+    c3 = n // 6
+    c4 = n // 20
+    c5 = n // 30
+    c6 = n // 12
+    c7 = n // 60
+    print(c1 + c2 + c3 - 2 * c4 - 2 * c5 - 2 * c6 + 3 * c7)
+
+
+if __name__ == '__main__':
+    main()

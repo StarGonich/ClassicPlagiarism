@@ -1,0 +1,7 @@
+p1=int(input())
+p2=int(input())
+p3=int(input())
+for i in (int(0.5<=p1,p2,p3<=1)):
+      if 0.5<=p1<=1 and 0.5<=p2<=1 and 0.5<=p3<=1:
+            p1+p2+p3==n
+print(n)

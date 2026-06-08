@@ -1,0 +1,5 @@
+n = int(input())
+a = n//20
+b = n//30
+c = n//12
+print((n//5-a-b)+(n//4-a-c)+(n//6-b-c))

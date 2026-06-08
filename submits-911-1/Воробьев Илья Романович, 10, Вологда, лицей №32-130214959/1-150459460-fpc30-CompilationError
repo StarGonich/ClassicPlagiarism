@@ -1,0 +1,29 @@
+var a,a1,a2,b1,b2,b,c,d,k:integer;
+begin
+ k:=0;
+  readln(a) ;  readln(b) ;  readln(c) ;  readln(d) ;
+   if (a<>c)and(b<>d) then begin 
+      if (a=c)and (b=d) then  begin if (a=b) then k:=k+1
+  else if
+  (b mod 10=a div 10) and (b div 10=a mod 10)then k:=k+1;
+   end;end;
+   if a=b then k:=k+1;
+     a2:= a mod 10;
+     a1:=a div 10;
+     b2:= b mod 10;
+     b1:=b div 10;
+     if (a1=b2) and (a2=b1) then k:=k+1;
+     if (a1+1=a2) and (a2+1=b1) and (b1+1=b2) then k:=k+1;
+    repeat 
+     b:=b+1; if b>=60 then  begin a:=a+1; b:=0;end; if a>=24 then a:=0;
+     if a=b then k:=k+1;
+     a2:= a mod 10;
+     a1:=a div 10;
+     b2:= b mod 10;
+     b1:=b div 10;
+     if (a1=b2) and (a2=b1) then k:=k+1;
+     if (a1+1=a2) and (a2+1=b1) and (b1+1=b2) then k:=k+1;
+     until ((a<>c)and (b<>d));
+     
+ println(k)
+end.

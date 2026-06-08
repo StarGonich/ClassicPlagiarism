@@ -1,0 +1,54 @@
+a=[0]*2
+b=[0]*2
+k=0
+h1=int(input())
+m1=int(input())
+h2=int(input())
+m2=int(input())
+if (h2*60+m2)>=(h1*60+m1):
+    for h in range(h1,h2+1):
+        if h<h2:
+            for m in range(m1,61):
+                if h==m:
+                    k+=1
+                hs=str(h)
+                ms=str(m)
+                if h//10==0:
+                    a[0]=0
+                    a[1]=h
+                else:
+                    a[0]=int(hs[0])
+                    a[1]=int(hs[1])
+                if m//10==0:
+                    b[0]=0
+                    b[1]=m
+                else:
+                    b[0]=int(ms[0])
+                    b[1]=int(ms[1])
+                if a[0]==b[1] and a[1]==b[0]:
+                    k+=1
+                if a[0]==a[1]-1 and a[1]==b[0]-1 and b[0]==b[1]-1:
+                    k+=1
+        else:
+            for m in range(m1,m2+1):
+                if h==m:
+                    k+=1
+                hs=str(h)
+                ms=str(m)
+                if h//10==0:
+                    a[0]=0
+                    a[1]=h
+                else:
+                    a[0]=int(hs[0])
+                    a[1]=int(hs[1])
+                if m//10==0:
+                    b[0]=0
+                    b[1]=m
+                else:
+                    b[0]=int(ms[0])
+                    b[1]=int(ms[1])
+                if a[0]==b[1] and a[1]==b[0]:
+                    k+=1
+                if a[0]==a[1]-1 and a[1]==b[0]-1 and b[0]==b[1]-1:
+                    k+=1            
+print(k)

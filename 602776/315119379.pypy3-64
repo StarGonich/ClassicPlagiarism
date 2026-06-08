@@ -1,0 +1,31 @@
+a,b,p=map(int,input().split())
+c,d,q=map(int,input().split())
+a/=100
+b/=100
+c/=100
+d/=100
+x=0
+y=0
+if (a==c and b==d and p==q) or (a==0 and b==0 and p==0) or (c==0 and d==0 and q==0):print('Ambiguity')
+elif c*p-q*a==0 or c*b-d*a==0 or (a>c and b>d and p<=q) or (a<c and b<d and p>=q) or (a==c and b==d and p!=q) or (a==0 and b==0 and p!=0) or (c==0 and d==0 and q!=0):print('Contradiction')
+else:
+    if a!=0 and b!=0 and c!=0 and d!=0:
+        y=(c*p-q*a)/(c*b-d*a)
+        x=(p-b*y)/a
+    else:
+        if a==0 and c!=0:
+            y=p/b
+            x=(q-d*y)/c
+        elif c==0  and a!=0:
+            y=q/d
+            x=(p-b*y)/a
+        elif b==0 and d!=0:
+            x=p/a
+            y=(q-c*x)/d
+        elif d==0 and b!=0:
+            x=q/c
+            y=(p-a*x)/b
+    if x<0 or y<0:print('Not positive')
+    else:
+        print('Success')
+        print(x,y)   

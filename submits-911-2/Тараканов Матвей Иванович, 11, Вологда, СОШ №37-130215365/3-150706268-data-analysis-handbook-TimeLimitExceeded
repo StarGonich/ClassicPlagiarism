@@ -1,0 +1,20 @@
+def find_number(n):
+    num = 2  
+    while True:
+        d = [1]  
+        if num > 1:
+            for i in range(2, int(num ** 0.5) + 1):
+                if num % i == 0:
+                    if i == num // i:
+                        d.append(i)
+                    else:
+                        d.extend([i, num // i])
+        if len(d) == n:
+            sum_d = sum(d)
+            if num == sum_d:
+                return num,d
+        num += 1
+n = int(input())
+number, d = find_number(n)
+print(number)
+print(d[0],d[1],d[2])

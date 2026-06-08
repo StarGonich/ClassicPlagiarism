@@ -1,0 +1,24 @@
+import sys
+import random
+m = 210
+p = 0
+while m < 1000:
+    if p == 0:
+        st = m // 16
+    elif p == 1:
+        st = m // 8
+    elif p == 2:
+        st = m // 3
+    else:
+        st = m
+    print(st, "RB"[random.randint(0,1)])
+    sys.stdout.flush()
+    r = input().strip()
+    if r == "-1":
+        break
+    elif r == "0":
+        m -= st
+        p += 1
+    elif r == "1":
+        m += st
+        p = 0

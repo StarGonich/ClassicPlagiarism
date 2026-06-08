@@ -1,0 +1,30 @@
+from sys import stdin, stdout
+input = stdin.readline
+
+
+def lcm(a, b):
+    m = a * b
+    while a != 0 and b != 0:
+        if a > b:
+            a %= b
+        else:
+            b %= a
+    return m // (a + b)
+
+def main():
+    n = int(input())
+    k = int(input())
+    
+    min_lcm = 10**9
+    min_res = 0
+    for p in range(n+1, n+k+1):
+        # print(lcm(n, p), p, n, k, p//n)
+        # q[lcm(n, p)] = p
+        l = lcm(n, p)
+        if l < min_lcm:
+            min_lcm = l
+            min_res = p
+
+    stduot.write(str(min_res))
+
+main()

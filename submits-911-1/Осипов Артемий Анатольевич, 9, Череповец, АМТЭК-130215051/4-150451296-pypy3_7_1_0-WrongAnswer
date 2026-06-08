@@ -1,0 +1,12 @@
+n=int(input())
+k=int(input())
+mnok=9999999999999999999
+for p in range(n+1, n+k+1):
+    if p<n:
+        noknp
+    else: nok=p
+    while (nok%n!=0) and (nok%p!=0):
+        nok+=1
+    if nok<mnok:
+        p1=p
+print(p1)

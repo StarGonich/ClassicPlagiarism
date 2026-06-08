@@ -1,0 +1,1 @@
+print("\n".join(map(lambda i: f'{i}' + '+' * len(list(filter(lambda x: not(i % x), range(1, i + 1)))), range(11, int(input()) + 1))))

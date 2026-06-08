@@ -1,0 +1,39 @@
+import sys
+m = 210
+lose = 0
+while m < 1000:
+    if lose == 3:
+        print(m, 'R')
+        print()
+        sys.stdout.flush()
+        w = int(input())
+        print()
+        m *= 2
+        sys.stdout.flush()
+        lose = 0
+    if lose == 2:
+        print(40, 'R')
+        print()
+        sys.stdout.flush()
+        w = int(input())
+        print()
+        sys.stdout.flush()
+        if w:
+            m += 40
+            lose = 0
+        else:
+            lose += 1
+            m -= 40
+    else:
+        print(15, 'R')
+        print()
+        sys.stdout.flush()
+        w = int(input())
+        print()
+        sys.stdout.flush()
+        if w:
+            m += 15
+            lose = 0
+        else:
+            lose += 1
+            m -= 15

@@ -1,0 +1,4 @@
+a = int(input())
+b = int(input())
+from random import *
+print(randint(1, 100))

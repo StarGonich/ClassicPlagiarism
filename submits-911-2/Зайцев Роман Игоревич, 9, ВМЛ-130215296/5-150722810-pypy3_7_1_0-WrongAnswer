@@ -1,0 +1,29 @@
+n=int(input())
+a=input()
+n1=a.split()
+b=int(input())
+c = input()
+k=c.split()
+f=0
+fp=0
+fn=0
+tp=0
+f1=[]
+for i in range(n):
+    t=n1[i]
+    for i in range(n):
+        if n1[i]>=t:
+            f+=1
+            if i not in k:
+                fp+=1
+        else:
+            if i in k:
+                fn+=1
+    tp=f-fp
+    if tp+fp !=0 and fn+tp !=0 and (tp / (tp + fp))!=0 and (tp / (tp + fn))!=0:
+        f1.append(2 * (tp / (tp + fp)) * (tp / (tp + fn)) / (tp / (tp + fp) + tp / (tp + fn)))
+    else:
+        f1.append(0)
+p=max(f1)
+h=f1.index(p)
+print(n1[h])

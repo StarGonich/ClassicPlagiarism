@@ -1,0 +1,14 @@
+a = float(input())
+b = float(input())
+c = float(input())
+xa = a * b * c
+xb = (1 - a) * b * c
+xc = a * (1 - b) * c
+xd = a * b * (1 - c)
+x = xa + xb + xc + xd
+ya = (1 - a) * (1 - b) * (1 - c)
+yb = a * (1 - b) * (1 - c)
+yc = (1 - a) * b * (1 - c)
+yd = (1 - a) * (1 - b) * c
+y = ya + yb + yc + yd
+print(x / (x + y))

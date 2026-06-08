@@ -1,0 +1,88 @@
+using System;
+
+public class BeautifulTime
+{
+    public static void Main(string[] args)
+    {
+        // Ввод данных
+        int h1 = int.Parse(Console.ReadLine());
+        int m1 = int.Parse(Console.ReadLine());
+        int h2 = int.Parse(Console.ReadLine());
+        int m2 = int.Parse(Console.ReadLine());
+
+        int count = 0;
+        int currentH = h1;
+        int currentM = m1;
+
+        // Основной цикл перебора времени
+        while (true)
+        {
+            // Проверка на "красивость" времени
+            if (IsBeautiful(currentH, currentM))
+            {
+                count++;
+            }
+
+            // Условие выхода из цикла
+            if (currentH == h2 && currentM == m2)
+            {
+                break;
+            }
+
+            // Инкремент времени
+            currentM++;
+            if (currentM == 60)
+            {
+                currentM = 0;
+                currentH++;
+                if (currentH == 24)
+                {
+                    currentH = 0;
+                }
+            }
+        }
+
+        // Вывод результата
+        Console.WriteLine(count);
+    }
+
+    // Функция проверки "красивости" времени
+    static bool IsBeautiful(int h, int m)
+    {
+        string hStr = h.ToString("D2"); // Форматирование для добавления ведущего нуля
+        string mStr = m.ToString("D2"); // Форматирование для добавления ведущего нуля
+
+        // 1. Часы равны минутам
+        if (hStr == mStr)
+        {
+            return true;
+        }
+
+        // 2. Часы зеркальны минутам
+        char[] hArr = hStr.ToCharArray();
+        Array.Reverse(hArr);
+        string hStrReversed = new string(hArr);
+        if (hStrReversed == mStr)
+        {
+            return true;
+        }
+
+        // 3. Четыре последовательные цифры
+        string combined = hStr + mStr;
+        bool isConsecutive = true;
+        for (int i = 0; i < 3; i++)
+        {
+            if (int.Parse(combined[i].ToString()) + 1 != int.Parse(combined[i + 1].ToString()))
+            {
+                isConsecutive = false;
+                break;
+            }
+        }
+        if (isConsecutive)
+        {
+            return true;
+        }
+
+        return false;
+    }
+}

@@ -1,0 +1,25 @@
+if(0<=h1,h2<=23)and(0<=m1,m2<=59):
+    def is_beautiful(hour, minute):
+        if(hour==minute):
+            return True
+        if str(minute):-1==str(hour):
+            return True
+        if sorted(str(hour)+str(minute))==list(str(hour)+str(minute)):
+            return True
+        return False
+def count_beautiful_moments(h1, m1, h2, m2):
+    count=0
+    if(0<=h1,h2<=23)and(0<=m1,m2<=59):
+        for hour in range(h1, h2 + 1):
+            for minute in range(m1, m2 + 1):
+                if is_beautiful(hour, minute):
+                    count += 1
+        return count
+
+h1=int(input("Введите начальные часы h1"))
+m1=int(input("Введите начальные минуты m2"))
+h2=int(input("Введите конечные часы h2"))
+m2=int(input("Введите конечные минуты m2"))
+
+result=count_beautiful_moments(h1, m1, h2, m2)
+print(result)

@@ -1,0 +1,32 @@
+def bum(n, k, d, x, count, map):
+    if count == n:
+        return count
+
+    for i in range(0, len(x)):
+        if i == k:
+            pass
+        elif abs(x[i] - x[k]) <= d[k] and map[i] == False:
+            map[i] = True
+            count += 1
+            bum(n, i, d, x, count, map)
+    return map
+
+def main():
+    n = int(input())
+    inputX = input().split(" ")
+    inputD = input().split(" ")
+    k = int(input()) - 1
+    x = [int(x) for x in inputX]
+    d = [int(d) for d in inputD]
+    map = [False for x in inputX]
+    map[k] = True
+
+    result = bum(n, k, d, x, 1, map).count(True)
+    print(result)
+
+
+
+
+
+if __name__ == '__main__':
+    main()

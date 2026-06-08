@@ -1,0 +1,31 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Чтение вероятностей из входных данных
+        double p1 = double.Parse(Console.ReadLine());
+        double p2 = double.Parse(Console.ReadLine());
+        double p3 = double.Parse(Console.ReadLine());
+        
+        // Вероятности ошибок
+        double q1 = 1 - p1;
+        double q2 = 1 - p2;
+        double q3 = 1 - p3;
+        
+        // Все три системы правильные
+        double allCorrect = p1 * p2 * p3;
+        
+        // Ровно две системы правильные
+        double twoCorrect1 = p1 * p2 * q3; // ошибается третья
+        double twoCorrect2 = p1 * q2 * p3; // ошибается вторая
+        double twoCorrect3 = q1 * p2 * p3; // ошибается первая
+        
+        // Общая вероятность правильного диагноза
+        double result = allCorrect + twoCorrect1 + twoCorrect2 + twoCorrect3;
+        
+        // Вывод результата с округлением до 3 знаков как в примере
+        Console.WriteLine(result.ToString("F3"));
+    }
+}

@@ -1,0 +1,7 @@
+from math import floor
+
+MOD = 1000000007
+n = int(input())
+one = pow(2, n - 2, MOD)
+two = pow(2, floor((n - 4) / 2), MOD)
+print((one + (n - 3) * two % MOD) % MOD)

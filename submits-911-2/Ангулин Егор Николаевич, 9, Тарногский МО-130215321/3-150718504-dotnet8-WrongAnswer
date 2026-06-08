@@ -1,0 +1,61 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;  // Добавлена директива для работы с LINQ
+
+class Program
+{
+    static void Main()
+    {
+        // Принимаем входные данные
+        int x = int.Parse(Console.ReadLine()); // мода
+        int y = int.Parse(Console.ReadLine()); // медиана
+        int z = int.Parse(Console.ReadLine()); // среднее арифметическое
+        
+        int sum = 5 * z; // общая сумма всех пяти чисел
+        
+        // Исправлены опечатки в названии переменной
+        int remainingSum = sum - 2 * x - y; 
+        int a = remainingSum / 2;
+        int b = remainingSum - a;
+        
+        // Проверка на совпадение с модой
+        if (a == x) a++;
+        if (b == x) b++;
+        
+        // Создаем массив результатов
+        int[] result = new int[] { x, x, y, a, b };
+        
+        Array.Sort(result);
+        
+        // Выводим результат, если условия выполняются
+        if (result[2] == y && CheckMode(result, x))
+        {
+            Console.WriteLine($"{result[0]} {result[1]} {result[2]} {result[3]} {result[4]}");
+        }
+        else
+        {
+            Console.WriteLine("-1");
+        }
+    }
+
+    static bool CheckMode(int[] arr, int expectedMode)
+    {
+        var freq = new Dictionary<int, int>();
+        
+        // Подсчет частот
+        foreach (var num in arr)
+        {
+            if (freq.ContainsKey(num))
+                freq[num]++;
+            else
+                freq[num] = 1;
+        }
+        
+        // Находим максимальную частоту через LINQ
+        int maxFreq = freq.Values.Max();
+        
+        // Исправлена синтаксическая ошибка
+        return freq[expectedMode] == maxFreq 
+            && freq.Values.Count(f => f == maxFreq) == 1;
+    }
+}

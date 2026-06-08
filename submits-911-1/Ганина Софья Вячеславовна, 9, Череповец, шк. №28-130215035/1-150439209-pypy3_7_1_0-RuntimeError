@@ -1,0 +1,6 @@
+a=int(inpu())
+for i in range(a):
+    a=int(input())
+ptint(a)
+    
+ 

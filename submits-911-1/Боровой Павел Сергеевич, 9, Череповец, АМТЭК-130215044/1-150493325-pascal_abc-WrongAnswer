@@ -1,0 +1,27 @@
+program p1;
+ var h,z,m,h1,h2,m1,m2,m31,m32,x,i:integer;
+begin
+ readln(h1,m1,h2,m2);
+ h:=h1;
+ m:=m1;
+ m31:=h1*60+m1;
+ m32:=h2*60+m2;
+ z:=m32-m31;
+ x:=0;
+ for i:=1 to z do
+ begin
+  if (h=m)or(h=(m mod 10)*10+(m div 10))or(((h div 10)+2=(m div 10))and((h mod 10)+2=(m mod 10))) then
+  begin
+   x:=x+1;
+  end;
+   m:=m+1;
+   if m=60 then
+   begin
+   m:=0;
+   h:=h+1;
+   end;
+   if h=24 then
+   h:=0;
+ end;
+ write(x);
+end.

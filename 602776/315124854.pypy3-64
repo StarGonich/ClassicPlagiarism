@@ -1,0 +1,18 @@
+n = int(input())  
+##print(d)
+##print(b)
+##
+##a = [int(x//1000) for x in range(4,n+1, 4) if x%4==0 and x%12!=0 and x%20!= 0]
+##b = [int(x//1000) for x in range(5,n+1, 5) if x%5==0 and x%20!=0 and x%60!=0 and x%30!= 0]
+##c = [int(x//1000) for x in range(6, n+1, 6) if x%6==0 and x%12!=0 and x%30!=0]
+##print(len(a)+len(c)+len(b))
+
+a = n//4
+b = n//5
+c = n//6
+aa = n//12
+bb = n//20
+cc = n//30
+dd = n//60
+otv = (a+b+c) - 2*(aa+bb+cc) + 3*dd
+print(otv)

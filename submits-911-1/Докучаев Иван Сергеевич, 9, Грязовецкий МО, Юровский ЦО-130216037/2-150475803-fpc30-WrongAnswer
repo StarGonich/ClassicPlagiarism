@@ -1,0 +1,20 @@
+const
+	ArrMax = 30;
+var
+	n, m, i, arrI: integer;
+    arr: array[1..ArrMax] of integer;
+begin
+	Readln(n);
+    m := 0;
+    arrI := 1;
+    for i := 1 to n do begin
+    	if n mod i = 0 then begin
+        	m := m + i;
+            arr[arrI] := i;
+            arrI := arrI + 1;
+        end;
+	end;
+    Writeln(m);
+    for i := 1 to arrI do 
+    	Write(arr[i], ' ');
+end.

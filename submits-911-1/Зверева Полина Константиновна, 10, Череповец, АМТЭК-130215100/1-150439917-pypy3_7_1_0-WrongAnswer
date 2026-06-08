@@ -1,0 +1,15 @@
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+n = 0
+for i in range(h1, h2 + 1):
+    for j in range(m1, m2 + 1):
+        if i == j:
+            n += 1
+        if str(i)[-1::] == str(j):
+            n += 1
+        if str(i)[0] > str(i)[-1] and str(i)[1] > str(j)[0] and str(j)[0] > str(j)[-1]:
+            n += 1
+
+print(n)

@@ -1,0 +1,53 @@
+def I():
+    import sys
+    m = 210
+    lose = 0
+    while m < 1000:
+        if lose == 3:
+            print(m, 'R')
+            print()
+            sys.stdout.flush()
+            w = int(input())
+            print()
+            m *= 2
+            sys.stdout.flush()
+            lose = 0
+        elif lose == 2:
+            print(70, 'R')
+            print()
+            sys.stdout.flush()
+            w = int(input())
+            print()
+            sys.stdout.flush()
+            if w:
+                m += 70
+                lose = 0
+            else:
+                lose += 1
+                m -= 70
+        elif lose == 1:
+            print(30, 'R')
+            print()
+            sys.stdout.flush()
+            w = int(input())
+            print()
+            sys.stdout.flush()
+            if w:
+                m += 30
+                lose = 0
+            else:
+                lose += 1
+                m -= 30
+        else:
+            print(10, 'R')
+            print()
+            sys.stdout.flush()
+            w = int(input())
+            print()
+            sys.stdout.flush()
+            if w:
+                m += 10
+                lose = 0
+            else:
+                lose += 1
+                m -= 10

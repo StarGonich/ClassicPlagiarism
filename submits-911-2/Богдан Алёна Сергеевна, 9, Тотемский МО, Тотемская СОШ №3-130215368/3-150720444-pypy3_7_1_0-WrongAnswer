@@ -1,0 +1,40 @@
+def solve():
+  x = int(input())
+  y = int(input())
+  z = int(input())
+
+  for a in range(-10, 11):
+    for b in range(a + 1, 11):
+      numbers = [a, b, y, x, x]
+      numbers.sort()
+
+      if numbers[2] != y:
+        continue
+
+      counts = {}
+      for num in numbers:
+        counts[num] = counts.get(num, 0) + 1
+
+      max_count = 0
+      mode = None
+      is_unique = True
+
+      for num, count in counts.items():
+        if count > max_count:
+          max_count = count
+          mode = num
+          is_unique = True
+        elif count == max_count:
+          is_unique = False
+
+      if mode != x or not is_unique:
+        continue
+
+      if sum(numbers) != 5 * z:
+        continue
+
+      print(*numbers)
+      return
+
+  print("-1")
+solve()

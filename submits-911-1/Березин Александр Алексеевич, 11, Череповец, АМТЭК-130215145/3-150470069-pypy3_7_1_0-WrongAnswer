@@ -1,0 +1,19 @@
+sec=[0]*(10**7)
+n=int(input())
+t=int(input())
+tmax=0
+k=True
+for i in range(n):
+    t1, t2 = map(int, input().split())
+    for j in range(t1,t2):
+        sec[j]+=1
+    tmax=t2
+    if t2-t1>t:
+        break
+for i in range (tmax-3600):
+    if sum(sec[i:i+3600])>t:
+        print(i)
+        k=False
+        break
+if k:
+    print(-1)

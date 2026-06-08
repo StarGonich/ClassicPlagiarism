@@ -1,0 +1,22 @@
+n = int(input())
+k = int(input())
+nok = 0
+mnok = 9999999999999999
+for p in range(n + 1, n + k):
+    if p >= (n + 1) and p <= (n + k):
+        l = p
+        
+        f = n
+        s = n * p
+        while f != l:
+            if l > f:
+
+                l = l - f
+            else:
+                f = f - l
+
+        nok = s // l        
+        if nok < mnok:
+            mp = p
+            mnok = nok
+print(mp)

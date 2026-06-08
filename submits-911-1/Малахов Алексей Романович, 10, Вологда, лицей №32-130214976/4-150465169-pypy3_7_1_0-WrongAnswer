@@ -1,0 +1,32 @@
+n = int(input())
+k = int(input())
+l = n+1
+r = n+k
+tempL = l
+tempN = n
+while(tempL != 0):
+    tempN, tempL = tempL, tempN % tempL
+lnok = n * l / tempN
+while(l + 1 <= r):
+    m = (l + r) // 2
+    tempM = m
+    tempN = n
+    while(tempM != 0):
+        tempN, tempM = tempM, tempN % tempM
+    nok = n * m / tempN
+    if(lnok > nok):
+        l = m
+    else:
+        r = m
+    lnok = nok;
+minm = l
+for i in range(int(m), n+k):
+    tempM = i
+    tempN = n
+    while(tempM != 0):
+        tempN, tempM = tempM, tempN % tempM
+    nok = n * i / tempN
+    if(lnok > nok):
+        minm = i
+print(minm)
+

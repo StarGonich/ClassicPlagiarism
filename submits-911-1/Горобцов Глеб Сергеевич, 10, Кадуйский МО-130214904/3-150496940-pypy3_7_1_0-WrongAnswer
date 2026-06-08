@@ -1,0 +1,23 @@
+import sys
+N = int(input())
+T = int(input())
+T1 = []
+T2 = []
+sum_t = 0
+time = 0
+for j in range(1 , N+1):
+    t1, t2 = map(int, input().split())
+    T1.append(t1)
+    T2.append(t2)
+col = 0
+for i in range(0, len(T2)):
+    sum_t += T2[i] - T1[i] 
+    time = T2[i] - 3600*col
+    if time > 3600 and sum_t < T:
+        col += 1
+        sum_t = T2[i] - 3600 * col - (T1[i]-3600*col)
+        time = T2[i] - 3600 * col
+    if sum_t > T and time < 3600:
+        print(time - (sum_t-T) + 1)
+        sys.exit()
+print(-1)

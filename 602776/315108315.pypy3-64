@@ -1,0 +1,24 @@
+from queue import Queue
+
+n = int(input())
+x = [v for v in map(int, input().split())]
+d = list(map(int, input().split()))
+k = int(input())
+
+explosed = 1
+visited = []
+q = Queue()
+q.put(k-1)
+while not q.empty:
+    cur = q.get()
+    for j in range(x[cur] - d[cur], x[cur] + d[cur]+ 1):
+        if j in x:
+            j_ind = x.index(j)
+            if j_ind not in visited:
+                visited.append(j_ind)
+                q.put(j_ind)
+                explosed += 1
+print(n - explosed)
+
+
+

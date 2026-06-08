@@ -1,0 +1,59 @@
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+k = 0
+for i in range(h1, h2 + 1):
+    if i == h2 and i != h1:
+        i = str(i)
+        if 0 <= int(i) <= 9:
+            i = '0' + i
+        for j in range(0, m2 + 1):
+            j = str(j)
+            if 0 < int(j) <= 9:
+                j = '0' + j
+            if int(j) == 0:
+                j = '00'
+            if j == i or i == j[::-1] or (int(i[0]) + 1 == int(i[1]) and int(i[1]) + 1 == int(j[0]) and int(j[0]) + 1 == int(j[1])):
+                k += 1
+    elif i == h1 and i == h2:
+        i = str(i)
+        if 0 <= int(i) <= 9:
+                i = '0' + i
+        for j in range(m1, m2 + 1):
+            j = str(j)
+            if 0 < int(j) <= 9:
+                j = '0' + j
+            if int(j) == 0:
+                j = '00'
+            if j == i or i == j[::-1] or (int(i[0]) + 1 == int(i[1]) and int(i[1]) + 1 == int(j[0]) and int(j[0]) + 1 == int(j[1])):
+                k += 1 
+    elif i == h1:
+        i = str(i)
+        if 0 <= int(i) <= 9:
+            i = '0' + i
+        for j in range(m1, 60):
+            j = str(j)
+            if 0 < int(j) <= 9:
+                j = '0' + j
+            if int(j) == 0:
+                j = '00'
+            if j == i or i == j[::-1] or (int(i[0]) + 1 == int(i[1]) and int(i[1]) + 1 == int(j[0]) and int(j[0]) + 1 == int(j[1])):
+                k += 1       
+    else:
+        i = str(i)
+        if 0 <= int(i) <= 9:
+            i = '0' + i
+        for j in range(60):
+            j = str(j)
+            if 0 < int(j) <= 9:
+                j = '0' + j
+            if int(j) == 0:
+                j = '00'
+            if j == i or i == j[::-1] or (int(i[0]) + 1 == int(i[1]) and int(i[1]) + 1 == int(j[0]) and int(j[0]) + 1 == int(j[1])):
+                k += 1
+            
+
+print(k)
+            
+    

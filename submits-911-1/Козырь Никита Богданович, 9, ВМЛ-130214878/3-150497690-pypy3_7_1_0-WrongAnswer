@@ -1,0 +1,24 @@
+n = int(input())
+t =  int(input())
+interv = -1
+tp1, tp2 = 0, 0
+st = t
+for i in range(n):
+    t1, t2 = map(int, input().split())
+    if t < t2 - t1:
+        interv = t2 - 3600
+        break
+    if tp2 - tp1 + t2 - t1 >= t and n > 1 and t1 - tp1 < 3600:
+        interv = t1 + (t - tp2 + tp1) - 3600
+        break
+    if n == 1:
+        if t2 > t:
+            interv = t1
+        break
+    else:
+        t = st
+    tp1, tp2 = t1, t2
+if interv < 0:
+    print(-1)
+else:
+    print(interv + 1)

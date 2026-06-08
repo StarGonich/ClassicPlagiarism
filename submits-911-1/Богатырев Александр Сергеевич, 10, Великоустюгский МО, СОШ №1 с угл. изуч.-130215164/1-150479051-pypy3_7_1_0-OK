@@ -1,0 +1,29 @@
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+start = h1 * 60 + m1
+end = h2 * 60 + m2
+if end < start:
+    end += 24 * 60
+def cho_to(h, m):
+    hour_str = f"{h:02d}"
+    min_str = f"{m:02d}"
+    if hour_str == min_str:
+        return True
+    if hour_str[::-1] == min_str:
+        return True
+    digits = list(hour_str + min_str)
+    for i in range(3):
+        if int(digits[i+1]) != int(digits[i]) + 1:
+            break
+    else:
+        return True
+    return False
+count = 0
+for total_minutes in range(start, end + 1):
+    c_h = (total_minutes // 60) % 24
+    c_m = total_minutes % 60
+    if cho_to (c_h, c_m):
+        count += 1
+print(count)

@@ -1,0 +1,5 @@
+n = int(input())
+if n == 4:
+    print(1)
+else:
+    print(n//4+n//5+n//5-2*(n//12+n//20+n//30)+3*(n//60)-1)

@@ -1,0 +1,12 @@
+n = int(input())
+k = int(input())
+a = 0
+l = 10**12
+for p in range(n+1,n+k+1):
+    for i in range(p, p*n+1,p):
+        if i%n==0:
+            if i<l:
+                l = i
+                a = p
+            break
+print(a)

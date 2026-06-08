@@ -1,0 +1,24 @@
+n = int(input())
+t = int(input())
+l1 = []
+l2 = []
+for i in range(n):
+    t1, t2 = map(int, input().split())
+    l1.append(t1)
+    l2.append(t2)
+a  = -1
+for y in  range(0, max(l2)-3599):
+    c = 0
+    for i in range(n):
+        if l1[i]>=y and l1[i]<=y+3600:
+            if l2[i]<=y+3600:
+                c+=l2[i]-l1[i]
+            else:
+                c+=abs(y+3600-l1[i])
+        elif l2[i]>=y and l2[i]<=y+3600:
+            c+=l2[i]-y
+        if c>t:
+            a = y
+            break
+    break
+print(a)

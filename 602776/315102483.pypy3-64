@@ -1,0 +1,96 @@
+import math
+import sys
+
+input = lambda: sys.stdin.readline().rstrip()
+
+def print(*args, sep=' ', end='\n'):
+    sys.stdout.write(sep.join(map(str, args)) + end)
+
+def ii():
+    return int(input())
+def lii():
+    return list(map(int, input().split()))
+def lsi():
+    return input().split()
+
+def main():
+    a, b, p = lii()
+    c, d, q = lii()
+    if a == 0 and b == 0 and c == 0 and d == 0:
+        if p != 0 or q != 0:
+            print('Contradiction')
+        else:
+            print('Ambiguity')
+        return
+    if a == 0 and b == 0:
+        if p == 0:
+            print('Ambiguity')
+        else:
+            print('Contradiction')
+        return
+    if c == 0 and d == 0:
+        if q == 0:
+            print('Ambiguity')
+        else:
+            print('Contradiction')
+        return
+    if a == 0:
+        c2 = p / b
+        c1 = (q - c2 * d) / c
+        if c2 <= 0 or c1 <= 0:
+            print('Not positive')
+        else:
+            print('Success')
+            print(c1 * 100, c2 * 100)
+        return 
+    if b == 0:
+        c1 = p / a
+        c2 = (q - c1 * c) / d
+        if c2 <= 0 or c1 <= 0:
+            print('Not positive')
+        else:
+            print('Success')
+            print(c1 * 100, c2 * 100)
+        return 
+    if c == 0:
+        c2 = q / d
+        c1 = (p - c2 * b) / a
+        if c2 <= 0 or c1 <= 0:
+            print('Not positive')
+        else:
+            print('Success')
+            print(c1 * 100, c2 * 100)
+        return 
+    if d == 0:
+        c1 = q / c
+        c2 = (p - c1 * a) / b
+        if c2 <= 0 or c1 <= 0:
+            print('Not positive')
+        else:
+            print('Success')
+            print(c1 * 100, c2 * 100)
+        return 
+    det = a*d - b*c
+    if det == 0:
+        if a > c:
+            cnst = a / c
+            p /= cnst
+        else:
+            cnst = c / a
+            q /= cnst
+        if p != q:
+            print('Contradiction')
+        else:
+            print('Ambiguity')
+    else:
+        c2 = (q*a - p*c) / det
+        c1 = (p - c2 * b) / a
+        if c2 <= 0 or c1 <= 0:
+            print('Not positive')
+        else:
+            print('Success')
+            print(c1 * 100, c2 * 100)
+
+
+if __name__ == '__main__':
+    main()

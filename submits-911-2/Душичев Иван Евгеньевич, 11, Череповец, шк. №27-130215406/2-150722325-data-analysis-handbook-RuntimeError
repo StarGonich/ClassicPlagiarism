@@ -1,0 +1,5 @@
+pa=input()
+pb=input()
+pc=input()
+d=(pa+pb+pc)/3
+print(d)

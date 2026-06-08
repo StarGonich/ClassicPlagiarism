@@ -1,0 +1,32 @@
+n = int(input())
+t = int(input())
+a = []
+for i in range(n):
+    t1, t2 = map(int, input().split())
+    a.append(t1)
+    a.append(t2)
+l = 0
+r = 1
+q = -1
+su = 0
+lmin = -1
+sumin = 7843785467843
+while r != len(a)-1:
+    dia = a[l] + t
+    for i in range(len(a)):
+        if dia < a[i]:
+            q = i
+    if q % 2 == 0:
+        for j in range(l,q-1,2):
+            su = su + a[j+1] - a[j]
+    if q % 2 == 1:
+        for j in range(l,q-1,2):
+            su = su + a[j+1] - a[j]
+        su = su + a[l] + t - a[q-1]
+    if su < sumin and su > t:
+        sumin = su
+        lmin = l + t - 3600   
+    l += 2
+    r += 2
+    su = 0
+print(lmin)

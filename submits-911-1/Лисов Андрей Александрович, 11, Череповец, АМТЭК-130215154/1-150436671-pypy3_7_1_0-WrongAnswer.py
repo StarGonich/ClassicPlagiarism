@@ -1,0 +1,32 @@
+def bam(h, m):
+    if (h == m) or (h == m[::-1]) or (f"{h}{m}" in ["0123", "1234", "2345"]):
+        return True
+    return False
+
+
+def form(num):
+    if num % 60 < 10:
+        m = "0" + str(num % 60)
+    else:
+        m = str(num % 60)
+    if num // 60 < 10:
+        h = "0" + str(num // 60)
+    else:
+        h = str(num // 60)
+    return h, m
+
+
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+
+time1 = h1 * 60 + m1
+time2 = h2 * 60 + m2
+ans = 0
+for t in range(time1, time2 + 1):
+    h, m = form(t)
+    if bam(h, m):
+        ans += 1
+
+print(ans)

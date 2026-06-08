@@ -1,0 +1,102 @@
+h1=int(input())
+m1=int(input())
+h2=int(input())
+m2=int(input())
+
+h = h1
+m = m1
+
+count = 0
+while(h != h2 or m != m2):
+    #print(h,m)
+
+    str_m = ""
+    if m < 10:
+        str_m = "0"+str(m)
+    else:
+        str_m = str(m)
+
+    str_h = ""
+    if h < 10:
+        str_h = "0"+str(h)
+    else:
+        str_h = str(h)
+            
+    if h == m:
+        count += 1
+        #print(count,h,m)
+    
+    elif str_h == str_m[::-1]:
+        count += 1
+        #print(count,h,m)
+    else :
+        
+
+        nomber = [0,0,0,0]
+        nomber[0] = int(str_h[0])
+        nomber[1] = int(str_h[1])
+        nomber[2] = int(str_m[0])
+        nomber[3] = int(str_m[1])
+        
+        #print(nomber)
+        if nomber[0]+3 == nomber[1]+2 and nomber[0]+3 == nomber[2]+1 and nomber[0]+3 == nomber[3]:
+            count += 1
+            
+            #print(count,h,m)
+    m += 1
+    if m // 60 == 1:
+        m = m - 60
+        h += 1
+    if h == 24:
+        h = 0
+
+
+#print(h,m)
+
+str_m = ""
+if m < 10:
+    str_m = "0"+str(m)
+else:
+    str_m = str(m)
+
+str_h = ""
+if h < 10:
+    str_h = "0"+str(h)
+else:
+    str_h = str(h)
+            
+if h == m:
+    count += 1
+    #print(count,h,m)
+    
+elif str(h) == str_m[::-1]:
+    count += 1
+    #print(count,h,m)
+else :
+    str_h = ""
+    if h < 10:
+        str_h = "0"+str(h)
+    else:
+        str_h = str(h)
+
+    nomber = [0,0,0,0]
+    nomber[0] = int(str_h[0])
+    nomber[1] = int(str_h[1])
+    nomber[2] = int(str_m[0])
+    nomber[3] = int(str_m[1])
+        
+    #print(nomber)
+    if nomber[0]+3 == nomber[1]+2 and nomber[0]+3 == nomber[2]+1 and nomber[0]+3 == nomber[3]:
+        count += 1
+            
+        #print(count,h,m)
+m += 1
+if m // 60 == 1:
+    m = m - 60
+    h += 1
+if h == 24:
+    h = 0
+        
+print(count)
+    
+

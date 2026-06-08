@@ -1,0 +1,23 @@
+a,b,p = map(int,input().split())
+c,d,q = map(int,input().split())
+
+
+
+
+try:
+    q1 = c - a * d / b
+    q2 = q - p * d / b
+    r1 = q2 / q1
+    r2 = ((p - r1 * a) / b)
+    res1 = round(r1*100,2)
+    res2 = round(r2*100,2)
+    if res1<=1 or res2<=1:
+        print("Not positive")
+    else:
+        print("Success")
+        print(res1,res2)
+except:
+    if p!=q*(a/c):
+        print("Contradiction")
+    if p==q*(a/c):
+        print("Ambiguity")

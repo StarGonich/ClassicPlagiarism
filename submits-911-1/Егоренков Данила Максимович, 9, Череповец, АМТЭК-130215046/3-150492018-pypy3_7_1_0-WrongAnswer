@@ -1,0 +1,25 @@
+n = int(input())
+t = int(input())
+j = 0
+lst = [0] * 10000000
+ok = True
+for i in range(n):
+    t1, t2 = map(int, input().split())
+    if t1 // 3600 == t2 // 3600:
+        lst[t1 // 3600] += t2 - t1
+    else:
+        lst[t1 // 3600] += 3599 - t1
+        lst[t2 // 3600] += t2 - t1 - (3599 - t1)
+    if lst[t1 // 3600] > t:
+        s = t2 - t1
+        lst[t1 // 3600] -= t2 - t1
+        past = t - lst[t1 // 3600]
+        print((past + t1) % 3600 + 1)
+        ok = False
+        break
+    elif lst[t2 // 3600] > t:
+        perf = t - ((lst[t2 // 3600]) % 3600)
+        print((t2 + perf + 1) % 3600)
+        ok = False
+if ok:
+    print(-1)

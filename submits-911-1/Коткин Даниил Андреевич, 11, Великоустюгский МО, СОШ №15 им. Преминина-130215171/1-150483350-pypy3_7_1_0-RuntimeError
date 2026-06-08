@@ -1,0 +1,58 @@
+h1 = input()
+m1 = input()
+h2 = input()
+m2 = input()
+
+I = ""
+a = h1 + m1
+b = h2 + m2
+c = a
+while c != b:
+    I += c + " "
+    c1 = c[:-2]
+    c2 = c[-2:]
+    if c2 == "0":
+        c2 = "01"
+    elif c2 == "1":
+        c2 = "02"
+    elif c2 == "2":
+        c2 = "03"
+    elif c2 == "3":
+        c2 = "04"
+    elif c2 == "4":
+        c2 = "05"
+    elif c2 == "5":
+        c2 = "06"
+    elif c2 == "6":
+        c2 = "07"
+    elif c2 == "7":
+        c2 = "08"
+    elif c2 == "8":
+        c2 = "09"
+    elif c2 == "9":
+        c2 = "10"
+    else:
+        c2 = int(c2)
+        c2 += 1
+
+        if c2 > 59:
+            c1 = int(c1)
+            c1 += 1
+            c1 = str(c1)
+            c2 = "00"
+        c2 = str(c2)
+    c = c1 + c2
+
+I = I.split()
+jjj = "0123456789"
+ammount = 0
+for i in range(len(I)):
+    v = I[i]
+    if v[-2:] == v[:-2]:
+        ammount += 1
+    elif v[:-2] == (v[3] + v[2]):
+        ammount += 1
+    elif v in jjj:
+        ammount += 1
+
+print(ammount)

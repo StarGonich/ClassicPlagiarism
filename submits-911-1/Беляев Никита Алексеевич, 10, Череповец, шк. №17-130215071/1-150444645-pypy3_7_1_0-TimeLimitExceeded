@@ -1,0 +1,34 @@
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+cal=0
+#print(h11,h12,m11,m12,h21,h22,m21,m22)
+while h1!=h2 or m1!=m2:
+    h11 = h1//10
+    h12 = h1%10
+    m11 = m1//10
+    m12 = m1%10
+    h21 = h2//10
+    h22 = h2%10
+    m21 = m2//10
+    m22 = m2%10
+    if h11==m11 and h12==m12:
+        #print("1")
+        #print(h11,h12,m11,m12,h21,h22,m21,m22)
+        cal+=1
+    if h11==m12 and h12==m11:
+        #print("2")
+        #print(h11,h12,m11,m12,h21,h22,m21,m22)
+        cal+=1
+    if h12==(h11+1) and m11 == (h12+1) and m12 == (m11+1):
+        #print("3")
+        #print(h11,h12,m11,m12,h21,h22,m21,m22)
+        cal+=1
+    if m1<59:
+        m1+=1
+    elif m1==59:
+        h1=h1+1
+        m1=0
+print(cal)   
+    

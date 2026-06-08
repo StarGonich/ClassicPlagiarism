@@ -1,0 +1,17 @@
+n = int(input())
+t = int(input())
+m = -3
+a = 0
+b = 0
+for i in range(1, n + 1):
+ t1, t2 = map(int, input().split())
+ while n != 0:
+  for u in range(0, 3600 + 1):
+   a = a + (t2 - t1)
+   if (a > t):
+    b = a - t
+
+   if m > b:
+    m = b
+  n -= 1
+ print(m)

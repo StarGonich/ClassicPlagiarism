@@ -1,0 +1,20 @@
+a = int(input())
+b = int(input())
+k = a * 60 + b
+c = int(input())
+d = int(input())
+l = c * 60 + d
+n = 0
+while k <= l:
+    if a == b:
+        n += 1
+    elif b == int(str(a)[::-1]) or a == int(str(b)[::-1]):
+        n += 1
+    elif (a == 1 and b == 23) or (a == 12 and b == 34) or (a == 23 and b == 45):
+        n += 1
+    k += 1
+    b += 1
+    if b == 60:
+        b = 0
+        a += 1
+print(n)

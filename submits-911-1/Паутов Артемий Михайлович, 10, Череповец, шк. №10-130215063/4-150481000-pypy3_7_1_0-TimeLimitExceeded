@@ -1,0 +1,22 @@
+def deli(n):
+    res = []
+    for i in range(1, int(n**0.5)+1):
+        if n%i == 0:
+            res.append(i)
+            if n//i not in res:
+                res.append(n//i)
+    return sorted(res)
+
+
+n = int(input())
+den = deli(n)[::-1]
+k = int(input())
+res = []
+for i in den:
+    for p in range(n+1,n+k):
+        if p%i == 0:
+            res.append(p)
+            break
+    else:
+        continue
+print(max(res))

@@ -1,0 +1,40 @@
+program BeautifulTimes;
+var
+  h1, m1, h2, m2: integer;
+  start_time, end_time: integer;
+  current_time: integer;
+  hh, mm: integer;
+  beautiful_count: integer;
+  hh_str, mm_str: string;
+begin
+write(h1 m1);
+  readln(h1, m1);
+  write(h2 m2);
+  readln(h2, m2);
+start_time := h1 * 60 + m1;
+  end_time := h2 * 60 + m2;
+  beautiful_count := 0;
+for current_time := start_time to end_time do
+  begin
+    hh := current_time div 60;
+    mm := current_time mod 60;
+hh_str := Format([hh]);
+    mm_str := Format([mm]);
+if (hh = mm) then
+    begin
+      beautiful_count := beautiful_count + 1;
+      continue;
+    end;
+if (hh_str[1] = mm_str[2]) and (hh_str[2] = mm_str[1]) then
+    begin
+      beautiful_count := beautiful_count + 1;
+      continue;
+    end;
+ if (hh_str[1] < hh_str[2]) and (mm_str[1] < mm_str[2]) and
+       (ord(mm_str[1]) = ord(hh_str[2]) + 1) then
+    begin
+      beautiful_count := beautiful_count + 1;
+    end;
+  end;
+writeln(beautiful_count);
+end.

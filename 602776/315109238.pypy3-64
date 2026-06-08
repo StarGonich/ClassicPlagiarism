@@ -1,0 +1,26 @@
+def f(s, t):
+    if t == 1:
+        a = ""
+        for i in s:
+            a += i * 3
+        return a
+    if t == 2:
+        for i in range(len(s) - 2, 3):
+            if not(s[i] == s[i+1] == s[i+2]):
+                if s[i] == s[i+1]:
+                    s[i+2] = s[i]
+                elif s[i] == s[i+2]:
+                    s[i+1] = s[i]
+                else:
+                    s[i] = s[i+1]
+        return s[::3]
+
+
+t = int(input())
+if t == 1:
+    s = "ABC"
+    print(f(s, t))
+else:
+    s = "ABC"
+    f(s,1)
+    print(f(s,2))

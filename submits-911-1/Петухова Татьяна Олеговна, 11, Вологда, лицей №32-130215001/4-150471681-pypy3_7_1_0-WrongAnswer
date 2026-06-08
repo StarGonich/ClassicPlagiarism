@@ -1,0 +1,16 @@
+def nok(q,w):
+    e=[]
+    for i in range(1,q*w+1):
+        if i%q==0 and i%w==0: e.append(i)
+    return min(e)
+
+n=int(input())
+k=int(input())
+ind=0
+s=10**13
+for p in range(n+1,n+k+1):
+    a=nok(n,p)
+    if a<s:
+        s=a
+        ind=p
+print(p-1)

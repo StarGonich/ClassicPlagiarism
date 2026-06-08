@@ -1,0 +1,40 @@
+def D():
+    n = int(input())
+    x = list(map(int, input().split()))
+    d = list(map(int, input().split()))
+    g = {v : [] for v in x}
+    k = int(input())
+    for i, v in enumerate(x):
+        if i != 0:
+            l, r = 0, i
+            gr = max(0, x[i] - d[i])
+            while r - l > 1:
+                mid = (r+l) // 2
+                if x[mid] <= gr:
+                    l = mid
+                else:
+                    r = mid
+            if x[l] < gr:
+                l = r
+            g[v] += x[l:i]
+        if i != n - 1:
+            l, r = i, n-1
+            gr = min(x[-1], x[i] + d[i])
+            while r - l > 1:
+                mid = (r+l) // 2
+                if x[mid] <= gr:
+                    l = mid
+                else:
+                    r = mid
+            if x[r] <= gr:
+                l = r
+            g[v] += x[i+1:l+1]
+    l, was = [x[k-1]], {x[k-1]}
+    while l:
+        v = l.pop(0)
+        for u in g[v]:
+            if u not in was:
+                l.append(u)
+        was.add(v)
+    print(len(was))
+D()

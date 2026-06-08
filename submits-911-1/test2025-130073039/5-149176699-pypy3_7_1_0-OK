@@ -1,0 +1,63 @@
+k = int(input())
+n = int(input())
+m = int(input())
+
+def getNext(a):
+   b = [[0] * m for _ in range(n)]
+   for i in range(n):
+      for j in range(m):
+         for ii in (i-1, i, i+1):
+            if ii < 0 or ii >= n:
+               continue
+            for jj in (j-1, j, j+1):
+               if jj < 0 or jj >= m:
+                  continue               
+               if ii == i and jj == j:
+                  continue
+               b[i][j] += a[ii][jj]
+   for i in range(n):
+      for j in range(m):
+        if a[i][j] == 1:
+           if b[i][j] == 2 or b[i][j] == 3:
+              b[i][j] = 1
+           else:
+              b[i][j] = 0
+        else:
+           if b[i][j] == 3:
+              b[i][j] = 1
+           else:
+              b[i][j] = 0
+   return b
+
+f = [None] * k
+d = dict()
+for i in range(k):
+   f[i] = [[int(x) for x in input().split()] for _ in range(n)]   
+   s = str(f[i])
+   assert(s not in d)
+   d[s] = i
+next = [-1] * k
+prev = [-1] * k
+lastcell = -1
+for i in range(k):
+   if next[i] == -1:
+      p = f[i]
+      while True:
+         q = getNext(p)
+         s = str(q)
+         if str(q) == str(p):
+            next[i] = -2
+            lastcell = i
+            break
+         if s in d:
+            next[i] = d[s]
+            prev[d[s]] = i
+            break
+         p = q
+ans = [lastcell + 1]
+i = lastcell
+while prev[i] != -1:
+   i = prev[i]
+   ans.append(i + 1)
+assert(len(ans) == k)
+print(*ans[::-1])

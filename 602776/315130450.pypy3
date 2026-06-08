@@ -1,0 +1,30 @@
+a, b, p = map(float, input().split())
+c, d, q = map(float, input().split())
+
+if (a == c and b == d and p == q) or (a == 0 and c == 0) or (b == 0 and d == 0) or (a == b and c == d and c != a and d != b):
+    print("Ambiguity")
+    exit()
+if (a == c and b == d and p != q) or (a != c and b == d and p == q) or (a == c and b != d and p == q) or (a > c and b > d and q > p) or (a < c and b < d and q < p):
+    print("Contradiction")
+    exit()
+r1, r2 = 0, 0
+if a == 0:
+    r2 = (p / b) * 100
+    r1 = ((q - (d/100 * r2)) / c) * 100
+elif b == 0:
+    r2 = (p / a) * 100
+    r1 = ((q - (c / 100 * r2)) / d) * 100
+elif c == 0:
+    r2 = (q / d) * 100
+    r1 = ((p - (b/100 * r2)) / a) * 100
+elif d == 0:
+    r2 = (q / c) * 100
+    r1 = ((p - (a/100 * r2)) / b) * 100
+else:
+    r1 = ((p - (b/100) * (q/(d/100))) / (a/100)) / (1 - (((c/d) * (b/100)) / (a/100)))
+    r2 = (q - (c/100 * r1)) / (d/100)
+if r1 < 0 or r2 < 0:
+    print("Not positive")
+    exit()
+print('Success')
+print(round(r1, 1), round(r2, 1))

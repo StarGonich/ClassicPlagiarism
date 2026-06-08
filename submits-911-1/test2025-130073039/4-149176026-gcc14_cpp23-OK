@@ -1,0 +1,20 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+   long long n, k;
+   cin >> n >> k;
+   long long p = n + 1;
+   __int128 min_lcm = (__int128) (n + 1) * n;
+   for(long long d1 = 1; d1 * d1 <= n; d1++) {
+      if (n % d1 == 0) {
+         long long d2 = n / d1;
+         long long d3 = (n + d2) / d2;
+         if ((__int128) d2 * d3 <= n + k && (__int128) d1 * d2 * d3 < min_lcm){
+            p = d2 * d3;
+            min_lcm = (__int128) d1 * d2 * d3;
+         }
+      }
+   }
+   cout << p;
+}

@@ -1,0 +1,12 @@
+n = int(input())
+
+a = set(list(range(0,n+1,4)))
+a.remove(0)
+b = set(list(range(0,n+1,5)))
+b.remove(0)
+c = set(list(range(0,n+1,6)))
+c.remove(0)
+
+b = b.symmetric_difference(c)
+a = a.symmetric_difference(b)
+print(len(a))

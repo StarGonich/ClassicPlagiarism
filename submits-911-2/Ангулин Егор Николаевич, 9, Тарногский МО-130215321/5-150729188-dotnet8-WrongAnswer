@@ -1,0 +1,80 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        // Считываем входные данные
+        int n = int.Parse(Console.ReadLine());
+        int[] scores = Console.ReadLine().Split().Select(int.Parse).ToArray();
+        int k = int.Parse(Console.ReadLine());
+        
+        // Создаем массив для отметки фрод-сообщений
+        bool[] isFraud = new bool[n];
+        var fraudIndices = Console.ReadLine().Split().Select(int.Parse).ToArray();
+        foreach (var index in fraudIndices)
+        {
+            isFraud[index - 1] = true; // Переводим в 0-based индексацию
+        }
+
+        // Создаем список пар (оценка, является ли фродом)
+        var messages = new List<(int score, bool isFraud)>();
+        for (int i = 0; i < n; i++)
+        {
+            messages.Add((scores[i], isFraud[i]));
+        }
+
+        // Сортируем сообщения по убыванию оценки
+        messages = messages.OrderByDescending(m => m.score).ToList();
+
+        // Перебираем все возможные пороги
+        double maxF1 = 0;
+        int bestThreshold = int.MaxValue;
+        int tp = 0;
+        int fp = 0;
+        int fn = k; // Изначально все фрод-сообщения не обнаружены
+
+        // Добавляем проверку для всех возможных порогов
+        for (int i = 0; i <= n; i++)
+        {
+            // Определяем текущий порог
+            int currentThreshold = (i < n) ? messages[i].score : 0;
+
+            // Обновляем счетчики только если это не первый проход
+            if (i > 0)
+            {
+                if (messages[i - 1].isFraud)
+                {
+                    tp++;
+                    fn--;
+                }
+                else
+                {
+                    fp++;
+                }
+            }
+
+            // Вычисляем метрики
+            double precision = (tp == 0) ? 0 : (double)tp / (tp + fp);
+            double recall = (tp == 0) ? 0 : (double)tp / k;
+            double f1 = (precision + recall == 0) ? 0 : 2 * precision * recall / (precision + recall);
+
+            // Обновляем лучший порог
+            if (f1 > maxF1 || (f1 == maxF1 && currentThreshold < bestThreshold))
+            {
+                maxF1 = f1;
+                bestThreshold = currentThreshold;
+            }
+        }
+
+        // Если все сообщения не считаются фродом, возвращаем минимальный возможный порог
+        if (bestThreshold == int.MaxValue)
+        {
+            bestThreshold = 1;
+        }
+
+        Console.WriteLine(bestThreshold);
+    }
+}

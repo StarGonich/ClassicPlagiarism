@@ -1,0 +1,14 @@
+n=int(input())
+t=int(input())
+ans=0
+d=0
+c=[]
+for i in range(n):
+    a,b=map(int,input().split())
+    z=a+b
+    c.append(z)
+    x=b
+s=sum(c)
+if s/3600>t:
+    d=-1
+print(-1)

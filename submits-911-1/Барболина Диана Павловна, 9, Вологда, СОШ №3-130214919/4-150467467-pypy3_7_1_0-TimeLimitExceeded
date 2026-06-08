@@ -1,0 +1,8 @@
+n = int(input())
+k = int(input())
+e = n/2
+s = n + k
+r = s % e
+while r > 0:
+    p = s-1
+    print (p)

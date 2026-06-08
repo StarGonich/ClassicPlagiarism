@@ -1,0 +1,40 @@
+n = int(input())
+p_vals = [int(x) for x in input().split()]
+k = int(input())
+frods = [int(x) for x in input().split()]
+
+y_true = [0 for _ in range(n)]
+for frod_idx in frods:
+  y_true[frod_idx-1] = 1
+
+
+max_f1 = 0
+best_t = -1
+for t in range(min(p_vals), max(p_vals)+1):
+  tp = 0
+  fn = 0
+  tn = 0
+  fp = 0
+  for i in range(n):
+    if p_vals[i] >= t:
+      pred = 1
+    else:
+      pred = 0
+    if pred == 1 and y_true[i] == 1:
+      tp += 1
+    elif pred == 1 and y_true[i] == 0:
+      fp += 1
+    elif pred == 0 and y_true[i] == 1:
+      fn += 1
+    else:
+      tn += 1
+  precision = tp/(tp+fp)
+  recall = tp/(tp+fn)
+  if precision + recall == 0:
+    f1 = 0
+  else:
+    f1 = 2*recall*precision/(recall+precision)
+  if f1 > max_f1:
+    best_t = t
+    max_f1 = f1
+print(best_t)

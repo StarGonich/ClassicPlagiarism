@@ -1,0 +1,33 @@
+import sys
+
+sys.setrecursionlimit(10000000)
+
+def explode(points, powers, active, k):
+    if active[k] == 0:
+        return active
+    active[k] = 0
+    left_ptr = k
+    while abs(points[left_ptr] - points[k]) <= powers[k]:
+        if active[left_ptr] == 1:
+            active = explode(points, powers, active, k)
+        if left_ptr == 0:
+            break
+        else:
+            left_ptr -= 1
+    right_ptr = k
+    while abs(points[right_ptr] - points[k]) <= powers[k]:
+        if active[right_ptr] == 1:
+            active = explode(points, powers, active, k)
+        if right_ptr == len(points) - 1:
+            break
+        else:
+            right_ptr += 1
+    return active
+
+
+n = int(input())
+points = list(map(int, input().split()))
+powers = list(map(int, input().split()))
+active = [1] * n
+k = int(input()) - 1
+print(sum(explode(points, powers, active, k)))

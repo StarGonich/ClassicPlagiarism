@@ -1,0 +1,21 @@
+n = int(input())
+k = int(input())
+nok = 0
+mnok = 9999999999999999999999999999999999
+mp = 0
+for p in range(n + 1, n + k):
+    l = p
+    f = n
+    s = n * p
+    while f != l:
+        if l > f:
+
+            l = l - f
+        else:
+            f = f - l
+    nod = l
+    nok = s // nod        
+    if nok < mnok:
+        mp = p
+        mnok = nok
+print(mp)

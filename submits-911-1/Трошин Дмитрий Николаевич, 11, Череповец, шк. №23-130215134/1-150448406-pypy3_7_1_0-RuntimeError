@@ -1,0 +1,19 @@
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+k = 0
+def f(i1, i2):
+    for i3 in range(6):
+        for i4 in range(10):
+            if (int(f'{(str(h1))[0]}{(str(h1))[1]}{(str(m1))[0]}{(str(m1))[1]}')) <= (int(f'{i1}{i2}{i3}{i4}')) <= (int(f'{(str(h2))[0]}{(str(h2))[1]}{(str(m2))[0]}{(str(m2))[1]}')):
+                if (i1 == i3 and i2 == i4) or (i1 == i4 and i2 == i3) or ((i1 == i2+1) and (i2 == i3+1) and (i3 == i4+1)):
+                    k += 1
+
+for i1 in range(3):
+    if i1 != 2:
+        for i2 in range(10):
+            f(i1, i2)
+    else:
+        for i2 in range(4):
+            f(i1, i2)

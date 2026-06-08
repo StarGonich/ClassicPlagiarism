@@ -1,0 +1,51 @@
+from sys import stdin, stdout
+input = stdin.readline
+
+def main():
+    res = 0
+    h_1 = int(input())
+    m_1 = int(input())
+    h_2 = int(input())
+    m_2 = int(input())
+    for h in range(h_1, h_2+1, 1):
+        if h == h_1 and h_1 == h_2:
+            for m in range(m_1, m_2+1):
+                h_n = norm_time(h)
+                m_n = norm_time(m)
+                res += check(h_n, m_n)
+        elif h==h_1:
+            for m in range(m_1, 59):
+                h_n = norm_time(h)
+                m_n = norm_time(m)
+                res += check(h_n, m_n)
+        elif h==h_2:
+            for m in range(0, m_2):
+                h_n = norm_time(h)
+                m_n = norm_time(m)
+                res += check(h_n, m_n)
+        else:
+            for m in range(0, 59):
+                h_n = norm_time(h)
+                m_n = norm_time(m)
+                res += check(h_n, m_n)
+            
+    # print(res)
+    stdout.write(str(res))
+        
+def norm_time(time):
+    if time < 10:
+        time = f"0{time}"
+    else:
+        time = str(time)
+    return time
+
+def check(h, m):
+    if h == m:
+        return 1
+    elif h == m[::-1]:
+        return 1
+    elif f"{int(h[1])+1}{int(h[1])+2}" == m and int(h[0])+1 == int(h[1]):
+        return 1
+    return 0
+
+main()

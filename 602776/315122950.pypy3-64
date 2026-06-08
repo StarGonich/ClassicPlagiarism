@@ -1,0 +1,36 @@
+a = int(input())
+
+b = list(map(int, input().split()))
+c = list(map(int, input().split()))
+d = int(input()) - 1
+nw  = [1]*a
+nw[d] = 0
+lt = b[d] - c[d]
+rt = b[d] + c[d]
+uno = d
+dos  = d
+dl = -1
+dr = 1
+while True:
+    uno += dl
+    dos += dr
+    if uno != 0:
+        if b[uno] >= lt and b[uno] <= rt:
+            if b[uno] - c[uno] < lt: lt = b[uno] - c[uno]
+            if b[uno] + c[uno] > rt: rt = b[uno] + c[uno]
+    else:
+        dl = 0
+
+    if dos != a:
+        if b[dos] >= lt and b[dos] <= rt:
+            if b[dos] - c[dos] < lt: lt = b[dos] - c[dos]
+            if b[dos] + c[dos] > rt: rt = b[dos] + c[dos]
+    else:
+        dr = 0
+    if uno == 0 and dos == a:
+        break
+k = 1
+for i in b:
+    if i < lt or i > rt:
+        k += 1
+print(k)

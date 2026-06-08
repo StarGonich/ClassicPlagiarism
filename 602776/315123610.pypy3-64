@@ -1,0 +1,18 @@
+import bisect
+n = int(input())
+x = list(map(int, input().split()))
+d = list(map(int, input().split()))
+k = int(input())
+m = []
+s = [k-1]
+while s:
+    i = s.pop()
+    if i in m:
+        continue
+    m.append(i)
+    lpos = x[i] - d[i]
+    rpos = x[i] + d[i]
+    r = bisect.bisect_left(x, rpos)
+    l = bisect.bisect_left(x, lpos)
+    s = set(range(l,r)) - set(s)
+print(len(m))

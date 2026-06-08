@@ -1,0 +1,19 @@
+import math
+n = int(input())
+k = int(input())
+p = n + 1
+nice = 0
+minlcm = math.lcm(p, n)
+p += 1
+pamat = p
+flag = False
+if k > n:
+    print(2 * n)
+    flag = True
+elif not flag:
+    while p != n + k:
+        if math.lcm(p, n) < minlcm:
+            pamat = p
+            minlcm = math.lcm(p, n)
+        p += 1
+    print(pamat)

@@ -1,0 +1,26 @@
+def find_numbers(x, y, z):
+    total_sum = z * 5
+    for a in range(-10**9, 10**9 + 1):
+        for b in range(a, 10**9 + 1):
+            if a > x or b > x:
+                continue
+            numbers = [x, x, x, a, b]
+            numbers.sort()
+            median = numbers[2] 
+            if median == y:
+                # Проверяем среднее
+                if (sum(numbers) == total_sum):
+                    return numbers
+            
+    return -1
+
+x = int(input())
+y = int(input())
+z = int(input())
+
+result = find_numbers(x, y, z)
+if result == -1:
+    print(-1)
+else:
+    print(' '.join(map(str, result)))
+

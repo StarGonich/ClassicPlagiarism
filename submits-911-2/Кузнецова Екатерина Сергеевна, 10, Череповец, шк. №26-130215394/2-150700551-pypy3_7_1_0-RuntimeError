@@ -1,0 +1,5 @@
+for p1 in range (m):
+    for p2 in range (n):
+        for p3 in range (l):
+            k=(p1+p2+p3)//3
+            print(k)

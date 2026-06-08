@@ -1,0 +1,20 @@
+def main():
+    n = int(input())
+    s = input()
+    if n == 1:
+        print(s * 3)
+        return
+    length = len(s) // 3
+    if n == 2:
+        l1 = s[:length]
+        l2 = s[length: length * 2]
+        l3 = s[length * 2:]
+        d = dict()
+        for el in [l1, l2, l3]:
+            d[el] = d.get(el, 0) + 1
+        for el in d:
+            if d[el] >= 2:
+                print(el)
+                break
+
+main()

@@ -1,0 +1,13 @@
+a = int(input())
+c = 1
+b = 0
+d = []
+for i in range(a, 0, -1):
+    c *= i
+    b += i
+    d.append(i)
+if c == b:
+    print(b)
+    print(*d)
+else:
+    print(-1)

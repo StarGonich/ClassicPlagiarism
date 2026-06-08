@@ -1,0 +1,21 @@
+n = int(input())
+k = int(input())
+dct = {}
+
+def f(n, p):
+    a = n
+    while a % p != 0:
+        a += n
+    return a
+
+    
+for p in range(n + 1, n + k + 1):
+    dct[p] = f(n, p)
+
+min_v = dct[n + 1]
+for k, v in dct.items():
+    if v < min_v:
+        min_v = v
+        min_key = k
+
+print(min_key)

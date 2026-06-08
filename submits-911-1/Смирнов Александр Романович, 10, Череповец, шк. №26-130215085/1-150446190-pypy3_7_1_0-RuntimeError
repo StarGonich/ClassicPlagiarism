@@ -1,0 +1,16 @@
+a = int(input())
+b = int(input())
+c = int(input())
+d = int(input())
+v = 0
+f = 0
+if a == b:
+    g = v+1
+    if b != a:
+        g = v+0
+if c == d:
+    z = f+1
+    if c != d:
+        z = f+0
+
+print(g+z)

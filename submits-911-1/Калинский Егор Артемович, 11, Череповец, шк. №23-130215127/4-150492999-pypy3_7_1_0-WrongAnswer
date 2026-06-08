@@ -1,0 +1,14 @@
+def hhh(a, b):
+    for i in range(min(a, b), 0, -1):
+        if a % i == 0 and b % i == 0:
+            return i
+
+n = int(input())
+k = int(input())
+z = 0
+ans = 0
+for p in range(n + k, n, -1):
+    if hhh(p, n) > z:
+        z = hhh(p, n)
+        ans = p
+print(ans)

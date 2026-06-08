@@ -1,0 +1,32 @@
+
+n = int(input())
+k = int(input())
+
+def nok(x,y):
+    a = min(x,y) * 2
+    while a%x != 0 or a%y != 0:
+        a += 1
+    return a
+    
+p_l = n + 1
+p_r = n + k
+
+nok_ = nok(n,p_l)
+index = p_l
+
+if (p_l+1)% 2 == 0:
+
+    for i in range(p_l+1,p_r+1,2):
+        a = nok(n,i)
+        if nok_> a:
+            index = i
+            nok_ = a
+else:
+    for i in range(p_l+2,p_r+1,2):
+        a = nok(n,i)
+        if nok_> a:
+            index = i
+            nok_ = a
+    
+print(index)
+

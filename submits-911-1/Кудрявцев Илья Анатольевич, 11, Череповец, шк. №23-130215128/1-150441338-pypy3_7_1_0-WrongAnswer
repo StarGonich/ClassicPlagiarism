@@ -1,0 +1,37 @@
+h1, m1, h2, m2 = (input()), (input()), (input()), (input())
+def krasivo(h, m):
+    h, m = str(h), str(m)
+    if len(h) == 1:
+        h = '0'+h
+    if len(m) == 1:
+        m = '0'+m
+    if h==m:
+        return True
+    if h == m[::-1]:
+        return True
+    if int(m[1])-int(m[0])==int(m[0])-int(h[1])==int(h[1])-int(h[0])==1:
+        return True
+k=0
+if int(h2)-int(h1) > 1:
+    for m_1 in range(int(m1), 60):
+        if krasivo(h1, m_1):
+            k+=1
+    for h in range(int(h1)+1,int(h2)):
+        for m in range(0, 60):
+           if krasivo(h, m):
+               k+=1
+    for m_2 in range(0, int(m2)+1):
+        if krasivo(h2, m_2):
+            k+=1
+elif int(h2)-int(h1)==1:
+    for m_1 in range(int(m1), 60):
+        if krasivo(h1, m_1):
+            k+=1
+    for m_2 in range(0, int(m2)+1):
+        if krasivo(h2, m_2):
+            k+=1
+elif int(h2)-int(h1)==0:
+    for _m_ in range(int(m1), int(m2)+1):
+        if krasivo(h1, _m_):
+            k+=1
+print(k)

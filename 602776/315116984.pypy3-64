@@ -1,0 +1,30 @@
+import sys
+
+
+money = 210
+
+def bet(amount):
+    global money 
+
+    print(amount, "R")
+    sys.stdout.flush()
+    status = int(input())
+    
+    if status == -1:
+        raise
+    
+    if status:
+        money += amount
+    else:
+        money -= amount
+        
+    return status
+
+
+while money < 1000:
+    m = money
+    
+    if not bet(m // 16):
+        if not bet(m // 8):
+            if not bet(m // 4):
+                bet(m // 2)

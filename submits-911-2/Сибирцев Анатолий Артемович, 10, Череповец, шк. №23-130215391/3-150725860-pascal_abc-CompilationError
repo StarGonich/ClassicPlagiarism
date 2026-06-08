@@ -1,0 +1,36 @@
+program FiveNumbersWithProperties;
+var
+  i, j: Integer;
+  Temp: LongInt;
+begin
+  for i := Low(Arr) to High(Arr) - 1 do
+    for j := i + 1 to High(Arr) do
+      if Arr[i] > Arr[j] then
+      begin
+        Temp := Arr[i];
+        Arr[i] := Arr[j];
+        Arr[j] := Temp;
+      end;
+end;
+var
+  x, y, z: LongInt;
+  nums: array[0..4] of LongInt;
+  target_sum: LongInt;
+  v_val: LongInt;
+  solution_found: Boolean;
+  i: Integer;
+  Readln(x);
+  Readln(y);
+  Readln(z);
+  target_sum := 5 * z;
+  solution_found := False;
+  if x = y then
+  begin
+    nums[0] := x - 1;
+    nums[1] := x;
+    nums[2] := x;
+    nums[3] := x;
+    nums[4] := target_sum - (nums[0] + nums[1] + nums[2] + nums[3]);
+    BubbleSort(nums);
+    solution_found := True;
+  end. 

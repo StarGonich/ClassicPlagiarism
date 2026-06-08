@@ -1,0 +1,16 @@
+program q;
+var h1,h2,m1,m2,k,i,i1:integer;
+begin
+read(h1);
+read(h2);
+read(m1);
+read(m2);
+k:=0;
+if (h1>=0)and(h1<=23)and(h2>=0)and(h1<=23)and(m1>=0)and(m1<=59)and(m2>=0)and(m2<=59) then begin
+for i:=h1 to h2 do
+for i1:=m1 to m2 do
+if (i=i1) or ((i div 10=i1 mod 10) and(i mod 10=i1 div 10)) or ((i div 10=(i mod 10)-1) and(i mod 10=(i1 div 10)-1)and(i1 div 10=(i1 mod 10)-1)) then
+k:=k+1;
+end;
+writeln(k);
+end.

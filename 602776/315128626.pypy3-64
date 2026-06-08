@@ -1,0 +1,21 @@
+import sys
+import random
+
+cash = 210
+flag = False
+while cash < 1000 and not flag:
+    part = cash // 15
+    for i in range(4):
+        print(part * 2 ** i, random.choice("RB"))
+        sys.stdout.flush()
+        ans = int(input())
+        if ans == 1:
+            cash += part * 2 ** i
+            break
+        elif ans == 0:
+            cash -= part * 2 ** i
+            continue
+        else:
+            flag = True
+            break
+

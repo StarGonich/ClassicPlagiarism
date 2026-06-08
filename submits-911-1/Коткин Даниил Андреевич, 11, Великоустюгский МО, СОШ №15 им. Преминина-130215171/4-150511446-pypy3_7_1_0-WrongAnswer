@@ -1,0 +1,11 @@
+import math
+n = int(input())
+k = int(input())
+p1 = n + k
+p2 = n + 1
+I = ""
+for i in range(p1, p2 + 1, -1):
+    I = str(math.lcm(n,i))+str(i) + " "
+I = I.split()
+a = min(I)
+print(a[-1])

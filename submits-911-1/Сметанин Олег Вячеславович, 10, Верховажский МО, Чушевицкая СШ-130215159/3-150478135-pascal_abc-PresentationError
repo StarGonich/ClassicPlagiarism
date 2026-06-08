@@ -1,0 +1,20 @@
+program AdvertisementCheck;
+var
+  n, i, ad_time, total_ad_time, T: integer;
+begin
+  total_ad_time := 0; 
+  write('Введите количество блоков рекламы: ');
+  readln(n);
+  for i := 1 to n do
+  begin
+    write(i);
+    readln(ad_time);
+    total_ad_time := total_ad_time + ad_time;
+  end;
+  write('Введите максимальное разрешенное время рекламы (в секундах): ');
+  readln(T);
+  if total_ad_time > T then
+    writeln('Время рекламы превышает лимит!')
+  else
+    writeln('Время рекламы в пределах нормы.');
+end.

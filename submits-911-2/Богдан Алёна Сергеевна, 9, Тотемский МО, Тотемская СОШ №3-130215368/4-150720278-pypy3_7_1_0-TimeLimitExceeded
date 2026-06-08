@@ -1,0 +1,41 @@
+import math
+
+def distance(x1, y1, x2, y2):
+    return math.sqrt((x1 - x2)**2 + (y1 - y2)**2)
+
+def solve():
+    n = int(input())
+    points = []
+    for _ in range(n):
+        x, y, c = map(int, input().split())
+        points.append((x, y, c))
+
+    for k in range(1, n, 2):
+        correct_predictions = 0
+        for i in range(n):
+            distances = []
+            for j in range(n):
+                if i != j:
+                    dist = distance(points[i][0], points[i][1], points[j][0], points[j][1])
+                    distances.append((dist, points[j][2]))
+
+            distances.sort()
+
+            neighbors = distances[:k]
+
+            ones = 0
+            zeros = 0
+            for _, color in neighbors:
+                if color == 1:
+                    ones += 1
+                else:
+                    zeros += 1
+
+            predicted_color = 1 if ones > zeros else 0
+
+            if predicted_color == points[i][2]:
+                correct_predictions += 1
+
+        print(correct_predictions)
+
+solve()

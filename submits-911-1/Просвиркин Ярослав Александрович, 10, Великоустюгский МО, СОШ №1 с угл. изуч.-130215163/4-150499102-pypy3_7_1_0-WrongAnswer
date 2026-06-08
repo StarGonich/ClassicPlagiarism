@@ -1,0 +1,19 @@
+from math import gcd
+n = int(input())
+k = int(input())
+dct = {}
+
+def f(n, p):
+    a = n
+    while a % p != 0:
+        a += n
+    return a
+
+max_gc = 1
+min_p = 0
+for p in range(n + 1, n + k + 1):
+    if gcd(n, p) > max_gc:
+        max_gc = gcd(n,p)
+        min_p = p
+
+print(min_p)

@@ -1,0 +1,12 @@
+num= int(input())
+k=1
+n=0
+for i in range (1,101000):
+    if i%k==0:
+        k+=1
+        n+=1
+        print(n)
+    if n==num:
+        print(i)
+        print(n)
+        

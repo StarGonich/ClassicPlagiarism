@@ -1,0 +1,47 @@
+var h1,m1,h2,m2,x,i,j,j1,t: integer;
+begin
+  readln(h1);
+  readln(m1);
+  readln(h2);
+  readln(m2); 
+  x:=0;
+  t:=59;
+  //Для полностью одинаковых//
+  if (h1=h2) and (m1=m2)then begin print(0); Exit end;
+  
+  //Для одиноковых часов//
+  if h1=h2 then begin
+    i:=h1;
+  for j:=m1 to m2 do begin
+    j1:=(j mod 10)*10 + j div 10;
+    if (i=j) or (i=j1) or (((i div 10) = ((i mod 10)+1)) and ( (i div 10) = ((j div 10)+2)) and ((i div 10) = ((j mod 10)+3))) then x:=x+1;  
+  end;  
+  print(x);
+  Exit end;
+  
+  //для полностью разных//
+  for i:=h1 to h2 do begin
+    if i=h2 then t:=m2;
+      for j:=0 to t do begin
+        if i+11=j then x:=x+1;;
+      end;
+    end;
+  /////
+    for i:=h1+1 to h2-1 do begin
+      for j:=0 to 59 do begin
+        j1:=(j mod 10)*10 + j div 10;
+        if (i=j) or (i=j1) or (((i div 10) = ((i mod 10)+1)) and ( (i div 10) = ((j div 10)+2)) and ((i div 10) = ((j mod 10)+3))) then print(1);
+      end;
+    end;
+    i:=h1;
+  for j:=m1 to 59 do begin
+    j1:=(j mod 10)*10 + j div 10;
+    if (i=j) or (i=j1) or (((i div 10) = ((i mod 10)+1)) and ( (i div 10) = ((j div 10)+2)) and ((i div 10) = ((j mod 10)+3))) then x:=x+1;
+  end;
+    i:=h2;
+     for j:=0 to m2 do begin
+    j1:=(j mod 10)*10 + j div 10;
+    if (i=j) or (i=j1) or (((i div 10) = ((i mod 10)+1)) and ( (i div 10) = ((j div 10)+2)) and ((i div 10) = ((j mod 10)+3))) then x:=x+1;
+    end;
+    print(x);
+end.

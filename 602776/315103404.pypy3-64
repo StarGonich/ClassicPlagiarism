@@ -1,0 +1,16 @@
+from sys import stdout
+
+summa = 210
+cuol = 0
+curx=summa//15
+while summa <1000:
+    print(curx, "R")
+    stdout.flush()
+    summa-=curx
+    q = input()
+    if q=='1':
+        summa+=curx*2
+        curx = summa // 15
+    elif q=='0':
+        curx*=2
+    else:break

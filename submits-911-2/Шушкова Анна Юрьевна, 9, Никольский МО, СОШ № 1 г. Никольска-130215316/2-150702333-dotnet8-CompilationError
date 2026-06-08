@@ -1,0 +1,1 @@
+result = 0.5 * (P_correct_sick + P_correct_healthy)

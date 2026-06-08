@@ -1,0 +1,14 @@
+n = int(input())
+k = int(input())
+ch = 99999999999
+for i in range(n + 1, n + k + 1):
+    nok = 0
+    a = min(n, i)
+    b = max(n, i)
+    for j in range(a):
+        nok += b
+        if nok % a == 0 and nok % b == 0 and nok < ch:
+            ch = nok
+            p = i
+            break
+print(p)

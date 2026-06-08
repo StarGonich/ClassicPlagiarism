@@ -1,0 +1,6 @@
+a = int(input())
+q = a // 1
+w = a // 2
+e = a // 3
+s = q + w + e
+print ( s )

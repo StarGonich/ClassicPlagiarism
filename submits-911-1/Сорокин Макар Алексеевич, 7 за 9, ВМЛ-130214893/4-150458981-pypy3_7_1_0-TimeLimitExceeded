@@ -1,0 +1,10 @@
+import math
+lcmki = []
+powers = []
+n = int(input())
+k = int(input())
+for p in range(n + 1,n + k + 1):
+    lcmki.append(math.lcm(p, n))
+    powers.append(p)
+nice = lcmki.index(min(lcmki))
+print(powers[nice])

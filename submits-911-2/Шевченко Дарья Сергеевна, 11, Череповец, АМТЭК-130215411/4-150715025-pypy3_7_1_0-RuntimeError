@@ -1,0 +1,51 @@
+import numpy as np
+import pandas as pd
+k = int(input())
+colors = []
+x_all = []
+y_all = []
+matrix = []
+df2 = pd.DataFrame({i:[0,0] for i in range(k)})
+for i in range(k):
+    x, y, c = [int(x) for x in input().split()]
+    colors.append(c)
+    x_all.append(x)
+    y_all.append(y)
+df  = pd.DataFrame({"c":colors, 'x': x_all, 'y': y_all})
+for i in range(k):
+    dfi = pd.DataFrame({'x': [x_all[i]] *k, 'y': [y_all[i]] * k})
+    e1 = (df[['x', 'y']] - dfi)**2
+    e2 = np.sqrt(e1['x'] + e1['y'])
+    df1 = pd.DataFrame({"c": colors, "dist": e2}).sort_values(by='dist')
+    matrix.append(df1)
+
+
+for i in range(1,k,2):
+    res = 0
+    for j in range(k):
+        d = matrix[j]
+        sc = 0
+        c1 = 0
+        c0 = 0
+        for ind,r in d.iterrows():
+            if sc == 0:
+                color_true = r['c']
+                sc += 1
+                continue
+            if sc > i:
+                break
+            if r['c'] == 0:
+                c0 +=1
+            else:
+                c1 += 1
+            sc += 1
+        if c1 > c0:
+            color_pred = 1
+        else:
+            color_pred = 0
+        if color_pred == color_true:
+            res += 1
+        
+    print(res)
+       
+    

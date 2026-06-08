@@ -1,0 +1,22 @@
+import sys
+n = 1
+por = 0
+bal = 210
+while n<=100 and bal<1000:
+    print("вывод:")
+    sys.stdout.flush()
+    if por==3:
+        print(bal,"R")
+        sys.stdout.flush()
+    else:
+        print(1,"R")
+        sys.stdout.flush()
+    print("ввод:")
+    sys.stdout.flush()
+    m = int(input())
+    if m==1:
+        bal*=2
+        por = 0
+    else:
+        bal-=1
+        por+=1

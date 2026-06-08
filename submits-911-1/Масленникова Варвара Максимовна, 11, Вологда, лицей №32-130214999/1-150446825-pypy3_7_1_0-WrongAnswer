@@ -1,0 +1,40 @@
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+
+k1=[]
+k2=[]
+k3=[]
+for p1 in range(0, 3):
+     for p2 in range(0, 10):
+          for p3 in range(0, 3):
+               for p4 in range(0, 10):
+                    if p1==p3 and p2==p4:
+                         if (p1==2 and str(p2) in "456789") or (p3==2 and str(p4) in "456789"):
+                              continue
+                         else:
+                              s = str(p1)+str(p2)+str(p3)+str(p4)
+                              k1.append(s)
+                    if(p1==p4 and p2==p3):
+                         if (p1==2 and str(p2) in "456789") or (p3==2 and str(p4) in "456789"):
+                              continue
+                         else:
+                              s = str(p1)+str(p2)+str(p3)+str(p4)
+                              k2.append(s)
+                    if p1+1==p2 and p2+1==p3 and p3+1==p4:
+                         if (p1==2 and str(p2) in "456789") or (p3==2 and str(p4) in "456789"):
+                              continue
+                         else:
+                              s = str(p1)+str(p2)+str(p3)+str(p4)
+                              k3.append(s)
+c=0
+for i in range(h1, h2+1):
+     for j in range(m1, m2+1):
+          s = str(i)+str(j)
+          if (s in k1) or (s in k2) or (s in k3):
+               c+=1
+print(c)
+          
+     
+

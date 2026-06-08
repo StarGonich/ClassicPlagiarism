@@ -1,0 +1,26 @@
+n = int(input())
+coors = list(map(int,input().split()))
+ranges = list(map(int,input().split()))
+
+sl = {}
+for i in range(n):
+    sl[coors[i]]= ranges[i]
+k = coors[int(input())-1]
+coors.sort()
+#print(coors)
+nizgr=k-sl[k]
+maxgr=k+sl[k]
+cou = 0
+coulast = -1
+a = 1
+while a:
+    coulast = cou
+    for i in range(len(coors)):
+        if coors[i]>=nizgr and coors[i]<=maxgr:
+            nizgr=min(nizgr,coors[i]-sl[coors[i]])
+            maxgr=max(maxgr,coors[i]+sl[coors[i]])
+            cou+=1
+            coors[i]=9999999999
+    if coulast==cou:
+        break
+print(cou)

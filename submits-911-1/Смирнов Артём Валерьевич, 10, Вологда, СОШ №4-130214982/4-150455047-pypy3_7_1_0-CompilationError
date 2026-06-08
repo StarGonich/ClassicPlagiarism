@@ -1,0 +1,7 @@
+import sys
+import math
+min_lcm = float('inf')
+optimal_p = -1
+for p in range(n + 1, n + k + 1):
+Calculate LCM of n and p
+current_lcm = lcm(n, p)

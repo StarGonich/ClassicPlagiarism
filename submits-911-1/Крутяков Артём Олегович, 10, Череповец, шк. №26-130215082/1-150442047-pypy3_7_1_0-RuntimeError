@@ -1,0 +1,18 @@
+h1 = input()
+m1 = input()
+h2 = input()
+m2 = input()
+time = int(h2)*60 + int(m2) - int(h1)*60 - int(m1)
+count = 0
+for i in range(0, time):
+    if int(m1) < 9:
+        m1 = m1[0] + str(int(m1[1]) + 1)
+    else:
+        m1 = str(int(m1) + 1)
+    if int(m1) == 60:
+        h1 = str(int(h1) + 1)
+        m1 = '00'
+    hm = str(h1) + str(m1)
+    if h1 == m1 or int(hm[0]) == int(hm[1]) + 1 == int(hm[2]) + 2 == int(hm[3]) + 3 or (hm[0] == hm[3] and hm[1] == hm[2]):
+        count += 1
+print(count)

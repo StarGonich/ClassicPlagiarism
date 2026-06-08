@@ -1,0 +1,15 @@
+a,b,p = map(int, input().split())
+c,d,q = map(int, input().split())
+
+if a == c and b == d and p!=q: print('Contradiction')
+elif a == c and b == d and p == q: print('Ambiguity')
+else:
+    d2 = 100*(p*d-b*q)
+    d1 = 100*(a*q-p*c)
+    d = (a*d-b*c)
+    x = d2/d
+    y = d1/d
+    if d <= 0: print('Not positive')
+    else:
+        print('Success')
+        print("{:.3f}".format(x), "{:.3f}".format(y))

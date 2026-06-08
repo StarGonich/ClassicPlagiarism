@@ -1,0 +1,51 @@
+def find_numbers(x, y, z):
+    # Поскольку мода равна x и она единственная, минимум 3 числа должны быть x  
+    # Обозначим числа: x, x, x, a, b  
+    # Медиана должна быть равна y, значит, y должно быть третьим числом  
+    # Если y == x, нужно сделать так, чтобы a и b были меньше x  
+    # Если y != x, нужно чтобы y было между x и a, b
+    
+    total_sum = z * 5  
+    # Сумма трех x  
+    sum_of_x = 3 * x
+    
+    # Остальные два числа должны быть:
+    # a + b = total_sum - sum_of_x  
+    remaining_sum = total_sum - sum_of_x
+    
+    # Условия для a и b:
+    # Если y == x, то a и b должны быть меньше x  
+    # Если y < x, то a и b могут быть y и y (но они должны быть меньше x)
+    # Если y > x, то a и b должны быть больше y и меньше x, чтобы мода была x
+    
+    if y == x:
+        # y == x, значит a и b должны быть меньше x  
+        if remaining_sum >= 0:
+            a = x - 1  
+            b = remaining_sum - a  
+            if a >= -10**9 and b >= -10**9 and a < x and b < x:
+                print(x, x, x, a, b)
+                return  
+    elif y < x:
+        # y < x, значит a и b могут быть y и y  
+        a = y  
+        b = remaining_sum - a  
+        if a >= -10**9 and b >= -10**9 and b != x:
+            print(x, x, y, a, b)
+            return  
+    else:  # y > x  
+        # y > x, значит a и b должны быть больше y  
+        a = y + 1  
+        b = remaining_sum - a  
+        if a >= -10**9 and b >= -10**9 and a != x and b != x:
+            print(x, x, y, a, b)
+            return
+    
+    print(-1)
+
+# Чтение входных данных  
+x = int(input().strip())
+y = int(input().strip())
+z = int(input().strip())
+
+find_numbers(x, y, z)

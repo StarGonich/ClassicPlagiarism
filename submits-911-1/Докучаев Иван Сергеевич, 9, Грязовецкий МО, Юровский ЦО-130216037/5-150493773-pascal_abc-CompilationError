@@ -1,0 +1,181 @@
+uses System.Collections.Generic;
+
+const
+  mod1 = 1000000007;
+  mod2 = 1000000009;
+
+type
+  Config = array [,] of integer;
+
+function compute_hash(c: Config; n, m: integer): (int64, int64);
+begin
+  var h1: int64 := 0;
+  var h2: int64 := 0;
+  for var i := 0 to n-1 do
+    for var j := 0 to m-1 do
+    begin
+      h1 := (h1 * 2 + c[i, j]) mod mod1;
+      h2 := (h2 * 2 + c[i, j]) mod mod2;
+    end;
+  Result := (h1, h2);
+end;
+
+function next_config(c: Config; n, m: integer): Config;
+begin
+  var new_c := new integer[n, m];
+  for var i := 0 to n-1 do
+    for var j := 0 to m-1 do
+    begin
+      var count := 0;
+      for var di := -1 to 1 do
+        for var dj := -1 to 1 do
+          if (di <> 0) or (dj <> 0) then
+          begin
+            var ni := i + di;
+            var nj := j + dj;
+            if (ni >= 0) and (ni < n) and (nj >= 0) and (nj < m) then
+              count += c[ni, nj];
+          end;
+      if c[i, j] = 1 then
+      begin
+        if (count = 2) or (count = 3) then
+          new_c[i, j] := 1
+        else
+          new_c[i, j] := 0;
+      end
+      else
+      begin
+        if count = 3 then
+          new_c[i, j] := 1
+        else
+          new_c[i, j] := 0;
+      end;
+    end;
+  Result := new_c;
+end;
+
+function equals(c1, c2: Config; n, m: integer): boolean;
+begin
+  for var i := 0 to n-1 do
+    for var j := 0 to m-1 do
+      if c1[i, j] <> c2[i, j] then
+      begin
+        Result := false;
+        exit;
+      end;
+  Result := true;
+end;
+
+var
+  k, n, m: integer;
+  configs: array of Config;
+  dict: Dictionary<(int64, int64), List<integer>>;
+  candidates: List<integer>;
+  valid_candidate: integer;
+  order: array of integer;
+
+begin
+  k := ReadInteger;
+  n := ReadInteger;
+  m := ReadInteger;
+  configs := new Config[k];
+  for var i := 0 to k-1 do
+  begin
+    configs[i] := new integer[n, m];
+    for var i1 := 0 to n-1 do
+    begin
+      var s := ReadString.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+      for var j := 0 to m-1 do
+        configs[i][i1, j] := StrToInt(s[j]);
+    end;
+  end;
+
+  dict := new Dictionary<(int64, int64), List<integer>>;
+  for var i := 0 to k-1 do
+  begin
+    var (h1, h2) := compute_hash(configs[i], n, m);
+    if not dict.ContainsKey((h1, h2)) then
+      dict[(h1, h2)] := new List<integer>;
+    dict[(h1, h2)].Add(i);
+  end;
+
+  candidates := new List<integer>;
+  for var i := 0 to k-1 do
+  begin
+    var has_predecessor := false;
+    for var j := 0 to k-1 do
+    begin
+      if i = j then continue;
+      var next := next_config(configs[j], n, m);
+      if equals(next, configs[i], n, m) then
+      begin
+        has_predecessor := true;
+        break;
+      end;
+    end;
+    if not has_predecessor then
+      candidates.Add(i);
+  end;
+
+  if candidates.Count = 0 then
+    for var i := 0 to k-1 do
+      candidates.Add(i);
+
+  valid_candidate := -1;
+  order := new integer[k];
+  foreach var cand in candidates do
+  begin
+    var current := configs[cand];
+    var found := new boolean[k];
+    var steps := 0;
+    var total_found := 0;
+
+    var (h1, h2) := compute_hash(current, n, m);
+    if dict.ContainsKey((h1, h2)) then
+    begin
+      foreach var idx in dict[(h1, h2)] do
+        if equals(current, configs[idx], n, m) and not found[idx] then
+        begin
+          found[idx] := true;
+          total_found += 1;
+          order[idx] := steps;
+        end;
+    end;
+
+    while (steps < 2000) and (total_found < k) do
+    begin
+      var next := next_config(current, n, m);
+      if equals(next, current, n, m) then
+        break
+      else
+      begin
+        current := next;
+        steps += 1;
+        var (h1_new, h2_new) := compute_hash(current, n, m);
+        if dict.ContainsKey((h1_new, h2_new)) then
+        begin
+          foreach var idx in dict[(h1_new, h2_new)] do
+            if equals(current, configs[idx], n, m) and not found[idx] then
+            begin
+              found[idx] := true;
+              total_found += 1;
+              order[idx] := steps;
+            end;
+        end;
+      end;
+    end;
+
+    if total_found = k then
+    begin
+      valid_candidate := cand;
+      break;
+    end;
+  end;
+
+  var arr := new List<(integer, integer)>;
+  for var i := 0 to k-1 do
+    arr.Add((order[i], i+1));
+  arr.Sort((a, b) -> a[0].CompareTo(b[0]));
+  foreach var x in arr do
+    Write(x[1], ' ');
+end.

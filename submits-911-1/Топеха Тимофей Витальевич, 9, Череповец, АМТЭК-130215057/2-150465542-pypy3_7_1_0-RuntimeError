@@ -1,0 +1,19 @@
+n = int(input())
+m = 0
+a = [] * 103
+i = 1
+if n > 1:
+    for m in range(2, n**2 + 1):
+        while n != 0:
+            if m % i == 0:
+                a += i
+                i += 1
+                n -= 1
+        if i != 0:
+            print(m)
+            print(a)
+        else:
+            print(-1)
+else:
+    print(1)
+    print(1)

@@ -1,0 +1,58 @@
+import sys
+
+def main():
+    data = sys.stdin.read().split()
+    if not data:
+        print(-1)
+        return
+    
+    N = int(data[0])
+    T = int(data[1])
+    
+    ads = []
+    idx = 2
+    for _ in range(N):
+        t1 = int(data[idx])
+        t2 = int(data[idx + 1])
+        ads.append((t1, t2))
+        idx += 2
+    
+    
+    candidates = set()
+    
+   
+    for t1, t2 in ads:
+        candidates.add(max(0, t1 - 3600))
+        candidates.add(t1)
+        candidates.add(max(0, t2 - 3600))
+    
+    
+    candidates.add(0)
+    
+   
+    for start in sorted(candidates):
+        end = start + 3600
+        total = 0
+        
+        for t1, t2 in ads:
+           
+            if t1 >= start and t2 <= end:
+                total += t2 - t1
+           
+            elif t1 < start and t2 > start and t2 <= end:
+                total += t2 - start
+           
+            elif t1 >= start and t1 < end and t2 >= end:
+                total += end - t1
+         
+            elif t1 <= start and t2 >= end:
+                total += 3600
+            
+            if total > T:
+                print(start)
+                return
+    
+    print(-1)
+
+if __name__ == "__main__":
+    main()

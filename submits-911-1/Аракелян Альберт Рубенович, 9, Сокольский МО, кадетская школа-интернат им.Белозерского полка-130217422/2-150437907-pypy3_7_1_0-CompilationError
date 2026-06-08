@@ -1,0 +1,5 @@
+n = int(input())
+m = int(input())
+for in range (int, (m//n))
+              print(m)
+              print(n, sep=' ' )

@@ -1,0 +1,35 @@
+n = int(input())
+
+
+def nok1(a, b):
+    a1, b1 = a, b
+    while b1:
+        a1, b1 = b1, a1 % b1
+    return (a * b) // a1
+
+
+def nok(*args):
+    n = len(args)
+    if n <= 1:
+        return args[0]
+    lst = []
+    for i in range(0, n-1, 2):
+        lst.append(nok1(args[i], args[i+1]))
+    if n % 2 == 1:
+        lst.append(args[-1])
+
+    return nok(*lst)
+
+
+if n == 2:
+    print(-1)
+else:
+    lst = list(range(1, n + 1))
+    s = sum(lst)
+    nk = nok(*lst)
+    while s % nk != 0:
+        lst[-1] += 1
+        s = sum(lst)
+        nk = nok(*lst)
+    print(s)
+    print(*lst)

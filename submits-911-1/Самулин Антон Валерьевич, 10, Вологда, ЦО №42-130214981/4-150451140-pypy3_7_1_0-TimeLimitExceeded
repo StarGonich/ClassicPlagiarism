@@ -1,0 +1,12 @@
+from math import lcm
+
+n = int(input())
+k = int(input())
+
+p = n + k + 1
+
+for i in range(n + k, n, -1):
+    if lcm(i, n) < lcm(p, n):
+        p = i
+
+print(p)

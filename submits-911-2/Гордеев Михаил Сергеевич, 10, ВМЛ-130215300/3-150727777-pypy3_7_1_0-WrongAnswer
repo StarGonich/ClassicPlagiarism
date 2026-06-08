@@ -1,0 +1,31 @@
+x = int(input())
+y = int(input())
+z = int(input())
+if x > y:
+    abc = [0, 0, y, x, x]
+    if sum(abc) >= 5 * z:
+        print(-1)
+    elif 5 * z - sum(abc) > 2 * y - 3:
+        print(-1)
+    else:
+        if 5 * z - sum(abc) > y - 1:
+            abc[1] = y - 1
+            abc[0] = 5 * z - sum(abc)
+            print(*abc)
+        else:
+            abc[1] = 5 * z - sum(abc)
+            print(*abc)
+elif x < y:
+    abc = [x, x, y, y + 1, y + 2]
+    if sum(abc) > 5 * z:
+        print(-1)
+    else:
+        abc[4] += 5 * z - sum(abc)
+        print(*abc)
+elif x == y:
+    abc = [x, x, x, x, x]
+    if sum(abc) > 5 * z:
+        print(-1)
+    else:
+        abc[4] += 5 * z - sum(abc)
+        print(*abc)

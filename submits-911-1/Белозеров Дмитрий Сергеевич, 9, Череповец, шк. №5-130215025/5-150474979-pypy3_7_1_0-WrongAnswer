@@ -1,0 +1,9 @@
+k, n, m = int(input()), int(input()), int(input())
+e = []
+for i in range(k):
+    for j in range(n):
+        e += [input().split()]
+s = set(str(e[0:n]))
+s2 = set(str(e[n:-1]))
+if s == s2:
+    print(1)

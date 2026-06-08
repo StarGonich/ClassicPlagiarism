@@ -1,0 +1,9 @@
+s='-10**9,10**9'
+for b1 in range (-10**9,10**9):
+    for b2 in range (-10**9,10**9):
+        for b3 in range (-10**9,10**9):
+            for b4 in range (-10**9,10**9):
+                for b5 in range (-10**9,10**9):
+                  if z=(b1+b2+b3+b4+b5)//5 and y==b3 and x.count=3:
+                  print(s)
+                  

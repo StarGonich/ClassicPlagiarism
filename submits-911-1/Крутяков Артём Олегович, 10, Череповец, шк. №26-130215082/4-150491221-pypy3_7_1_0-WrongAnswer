@@ -1,0 +1,33 @@
+import math
+
+
+def lcm(x, y):
+    while True:
+        n = math.gcd(x, y)
+        x = x // n
+        if math.gcd(x, y) == 1:
+            return(x*y)
+
+
+def search_p(n, k):
+    minimum = 0
+    minimum_true = 0
+    p = 0
+    for i in range(n + 1, n + k):
+        minimum = lcm(n, i)
+        if i == n + 1:
+            minimum_true = minimum
+            p = i
+            continue
+        if minimum_true > minimum:
+            minimum_true = minimum
+            p = i
+    return(p)
+
+
+n = int(input())
+k = int(input())
+print(search_p(n,k))
+
+
+

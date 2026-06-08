@@ -1,0 +1,37 @@
+def bea(h, m):
+    h_str = "{:02d}".format(h)
+    m_str = "{:02d}".format(m)
+    if h_str == m_str:
+        return True
+    if h_str == m_str[::-1]:
+        return True
+    comb = h_str + m_str
+    cons = True
+    for i in range(3):
+        if int(comb[i]) + 1 != int(comb[i+1]):
+            cons = False
+            break
+    if cons:
+        return True
+    return False
+def solve():
+    h1 = int(input())
+    m1 = int(input())
+    h2 = int(input())
+    m2 = int(input())
+    k = 0
+    h = h1
+    m = m1
+    while True:
+        if bea(h, m):
+            k += 1
+        if h == h2 and m == m2:
+            break
+        m += 1
+        if m == 60:
+            m = 0
+            h += 1
+            if h == 24:
+                h = 0
+    print(k)
+solve()

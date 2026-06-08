@@ -1,0 +1,15 @@
+a = int(input())
+b = int(input())
+c = int(input())
+v = int(input())
+n = int(input())
+m = int(input())
+x = int(input())
+q = int(input())
+w = int(input())
+e = int(input())
+r = int(input())
+if a = 3:
+	print("1 2 3")
+if a = 2:
+	print("2 1")

@@ -1,0 +1,59 @@
+def solve():
+    x = int(input())
+    y = int(input())
+    z = int(input())
+
+    # Попытка построить последовательность. Медиана - y, значит, третий элемент отсортированной последовательности равен y.
+    # Мода - x, значит, x должен встречаться чаще других чисел.  Поместим x в начало последовательности, чтобы гарантировать,
+    # что мода будет x, но только 1 раз.
+    # Пусть последовательность будет a, b, y, d, e, где a и b < y, а d и e > y
+
+    # Сумма чисел должна равняться 5 * z
+    sum_numbers = 5 * z
+
+    # a + b + y + d + e = 5z
+    # a и b должны быть равны x, чтобы x была модой
+    # x + x + y + d + e = 5z
+    # d + e = 5z - 2x - y
+
+    # Пусть a = x, b = x, c = y, d = y+1, тогда e = 5z - 2x - y - (y+1)
+
+    a = x
+    b = x
+    c = y
+    d = y + 1
+    e = 5 * z - 2 * x - y - 1
+
+    if e <= y + 1 or x >= y or x == y+1 or a > 10**9 or b > 10**9 or c > 10**9 or d > 10**9 or e > 10**9 or a < -10**9 or b < -10**9 or c < -10**9 or d < -10**9 or e < -10**9:
+        print(-1)
+        return
+
+    numbers = sorted([a, b, c, d, e])
+
+    # Проверяем, что медиана и среднее арифметическое совпадают
+    if numbers[2] != y or sum(numbers) != 5 * z:
+         print(-1)
+         return
+
+    # Проверяем моду
+    counts = {}
+    for num in numbers:
+        counts[num] = counts.get(num, 0) + 1
+
+    max_count = 0
+    mode = -1
+    for num, count in counts.items():
+        if count > max_count:
+            max_count = count
+            mode = num
+        elif count == max_count:
+            mode = -2 # more than one mode
+
+    if mode != x:
+        print(-1)
+        return
+
+
+    print(*numbers)
+
+solve()

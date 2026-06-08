@@ -1,0 +1,14 @@
+n = int(input())
+if n == 1:
+    print(1)
+    print(1)
+elif n == 2:
+    print(-1)
+else:
+    v = [1, 2, 3]
+    x = 6
+    while len(v) < n:
+        v.append(x)
+        x += x
+    print(x)
+    print(*v)

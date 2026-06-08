@@ -1,0 +1,18 @@
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+s = 0
+n = 0
+while True:
+    for i in range(h2-h1):
+        for j in range(m2-m1):
+            if i == j:
+                n += 1
+            elif i == [-j]:
+                n += 1
+            else:
+                s
+    break
+print(n)
+

@@ -1,0 +1,45 @@
+def find_numbers(x, y, z):
+    total_sum = 5 * z
+    
+    for count_x in range(2, 6):
+ 
+        while len(base) < 5:
+            base.append(0)
+        
+        current_sum = sum(base)
+        diff = total_sum - current_sum
+ 
+        base[-1] += diff
+             
+        if all(-10**9 <= num <= 10**9 for num in base):
+            # Проверим условия моды и медианы
+            sorted_base = sorted(base)
+            # Мода должна быть `x` и единственной
+            from collections import Counter
+            counts = Counter(sorted_base)
+            mode_value, mode_count = counts.most_common(1)[0]
+            if mode_value != x:
+                continue
+            # Проверка, что `x` - единственная мода
+            if list(counts.values()).count(mode_count) > 1:
+                continue
+            # Медиана
+            if sorted_base[2] != y:
+                continue
+            # Среднее
+            if sum(sorted_base) != total_sum:
+                continue
+            return sorted_base
+    return -1
+
+# Ввод данных
+x = int(input())
+y = int(input())
+z = int(input())
+
+result = find_numbers(x, y, z)
+if result == -1:
+    print(-1)
+else:
+    print(' '.join(map(str, result)))
+

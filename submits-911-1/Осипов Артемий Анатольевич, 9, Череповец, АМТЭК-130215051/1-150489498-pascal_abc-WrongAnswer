@@ -1,0 +1,52 @@
+var h1,m1,h2,m2,x,i,j,j1,t,t1: integer;
+begin
+  readln(h1);
+  readln(m1);
+  readln(h2);
+  readln(m2); 
+  x:=0;
+  t:=59;
+  t1:=0;
+  
+  
+  //Для полностью одинаковых//
+  if (h1=h2) and (m1=m2)then begin print(0); Exit end;
+  
+  
+  //Для одиноковых часов//
+  if h1=h2 then begin
+    i:=h1;
+  for j:=m1 to m2 do begin
+    j1:=(j mod 10)*10 + j div 10;
+    if (i=j) or (i=j1) or (((i div 10) = ((i mod 10)+1)) and ( (i div 10) = ((j div 10)+2)) and ((i div 10) = ((j mod 10)+3))) then x:=x+1;  
+  end;  
+  print(x);
+   Exit end;
+ 
+ 
+   //для полностью разных//
+  for i:=h1 to h2 do begin
+    if i=h1 then t1:=m1;
+    if i=h2 then t:=m2;
+      for j:=t1 to t do begin
+       if (((i div 10) = ((i mod 10)+1)) and ( (i div 10) = ((j div 10)+2)) and ((i div 10) = ((j mod 10)+3))) then begin //writeln('Da1  ',i:4,j:4);
+                                                                                                                        x:=x+1 end;                          
+        t1:=0;
+        t:=59;
+      end;
+    end;
+    
+    /////
+    for i:=h1 to h2 do begin
+      if i=h1 then t1:=m1;
+      if i=h2 then t:=m2;
+      for j:=t1 to t do begin
+        j1:=(j mod 10)*10 + j div 10;
+        if (i=j) or (i=j1) then begin //writeln('Da2  ',i:4,j:4); 
+                                       x:=x+1 end;
+        t1:=0;
+        t:=59;
+      end;
+    end;
+print(x);
+end.

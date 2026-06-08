@@ -1,0 +1,5 @@
+k=0
+for i in range(4, int(input())+1):
+    if (i%20!=0 and i%12!=0 and i%30!=0) and (i%4==0 or i%5==0 or i%6==0):
+        k+=1
+print(k)

@@ -1,0 +1,47 @@
+a = int(input())
+b = int(input())
+c = int(input())
+d = int(input())
+l = 0
+if (a==c) and (b==d):
+    if a == b:
+        l+=1
+    if  1 == (len(str(b))):
+        b2 =  str(b) + '0'
+           
+    else:
+        b2 = str(b)[::-1]
+         
+    if str(a) == b2:
+            l +=1
+    if (a % 10 ) - (a //10) == 1:
+            if (b//10) - (a % 10) == 1:
+                if (b % 10 ) - (b //10) == 1:
+                    l+=1
+else:
+    a1=(a*60) + b
+    c1=c*60  + d
+    while a1 <= c1:
+        i = 0
+        if b==60:
+            b = 00
+            a +=1
+        if a == b:
+            l +=1
+        if  1 == (len(str(b))):
+                b1 =  str(b) + '0'
+           
+        else:
+            b1 = str(b)[::-1]
+         
+        if str(a) == b1:
+            l +=1
+        if (a % 10 ) - (a //10) == 1:
+            if (b//10) - (a % 10) == 1:
+                if (b % 10 ) - (b //10) == 1:
+                    l+=1
+        i +=1
+        a1+=1
+        b +=1
+print(l)
+        

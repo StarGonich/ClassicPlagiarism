@@ -1,0 +1,53 @@
+import sys
+
+def main():
+    import sys
+    input = sys.stdin.read
+data = input().split()
+
+idx = 0
+N = int(data[idx])
+idx += 1
+T = int(data[id])
+idx += 1
+
+intervals = []
+for _ in range (N)
+    t1 = int(data[idx])
+    t2 = int(data[idx + 1 ])
+    intervals.append((t1, t2))
+    idx += 2
+  candidates = set()
+   candidates.add(0)
+   for t1 , t2 in intervals:
+        candidates.add(t1)
+         candidates.add(max(0, t2 - 3600))
+
+candidates = sorted(candidates) 
+
+left = 0
+
+for S in candidates : 
+    end_S = S + 3600
+    total_ad = 0
+
+    while left < N and intervals[left][1] <= S :
+        left += 1 
+
+    j = left 
+    while j < N and intervals[j] [0] < end_S:
+          t1, t2 = intervals[j]
+       
+          overlap = max(0, min(t2, end_S) - max(t1, S))
+          total_ad += overlap
+          j += 1 
+       
+   if total_ad > T :
+      print(S)
+      return
+
+print(-1)
+
+if __name__ == "__main__"
+    main()
+                   

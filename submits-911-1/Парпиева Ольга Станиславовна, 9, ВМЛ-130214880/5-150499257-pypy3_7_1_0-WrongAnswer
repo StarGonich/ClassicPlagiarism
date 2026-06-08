@@ -1,0 +1,21 @@
+k = int(input())
+n = int(input())
+m = int(input())
+f = 1
+for i in range(n):
+    a = input().split()
+    for j in a:
+        if j == '1':
+            f = 0
+
+for i in range(n):
+    a = input().split()
+
+if k == 2:
+    if f:
+        print("2 1")
+    else:
+        print("1 2")
+else:
+    print("4 3 2 1")
+

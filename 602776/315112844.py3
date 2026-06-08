@@ -1,0 +1,24 @@
+n = int(input())
+x = list(map(int, input().split()))
+d = list(map(int, input().split()))
+k = int(input())
+s = [k-1]
+visited = []
+res = 0
+while s:
+    i = s.pop()
+    visited.append(i)
+    res += 1
+    lpos = x[i] - d[i]
+    rpos = x[i] + d[i]
+    j = i - 1
+    while 0 <= j < n and x[j] >= lpos:
+        if j not in visited :
+            s.append(j)
+        j -= 1
+    k = i + 1
+    while 0 <= k < n and x[k] <= rpos:
+        if k not in visited:
+            s.append(k)
+        k += 1
+print(res)

@@ -1,0 +1,16 @@
+n, k = int(input()), int(input())
+def nok(n,p, m):
+    c = p
+    while c%n != 0:
+        if c <= m:
+            c += p
+        else:
+            c = n*p
+    return c
+m=10**29
+ans = 0
+for p in range(n+1, n+k+1):
+    if nok(n, p, m) < m:
+        m = nok(n,p, m)
+        ans = p
+print(ans)

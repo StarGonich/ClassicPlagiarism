@@ -1,0 +1,5 @@
+n = int(input())
+k = int(input())
+if p >= n + 1 and p <= n + k:
+    
+        

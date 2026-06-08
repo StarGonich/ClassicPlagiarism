@@ -1,0 +1,11 @@
+n = int(input())
+k = int(input())
+maxi = n + k
+mini = n + 1
+k = 0
+for p in range(maxi,mini + 1,-1):
+    for d in range(2,p // 2 + 1):
+        if p % d == 0 and n % d == 0 and k == 0:
+            print(p)
+            k += 1
+            break

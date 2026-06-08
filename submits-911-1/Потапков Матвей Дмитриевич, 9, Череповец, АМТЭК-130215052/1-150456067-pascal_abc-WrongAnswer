@@ -1,0 +1,17 @@
+program n1;
+var h1,m1,h2,m2,i,i2,q,q1,q2,w1,w2,i3,w3,w4:integer;
+  begin
+    readln(h1); readln(m1); readln(h2); readln(m2);
+    for i:=h1 to h2 do begin
+      q1:=i div 10; q2:=i mod 10;
+      if m1<m2 then begin
+       for i2:=m1 to m2 do begin
+         w1:=i2 div 10; w2:=i2 mod 10;
+         if (i=i2) or ((q1=w2) and (q2=w1)) or ((q1=q2-1) and (q2=w1-1) and (w1=w2-1)) then q:=q+1;
+          end; end;
+          if m1>m2 then begin
+          for i3:=m2 to m1 do begin
+          w3:=i3 div 10; w4:=i3 mod 10;
+          if (i=i3) or ((q1=w4) and (q2=w3)) or ((q1=q2-1) and (q2=w3-1) and (w3=w4-1)) then q:=q+1; end; end; end;
+          writeln(q);
+  end.

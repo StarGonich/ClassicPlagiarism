@@ -1,0 +1,24 @@
+def bum(n, k, d, x, map_min):
+    for i in range(0, len(x)):
+        if i == k:
+            pass
+        elif abs(x[i] - x[k]) <= d[k] and map_min[i] == False:
+            map_min[i] = True
+            bum(n, i, d, x, map_min)
+    return map_min
+
+def main():
+    n = int(input())
+    a = input().split(" ")
+    b = input().split(" ")
+    k = int(input()) - 1
+    x = [int(x) for x in a]
+    d = [int(d) for d in b]
+    map_min = [False for x in a]
+    map_min[k] = True
+
+    result = bum(n, k, d, x, map_min).count(True)
+    print(result)
+
+if __name__ == '__main__':
+    main()

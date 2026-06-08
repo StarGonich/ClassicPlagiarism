@@ -1,0 +1,12 @@
+a=int(int(input())**0.5)
+z=0
+for i in range(1,a+1):
+    a=4*i
+    b=5*i
+    c=6*i
+    if a!=b and a!=c:
+        z+=1
+    if b!=c:
+        z+=1
+print(z)
+    

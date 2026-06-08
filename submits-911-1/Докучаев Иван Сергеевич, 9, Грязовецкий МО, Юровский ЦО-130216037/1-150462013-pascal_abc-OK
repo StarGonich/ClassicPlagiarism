@@ -1,0 +1,83 @@
+function IsBeautiful(h, m: integer): boolean;
+var
+  s_h, s_m, s: string;
+  i: integer;
+begin
+
+  if h = m then
+  begin
+    Result := true;
+    exit;
+  end;
+  
+
+  s_h := Format('{0:00}', h);
+  s_m := Format('{0:00}', m);
+  
+
+  if (s_h[1] = s_m[2]) and (s_h[2] = s_m[1]) then
+  begin
+    Result := true;
+    exit;
+  end;
+  
+
+  s := s_h + s_m;
+  Result := true;
+  for i := 1 to 3 do
+  begin
+    if Ord(s[i+1]) - Ord(s[i]) <> 1 then
+    begin
+      Result := false;
+      break;
+    end;
+  end;
+end;
+
+var
+  h1, m1, h2, m2: integer;
+  start_minutes, end_minutes, t, h, m: integer;
+  count: integer;
+begin
+  h1 := ReadInteger;
+  m1 := ReadInteger;
+  h2 := ReadInteger;
+  m2 := ReadInteger;
+  
+  start_minutes := h1 * 60 + m1;
+  end_minutes := h2 * 60 + m2;
+  count := 0;
+  
+  if start_minutes <= end_minutes then
+  begin
+
+    for t := start_minutes to end_minutes do
+    begin
+      h := t div 60;
+      m := t mod 60;
+      if IsBeautiful(h, m) then
+        count := count + 1;
+    end;
+  end
+  else
+  begin
+    
+    for t := start_minutes to 1439 do
+    begin
+      h := t div 60;
+      m := t mod 60;
+      if IsBeautiful(h, m) then
+        count := count + 1;
+    end;
+
+    for t := 0 to end_minutes do
+    begin
+      h := t div 60;
+      m := t mod 60;
+      if IsBeautiful(h, m) then
+        count := count + 1;
+    end;
+  end;
+  
+  Write(count);
+end.

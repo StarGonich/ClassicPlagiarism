@@ -1,0 +1,13 @@
+n = int(input())
+if n == 1:
+    print(0)
+else:
+    ans = 1
+    mod = 10**9 + 7
+    fib = [0, 1, 1]
+    seq = [0, 1, 1]
+    for i in range(n - 2):
+        seq.append((seq[-2] + seq[-1] + fib[-2]) % mod)
+        fib.append((fib[-2] + fib[-1]) % mod)
+        ans = (ans + seq[-2]) % mod
+    print(ans)

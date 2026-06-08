@@ -1,0 +1,43 @@
+a, b, p = map(int, input().split(' '))
+c, d, q = map(int, input().split(' '))
+
+if c == 0 or d == 0:
+    t1, t2, t3 = a, b, p
+    a, b, p = c, d, q
+    c, d, q = t1, t2, t3
+
+a *= q; b *= q
+c *= p; d *= p
+p = q = p * q
+
+if a == c and b != d or a != c and b == d or (
+        a > c and b >= d or a >= c and b > d or
+        a < c and b <= d or a <= c and b < d
+) and a * d == c * b:
+    print('Contradiction')
+    exit(0)
+
+if a == c and b == d:
+    print('Ambiguity')
+    exit(0)
+
+if a == 0 or b == 0:  # оба не могут
+    if a == 0:
+        y = 100 * p / b
+        x = (100 * q - d * y) / c
+    else:
+        x = 100 * p / a
+        y = (100 * q - c * x) / d
+else:
+    b *= c; p *= c
+    d *= a; q *= a
+    a = c = a * c
+    y = (100 * p - 100 * q) / (b - d)
+    x = (100 * p - b * y) / a
+
+if x - 1e-10 < 0 or y - 1e-9 < 0:
+    print('Not positive')
+    exit(0)
+
+print('Success')
+print(f'{x:.03f} {y:.03f}')

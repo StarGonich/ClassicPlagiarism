@@ -1,0 +1,52 @@
+n = int(input())
+t= int(input())
+
+mass = []
+a,b =0,0
+for i in range(n):
+    a,b = map(int,input().split())
+    mass.append(a)
+    mass.append(b)
+
+check = False
+
+
+
+dp = [0] * b
+
+for i in range(b+1):
+    for j in mass:
+        if i == j:
+            if check:
+                check = False
+            else:
+                check = True
+    if check:
+        dp[i] = 1
+
+    
+    if i < 3600:
+        #print(i,sum(dp[:i]),sum(dp[:i]) > t)
+        if sum(dp[:i]) > t:
+            check = False
+            print(0)
+            break
+    else:
+        if sum(dp[i-3600:i]) > t:
+            check = False
+            print(i-3600)
+            break
+    
+if check:
+    print(-1)
+
+
+check = True
+
+for i in range(b - 3600):
+    if sum(dp[i:i+3600]) > t:
+        check = False
+        print(i)
+        break
+if check:
+    print(-1)

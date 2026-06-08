@@ -1,0 +1,10 @@
+n = int(input())
+k = int(input())
+nok = 0
+for i in range(n + 1, n + k + 1):
+    for j in range(min(n, i)):
+        nok += max(n, i)
+        if nok % min(n, i) == 0 and nok % max(n, i) == 0:
+            p = i
+            break
+print(p)

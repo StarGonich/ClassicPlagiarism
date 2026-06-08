@@ -1,0 +1,23 @@
+def solve():
+    eps = 1e-6
+    a, b, p = map(int, input().split())
+    c, d, q = map(int, input().split())
+    det = a * d - c * b
+    if abs(det) <= eps:
+        if abs(a / c - p / q) <= eps:
+            print("Ambiguity")
+            return
+        else:
+            print("Contradiction")
+            return
+    detx = p * d - b * q
+    dety = a * q - c * p
+    x = detx / det * 100
+    y = dety / det * 100
+    if x < 0 or y < 0:
+        print("Not positive")
+        return
+    else:
+        print("Success")
+        print(x, y)
+solve()

@@ -1,0 +1,14 @@
+k=int(input())
+n=int(input())
+m=int(input())
+s=True or False
+s2=True or False
+s3=True or False
+print(randint(0,1))
+if k==True and k in [s,s2,s3]:
+    print('живая')
+else:
+    print('мертвая')
+if k==False and k in [s3]:
+    print('оживает')
+

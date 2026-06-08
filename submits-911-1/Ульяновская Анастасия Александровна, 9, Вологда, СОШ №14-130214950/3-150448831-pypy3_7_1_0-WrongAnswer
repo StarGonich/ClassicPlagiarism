@@ -1,0 +1,8 @@
+n=int(input())
+t=int(input())
+t1, t2=map(int,input().split())
+if t2-t1<t:
+    i=n*t+(t2-t1)+1
+    print(i)
+else:
+    print(-1)

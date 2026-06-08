@@ -1,0 +1,29 @@
+var n,k,i,pmi,pma,p,n1,p1,h,nod,minok,pans:in64;
+begin
+readln(n);
+readln(k);
+pmi:=n+1;
+pma:=n+k;
+pans:=0;
+p:=pmi;
+miok:=9999999999999999
+for i=pmito pma do:
+    begin
+      n1=n
+      p1=p
+      while n1<>p1 do:
+        begin if n1>p1:
+            begin h=p1;
+            p1=n1-p1;
+            n1=h; end;
+            else:
+            begin h = n1;
+            n1 = p1 - n1;
+            p1 = h;end;
+    nod=n1;
+    if n*k/nod<miok:
+        begin miok=n*k/nod;
+        pans=p; end;
+    p += 1;end;
+print(pans);
+end.

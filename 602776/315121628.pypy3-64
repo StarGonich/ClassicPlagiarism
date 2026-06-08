@@ -1,0 +1,41 @@
+
+
+def main():
+
+    n = int(input())
+    x = list(map(int, input().split()))
+    d = list(map(int, input().split()))
+
+    k = int(input())
+    k -= 1
+    res = 1
+    f = True
+
+    mt = [False] * n
+
+    st = []
+    st.append(k)
+
+
+    while len(st):
+        k1 = st.pop()
+        cord = x[k1]
+        dist = d[k1]
+        mt[k1] = True
+
+
+        left_range = x[k1] - dist
+        right_range = x[k1] + dist
+
+        for i in range(len(x)):
+            if x[i] >= left_range and x[i] < cord and not mt[i]:
+                res += 1
+                st.append(i)
+
+        for i in range(len(x)):
+            if x[i] > cord and x[i] <= right_range and not mt[i]:
+                res += 1
+                st.append(i)
+
+    print(res)
+main()

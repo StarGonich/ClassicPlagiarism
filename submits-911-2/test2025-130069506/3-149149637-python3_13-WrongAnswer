@@ -1,0 +1,12 @@
+x = int(input())
+y = int(input())
+z = int(input())
+if x == y:
+   print(5*z-3*x-1000000000, x, x, x, 1000000000)
+else:
+   d = y - 1
+   c = 5*z-2*x-y-d
+   if c >= d:
+      print(-1)
+   else:
+      print(c, d, y, x, x)

@@ -1,0 +1,60 @@
+def foo(a,pos,digit):
+ ans = 0
+ for i in range(pos):
+  ans = i
+  if a[i]>digit:
+   break
+  else:
+   ans = i
+ return ans
+
+
+n = int(input())
+a = list(map(int,input().split()))
+pos1 = 0
+len1= 0
+pos2= 0
+len2=0
+FWIN=0
+already = 0
+min_digit = n+1
+mid_d = min(a[0],a[1])
+new_i = 0
+max_d = 0
+for i in range(1,n):
+ if a[i-1]<a[i]:
+  pass
+ elif FWIN == 0:
+  mid_d = a[i]
+  pos2 = i
+  pos1 = foo(a,pos2,mid_d)
+  len1 = pos2 - pos1
+  new_i = i+1
+  max_d = a[max(0,pos2-1)]
+  FWIN=1
+  break
+ else:
+  print((-1))
+  already =1
+  break
+final_start = 0
+for i in range(new_i,n):
+ if a[i]>max_d:
+  len2 = max(1,i-pos2)
+  final_start = i+1
+  break
+for i in range(final_start,n):
+  if a[i - 1] > a[i]:
+   already = 1
+if len2 ==0:
+ len2 = n-pos2
+
+if already == 1:
+ print(-1)
+elif FWIN ==0:
+ print(-1)
+else:
+ print(pos1+1,len1)
+ print(pos2+1,len2)
+
+

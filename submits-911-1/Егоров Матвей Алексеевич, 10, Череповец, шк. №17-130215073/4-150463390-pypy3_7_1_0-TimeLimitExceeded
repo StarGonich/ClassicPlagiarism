@@ -1,0 +1,14 @@
+n=int(input())
+k=int(input())
+s=[]
+for p in range(n+1,n+k):
+    m=p
+    while m%n!=0 or m%p!=0:
+       m+=1
+    s.append(m)
+f=(min(s))
+p=n+1
+while f%p!=0:
+    p+=1
+print(p)
+    

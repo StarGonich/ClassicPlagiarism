@@ -1,0 +1,55 @@
+import math
+import sys
+
+input = lambda: sys.stdin.readline().rstrip()
+
+def print(*args, sep=' ', end='\n'):
+    sys.stdout.write(sep.join(map(str, args)) + end)
+    sys.stdout.flush()
+
+def ii():
+    return int(input())
+def lii():
+    return list(map(int, input().split()))
+def lsi():
+    return input().split()
+
+def main():
+    sm = 210
+    step = 1
+    stavka1 = int(sm * 0.06)
+    stavka2 = int(sm * 0.14)
+    stavka3 = int(sm * 0.25)
+    stavka4 = sm - stavka1 - stavka2 - stavka3
+    while sm < 1000:
+        stavka = 0
+        if step == 1:
+            stavka = stavka1
+        elif step == 2:
+            stavka = stavka2
+        elif step == 3:
+            stavka = stavka3
+        else:
+            stavka = stavka4
+        print(stavka, 'R')
+        ret = ii()
+        if ret == 0:
+            sm -= stavka
+            step += 1
+        elif ret == 1:
+            sm += stavka
+            step = 1
+            stavka1 = int(sm * 0.06)
+            stavka2 = int(sm * 0.14)
+            stavka3 = int(sm * 0.25)
+            stavka4 = sm - stavka1 - stavka2 - stavka3
+        else:
+            n = 1 / 0
+
+
+
+
+
+
+if __name__ == '__main__':
+    main()

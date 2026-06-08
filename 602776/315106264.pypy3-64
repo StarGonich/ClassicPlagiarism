@@ -1,0 +1,47 @@
+import math
+import sys
+
+input = lambda: sys.stdin.readline().rstrip()
+
+def print(*args, sep=' ', end='\n'):
+    sys.stdout.write(sep.join(map(str, args)) + end)
+
+def ii():
+    return int(input())
+def lii():
+    return list(map(int, input().split()))
+def lsi():
+    return input().split()
+
+def main():
+    n = ii()
+    arr = lii()
+    d = lii()
+    k = ii() - 1
+    ans = 1
+    l = arr[k] - d[k]
+    r = arr[k] + d[k]
+    ri = k
+    li = k
+    prevans = -1
+    while ans != prevans:
+        prevans = ans
+        if ri + 1 < n and arr[ri + 1] <= r:
+            ri += 1
+            ans += 1
+            rad = d[ri]
+            l = min(l, arr[ri] - rad)
+            r = max(r, arr[ri] + rad)
+        if li - 1 >= 0 and arr[li - 1] >= l:
+            li -= 1
+            ans += 1
+            rad = d[li]
+            l = min(l, arr[li] - rad)
+            r = max(r, arr[li] + rad)
+    print(ans)
+
+
+
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,16 @@
+using System;
+public class Time {
+	private static void Main() {
+	int h1 = int.Parse(Console.ReadLine());
+    int m1 = int.Parse(Console.ReadLine());
+    int h2 = int.Parse(Console.ReadLine());
+    int m2 = int.Parse(Console.ReadLine());
+    int c = 0;
+    for (i=((h1*60)+m1); i<((h2*60)+m2) 
+         {
+         if ((h1==h2 && m1==m2) || (h1==m2 && h2==m1) || (m1==h1+1 && h2==m1+1 && m2==h2+1) {c+=1}
+         m+=1
+         }
+    Console.WriteLine(c)
+    }
+}

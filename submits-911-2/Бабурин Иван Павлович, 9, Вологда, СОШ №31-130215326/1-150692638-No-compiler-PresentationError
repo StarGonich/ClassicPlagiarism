@@ -1,0 +1,25 @@
+import pandas as pd
+
+url = "https://avt.vogu35.ru/files/olymp/2024-2025/log.csv"
+df = pd.read_csv(url)
+
+df['score'] = pd.to_numeric(df['score'], errors='coerce').fillna(0)
+
+best_scores = df.groupby(['userId', 'problem'])['score'].max().reset_index()
+total_scores = best_scores.groupby('userId')['score'].sum().reset_index()
+
+q1 = len(total_scores[total_scores['score'] > 0])
+
+user_languages = df.groupby('userId')['language'].apply(lambda x: set(x)).reset_index()
+q2 = sum(1 for langs in user_languages['language'] if langs == {'Python'})
+
+q3 = len(total_scores[total_scores['score'] >= 200])
+
+high_scorers = set(total_scores[total_scores['score'] >= 200]['userId'])
+cpp_users = set(df[df['language'] == 'C++']['userId'])
+q4 = len(high_scorers & cpp_users)
+
+print(q1)
+print(q2)
+print(q3)
+print(q4)

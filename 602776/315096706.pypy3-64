@@ -1,0 +1,7 @@
+n = int(input())
+
+a = [x for x in range(n + 1) if x % 4 == 0 and x % 6 != 0 and x % 5 != 0]
+b = [x for x in range(n + 1) if x % 5 == 0 and x % 6 != 0 and x % 4 != 0]
+c = [x for x in range(n + 1) if x % 6 == 0 and x % 4 != 0 and x % 5 != 0]
+
+print(len(a) + len(b) + len(c))

@@ -1,0 +1,20 @@
+def solve(a1, b1, c1, a2, b2, c2):
+    determinant = a1 * b2 - a2 * b1
+    if determinant == 0:
+        if (a1 * c2 == a2 * c1) and (b1 * c2 == b2 * c1):
+            print("Ambiguity")
+        else:
+            print("Contradiction")
+    else:
+        x = (c1 * b2 - c2 * b1) / determinant
+        y = (a1 * c2 - a2 * c1) / determinant
+        if x < 0 or y < 0:
+            print("Not positive")
+        else:
+            print("Success")
+            print(100 * x, 100 * y)
+
+
+a, b, p = map(int, input().split())
+c, d, q = map(int, input().split())
+solve(a, b, p, c, d, q)

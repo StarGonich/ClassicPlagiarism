@@ -1,0 +1,9 @@
+n = int(input())
+k = int(input())
+if p >= n and p <= n + k:
+    x = n % k
+    y = k % n
+    if x == 0:
+        
+    elif y == 0:
+        

@@ -1,0 +1,21 @@
+
+def nok(a,b):
+    c=a*b
+    while (a%b!=0) and (b%a!=0):
+        if a>b:
+            a=a%b
+        else:
+            b=b%a
+        if a==0:
+            return c//b
+        else:
+            return c//a
+n=int(input())
+k=int(input())
+min=10000000000
+z=0
+for p in (n+1,n+k+1):
+    if nok(n,p)<min:
+       min=nok(n,p)
+       z=p
+print(z)

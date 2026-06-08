@@ -1,0 +1,73 @@
+k = int(input())
+n = int(input())
+m = int(input())
+'''
+1 0 0
+0 1 0
+1 0 0
+'''
+
+
+def step(a):
+    global n, m
+    lst = []
+    for i in range(n):
+        lst.append(a[i].copy())
+
+    lst1 = lst.copy()
+    for y in range(n):
+        for x in range(m):
+            alive = 0
+            if y > 0 and x > 0:
+                alive += a[y-1][x-1]
+            if x > 0:
+                alive += a[y][x-1]
+                if y < (n-1):
+                    alive += a[y+1][x-1]
+            if y > 0:
+                alive += a[y-1][x]
+                if x < (m-1):
+                    alive += a[y-1][x+1]
+            if y < (n-1):
+                alive += a[y+1][x]
+            if x < (m-1):
+                alive += a[y][x+1]
+            if y < (n-1) and x < (m-1):
+                alive += a[y+1][x+1]
+            if a[y][x] and alive not in (2, 3):
+                lst[y][x] = 0
+            elif not a[y][x] and alive == 3:
+                lst[y][x] = 1
+    return lst
+
+
+lst = []
+for i in range(k):
+    p = list()
+    for j in range(n):
+        p.append(list(map(int, input().split())))
+    lst.append(p)
+
+
+steps = []
+for i in range(k):
+    steps.append(step(lst[i]))
+
+cur = -1
+for i in range(k):
+    if steps[i] == lst[i]:
+        cur = i
+        steps[i] = [1, 2, 3]
+        break
+ans = [cur + 1]
+count = 1
+while count < k:
+    count += 1
+    for i in range(k):
+        if steps[i] == lst[ans[-1] - 1]:
+            ans.append(i + 1)
+            steps[i] = [1, 2, 3]
+            break
+ans.reverse()
+print(*ans)
+...

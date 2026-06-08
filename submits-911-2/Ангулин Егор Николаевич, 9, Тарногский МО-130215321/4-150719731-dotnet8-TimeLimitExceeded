@@ -1,0 +1,87 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Point
+{
+    public int X { get; set; }
+    public int Y { get; set; }
+    public int Color { get; set; }
+
+    public Point(int x, int y, int color)
+    {
+        X = x;
+        Y = y;
+        Color = color;
+    }
+
+    // Метод для вычисления евклидова расстояния до другой точки
+    public double DistanceTo(Point other)
+    {
+        return Math.Sqrt(Math.Pow(X - other.X, 2) + Math.Pow(Y - other.Y, 2));
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Считываем количество точек
+        int n = int.Parse(Console.ReadLine());
+        
+        // Создаём список точек
+        List<Point> points = new List<Point>();
+        
+        // Заполняем список точками
+        for (int i = 0; i < n; i++)
+        {
+            string[] input = Console.ReadLine().Split();
+            int x = int.Parse(input[0]);
+            int y = int.Parse(input[1]);
+            int color = int.Parse(input[2]);
+            points.Add(new Point(x, y, color));
+        }
+
+        // Перебираем все нечётные k от 1 до n-1
+        for (int k = 1; k < n; k += 2)
+        {
+            int correctCount = 0;  // Количество правильно классифицированных точек
+
+            // Для каждой точки проверяем классификацию
+            for (int i = 0; i < n; i++)
+            {
+                // Создаём список расстояний до других точек
+                List<(double distance, int color)> distances = new List<(double, int)>();
+                
+                for (int j = 0; j < n; j++)
+                {
+                    if (i != j)  // Не учитываем саму точку
+                    {
+                        double dist = points[i].DistanceTo(points[j]);
+                        distances.Add((dist, points[j].Color));
+                    }
+                }
+
+                // Сортируем по расстоянию
+                distances = distances.OrderBy(d => d.distance).ToList();
+
+                // Берём k ближайших точек
+                var nearest = distances.Take(k).ToList();
+                
+                // Подсчитываем количество каждого цвета
+                int blackCount = nearest.Count(p => p.color == 1);
+                int whiteCount = nearest.Count(p => p.color == 0);
+
+                // Определяем преобладающий цвет
+                int predictedColor = blackCount > whiteCount ? 1 : 0;
+
+                // Проверяем правильность предсказания
+                if (predictedColor == points[i].Color)
+                    correctCount++;
+            }
+
+            // Выводим результат для текущего k
+            Console.WriteLine(correctCount);
+        }
+    }
+}

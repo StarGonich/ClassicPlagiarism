@@ -1,0 +1,10 @@
+n = int(input())
+k = int(input())
+p = 0
+nok = 10**9
+for i in range(n+1, n+k+1):
+    for j in range(2, n):
+        if i%j == 0 and n % j == 0 and j <= nok:
+            nok = j
+            p = i
+print(p)

@@ -1,0 +1,139 @@
+use std::io::{self, BufRead, BufWriter, Write};
+use std::collections::VecDeque;
+
+fn read_config(n: usize, m: usize, lines: &mut impl Iterator<Item = String>) -> Vec<Vec<i32>> {
+    let mut config = vec![vec![0; m]; n];
+    for i in 0..n {
+        let line = lines.next().unwrap();
+        let nums = line.split_whitespace()
+            .map(|x| x.parse::<i32>().unwrap())
+            .collect::<Vec<_>>();
+        for j in 0..m {
+            config[i][j] = nums[j];
+        }
+    }
+    config
+}
+
+fn next_state(config: &[Vec<i32>], next: &mut [Vec<i32>], n: usize, m: usize) {
+    const DX: [i32; 8] = [-1, -1, -1, 0, 0, 1, 1, 1];
+    const DY: [i32; 8] = [-1, 0, 1, -1, 1, -1, 0, 1];
+
+    for i in 0..n {
+        for j in 0..m {
+            let mut live = 0;
+            for d in 0..8 {
+                let ni = i as i32 + DX[d];
+                let nj = j as i32 + DY[d];
+                if ni >= 0 && ni < n as i32 && nj >= 0 && nj < m as i32 {
+                    live += config[ni as usize][nj as usize];
+                }
+            }
+            next[i][j] = if config[i][j] == 1 {
+                if live == 2 || live == 3 { 1 } else { 0 }
+            } else {
+                if live == 3 { 1 } else { 0 }
+            };
+        }
+    }
+}
+
+fn main() {
+    let stdin = io::stdin();
+    let mut lines = stdin.lock().lines().map(|l| l.unwrap());
+    let stdout = io::stdout();
+    let mut out = BufWriter::new(stdout.lock());
+
+    let first_line = lines.next().unwrap();
+    let mut first_iter = first_line.split_whitespace();
+    let k: usize = first_iter.next().unwrap().parse().unwrap();
+    let n: usize = first_iter.next().unwrap().parse().unwrap();
+    let m: usize = first_iter.next().unwrap().parse().unwrap();
+
+    let mut configs = Vec::with_capacity(k);
+    for _ in 0..k {
+        configs.push(read_config(n, m, &mut lines));
+    }
+
+    let mut reachable = vec![vec![false; k]; k];
+    let mut current = vec![vec![0; m]; n];
+    let mut next = vec![vec![0; m]; n];
+
+    for i in 0..k {
+        current.clone_from(&configs[i]);
+        let mut stable = false;
+
+        for _step in 0..2000 {
+            if stable {
+                break;
+            }
+            next_state(&current, &mut next, n, m);
+
+            stable = true;
+            'outer: for x in 0..n {
+                for y in 0..m {
+                    if current[x][y] != next[x][y] {
+                        stable = false;
+                        break 'outer;
+                    }
+                }
+            }
+
+            for j in 0..k {
+                if j != i && !reachable[i][j] {
+                    let mut match_config = true;
+                    'match_check: for x in 0..n {
+                        for y in 0..m {
+                            if next[x][y] != configs[j][x][y] {
+                                match_config = false;
+                                break 'match_check;
+                            }
+                        }
+                    }
+                    if match_config {
+                        reachable[i][j] = true;
+                    }
+                }
+            }
+
+            std::mem::swap(&mut current, &mut next);
+        }
+    }
+
+    let mut indegree = vec![0; k];
+    for i in 0..k {
+        for j in 0..k {
+            if reachable[i][j] {
+                indegree[j] += 1;
+            }
+        }
+    }
+
+    let mut q = VecDeque::new();
+    for i in 0..k {
+        if indegree[i] == 0 {
+            q.push_back(i);
+        }
+    }
+
+    let mut result = Vec::new();
+    while let Some(node) = q.pop_front() {
+        result.push(node + 1);
+        for j in 0..k {
+            if reachable[node][j] {
+                indegree[j] -= 1;
+                if indegree[j] == 0 {
+                    q.push_back(j);
+                }
+            }
+        }
+    }
+
+    for (i, val) in result.iter().enumerate() {
+        if i > 0 {
+            write!(out, " ").unwrap();
+        }
+        write!(out, "{}", val).unwrap();
+    }
+    writeln!(out).unwrap();
+}

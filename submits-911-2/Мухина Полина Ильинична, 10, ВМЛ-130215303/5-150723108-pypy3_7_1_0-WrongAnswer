@@ -1,0 +1,25 @@
+n = int(input())
+p = [int(x) for x in input().split()]
+k = int(input())
+frod = sorted([int(x) for x in input().split()])
+bestt = -1
+bestf = 0
+for t in p:
+    tp = 0
+    fp = 0
+    fn = 0
+    for i in range(n):
+        if t<=p[i] and i+1 in frod:
+            tp+=1
+        elif t<=p[i] and i+1 not in frod:
+            fp+=1
+        elif t>p[i] and i+1 in frod:
+            fn+=1
+    if tp+fp != 0 and tp+fn!=0:
+        prec = tp/(tp+fp)
+        rec = tp/(tp+fn)
+        if prec+rec != 0:
+            if bestf < 2*prec*rec/(prec+rec):
+                bestt=t
+                bestf = 2*prec*rec/(prec+rec)
+print(bestt)

@@ -1,0 +1,59 @@
+t = int(input())
+
+s = input()
+
+HASH_START = 12334535
+HASH_BASE = 53
+HASH_MOD = 141167095653376
+
+def decode(s, shs):
+    hs_saved = 0
+    for c in shs:
+        hs_saved = hs_saved * 26 + (ord(c) - ord('A'))
+
+    hs = HASH_START
+
+    for c in s:
+        hs = (hs * HASH_BASE + ord(c)) % HASH_MOD
+
+    if hs == hs_saved:
+        print(s)
+        return
+
+    hs_base = 1
+
+    for i in range(1, len(s) + 1):
+        for j in range(26):
+            hs_cur = (hs + (HASH_MOD - hs_base) * (ord(s[-i]) - ord('A')) + j * hs_base) % HASH_MOD
+            if (hs_cur == hs_saved):
+                s = s[:-i] + chr(ord('A') + j) + s[-i+1:]
+                print(s)
+                return
+        
+        hs_base = (hs_base * HASH_BASE) % HASH_MOD
+    return
+
+if t == 1:
+    hs = HASH_START
+    
+    for c in s:
+        hs = (hs * HASH_BASE + ord(c)) % HASH_MOD
+
+    shs = ''
+
+    for i in range(10):
+        cur_c = hs % 26
+        shs = chr(ord('A') + cur_c) + shs
+        hs //= 26
+
+    print(s + shs + shs)
+else:
+    shs_all = s[-20:]
+    s = s[:-20]
+    shs = shs_all[:-10]
+    shs_r = shs_all[-10:]
+    if shs != shs_r:
+        print(s)
+    else:
+        decode(s, shs)
+        

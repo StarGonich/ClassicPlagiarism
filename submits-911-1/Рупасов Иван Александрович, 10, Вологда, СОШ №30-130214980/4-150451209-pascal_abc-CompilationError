@@ -1,0 +1,11 @@
+program q;
+var  min,i1,n,p,k,i,i2:integer;
+begin
+read(n);
+read(k);
+min:=100000;
+for i:=n+1 to n+k do
+for i1:=1 to 10 do
+if n/i1 mod 1=0  then p:=(((k div n/i1)+1)*k div n/i1)+n;
+write(p);
+end.

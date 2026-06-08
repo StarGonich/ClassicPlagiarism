@@ -1,0 +1,10 @@
+from math import *
+n=int(input())
+k=int(input())
+nok_min=10**24
+for p in range(n+1,n+k+1):
+    nok=(n*p)//gcd(n,p)
+    if nok_min>=nok:
+        nok_min=nok
+        pmin=p
+print(pmin)

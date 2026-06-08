@@ -1,0 +1,16 @@
+n = int(input())
+l=[]
+s=0
+m = random(1,1000000000)
+for i in range(n):
+	if m%i == 0:
+    	s = s + i
+        l.append(i)
+    else:
+    	s
+	if s == m:
+		print(s)
+    	print(l)
+    else:
+    	print(-1)
+	

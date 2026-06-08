@@ -1,0 +1,13 @@
+def find_number_and_divisors(n):
+    m = n * (n + 1) // 2
+    divisors = list(range(1, n + 1))
+    return m, divisors
+
+def main():
+    n = int(input())
+    m, divisors = find_number_and_divisors(n)
+    
+    print(m)
+    print(" ".join(map(str, divisors)))
+
+main()

@@ -1,0 +1,25 @@
+n = int(input())
+p = [int(x) for x in input().split()]
+k = int(input())
+f = [int(x)-1 for x in input().split()]
+maska = sorted([(p[i],(i in f)) for i in range(n)],key=lambda x: x[0])
+tres = 0
+fmax = 0
+#print(maska)
+p_sort = [el[0] for el in maska]
+maska_sort = [el[1] for el in maska]
+s = sum(maska_sort)
+t = p_sort[0]-1
+if t == 0:
+    t = 1
+for i, el in enumerate(p_sort):
+    c1 = maska_sort[i:]
+    F1 = 2*sum(c1)/(s+len(c1))
+    #print(F1)
+    if F1 > fmax:
+        fmax = F1
+        tres = t
+    t = el + 1
+print(tres)
+        
+    

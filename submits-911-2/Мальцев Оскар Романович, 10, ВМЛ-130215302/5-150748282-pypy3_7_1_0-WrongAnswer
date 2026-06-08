@@ -1,0 +1,13 @@
+a = int(input())
+al = list(map(int,input().split()))
+k = int(input())
+kl = list(map(int,input().split()))
+kl.sort()
+minal = min(al)
+final = []
+for i in kl:
+    final.append(al[i-1])
+minfin = min(final)
+al.sort
+ink = al.index(minfin) - 1
+print(al[ink]+1)

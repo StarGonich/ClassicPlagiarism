@@ -1,0 +1,16 @@
+procedure NOK(a,b:int64;var n:int64);
+begin
+  while (n mod a=0) and (n mod b =0) do n:=n+1;
+end;
+var a,b,c,d,r,i:int64;
+begin
+  readln(a);
+  readln(b);
+  for i :=1+a to a+b do begin
+    for c:=1+a to a+b do begin
+      NOK(a,c,d);
+      if d=i then r:=i;
+    end;
+  end;
+  print(r);
+end.

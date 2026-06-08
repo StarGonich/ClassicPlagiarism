@@ -1,0 +1,16 @@
+n = int(input())
+k = int(input())
+a = 0
+l = []
+r = []
+for p in range(n+1,n+k+1):
+    for i in range(p, p*n+1,p):
+        if i%n==0:
+            l.append(i)
+            r.append(p)
+            break
+L = min(l)
+for p in r: 
+    if L%p==0:
+       a = p
+print(a)

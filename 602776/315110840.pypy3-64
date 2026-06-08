@@ -1,0 +1,30 @@
+n = int(input())
+points = list(map(int, input().split()))
+powers = list(map(int, input().split()))
+k = int(input()) - 1
+active = [1] * n
+active[k] = 0
+left = points[k] - powers[k]
+right = points[k] + powers[k]
+left_ptr = right_ptr = k
+while True:
+    l, r = left_ptr, right_ptr
+    if left_ptr > 0 and points[left_ptr - 1] >= left:
+        left_ptr -= 1
+        left = min(left, points[left_ptr] - powers[left_ptr])
+        right = max(right, points[left_ptr] + powers[left_ptr])
+
+    if right_ptr < n - 1 and points[right_ptr + 1] <= right:
+        right_ptr += 1
+        right = max(right, points[right_ptr] + powers[right_ptr])
+        left = min(left, points[right_ptr] - powers[right_ptr])
+
+    #print(left_ptr, left, right_ptr, right)
+    if left_ptr == 0 and right_ptr == n - 1 or left_ptr == l and right_ptr == r:
+        break
+ans = 0
+for point in points:
+    if left <= point <= right:
+        ans += 1
+print(ans)
+

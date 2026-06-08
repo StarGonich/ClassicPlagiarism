@@ -1,0 +1,28 @@
+A,B,P = map(int,input().split())
+A/=100
+B/=100
+
+C,D,Q = map(int,input().split())
+C/=100
+D/=100
+k = A/C
+if ((abs(B/D - k)<0.00001) and (abs(P/Q-k)<0.00001)):
+ print("Ambiguity")
+elif A == 0 and B == 0 or C ==0 and D ==0:
+ print("Contradiction")
+elif A == C and B == D and P!=Q:
+ print("Contradiction")
+else:
+
+ y = (P - Q * (A / C)) / (B - A * D / C)
+ x = (Q - D * y) / C
+
+ if (x > 0 and y < 0) or (x < 0 and y > 0):
+  print("Not positive")
+
+ else:
+  if x > 0 and y > 0:
+   print("Success")
+   print(f"{x:.3f} {y:.3f}")
+  else:
+   print("Contradiction")

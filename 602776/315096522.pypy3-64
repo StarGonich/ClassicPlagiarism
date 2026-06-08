@@ -1,0 +1,12 @@
+N =int(input())
+s = 0
+for i in range(4,N+1,4):
+    if(i%5!=0 and i%6!=0):
+        s+=1
+for i in range(5,N+1,5):
+    if (i % 4 != 0 and i % 6 != 0):
+        s += 1
+for i in range(6,N+1,6):
+    if (i % 5 != 0 and i % 4 != 0):
+        s += 1
+print(s)

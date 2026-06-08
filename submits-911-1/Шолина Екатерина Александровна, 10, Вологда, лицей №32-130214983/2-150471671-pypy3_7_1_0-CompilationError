@@ -1,0 +1,12 @@
+n=int(input())
+x=1
+k=0
+s=0
+for i in range(1,x+1):
+    if x%i==0:
+        s=s+x
+        k=k+1
+        dell=x
+    if k==n and s==x:
+print(x)
+    

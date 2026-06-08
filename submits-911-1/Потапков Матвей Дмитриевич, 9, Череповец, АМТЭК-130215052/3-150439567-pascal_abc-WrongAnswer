@@ -1,0 +1,11 @@
+program n3;
+var n,t,q,w,t1,t2:integer;
+  begin
+    readln(n,t); q:=1;
+    repeat
+      q:=q+1; read(t1,t2);
+      w:=w+(t2-t1);
+    until q=n+1;
+    if w<t then writeln(3600-(t2-t1))
+    else writeln('-1');
+  end.

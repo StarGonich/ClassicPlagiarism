@@ -1,0 +1,21 @@
+import sys
+m = 210
+lose = 0
+while m < 1000:
+    if lose == 3:
+        print(m, 'R', '\n')
+        sys.stdout.flush()
+        w = int(input())
+        m *= 2
+        sys.stdout.flush()
+        lose = 0
+    else:
+        print(1, 'R', '\n')
+        sys.stdout.flush()
+        w = int(input())
+        sys.stdout.flush()
+        if w:
+            m += 2
+            lose = 0
+        else:
+            lose += 1

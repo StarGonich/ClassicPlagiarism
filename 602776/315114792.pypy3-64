@@ -1,0 +1,18 @@
+n = int(input())
+nums = [int(i) for i in input().split()]
+a = []
+ans = []
+for i in range(n):
+    a.append(str(nums[i] - i - 1))
+set_ = set(a)
+if len(set_) - ("0" in set_) == 2:
+    for e in list(set_):
+        if e == "0":
+            continue
+        ans.append([a.index(e) + 1, a.count(e)])
+    if ans[0][0] > ans[1][0]:
+        ans.reverse()
+    print(*ans[0])
+    print(*ans[1])
+else:
+    print(-1)

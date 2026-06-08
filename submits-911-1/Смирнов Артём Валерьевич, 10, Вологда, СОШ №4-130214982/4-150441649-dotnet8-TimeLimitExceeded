@@ -1,0 +1,48 @@
+using System;
+
+public class Solution
+{
+    public static void Main(string[] args)
+    {
+        // Считываем входные данные: n и k.
+        long n = long.Parse(Console.ReadLine());
+        long k = long.Parse(Console.ReadLine());
+
+        // Инициализируем переменные для хранения лучшей мощности и минимального НОК.
+        long bestP = -1;
+        long minLCM = long.MaxValue;
+
+        // Перебираем все возможные значения p в заданном диапазоне (n+1 до n+k).
+        for (long p = n + 1; p <= n + k; p++)
+        {
+            // Вычисляем НОД(n, p)
+            long gcdValue = GCD(n, p);
+
+            // Вычисляем НОК(n, p) по формуле: НОК(a, b) = (a * b) / НОД(a, b).
+            long currentLCM = (n * p) / gcdValue;
+
+            // Если текущее НОК меньше минимального, обновляем результат.
+            if (currentLCM < minLCM)
+            {
+                minLCM = currentLCM;
+                bestP = p;
+            }
+        }
+
+        // Выводим искомую мощность p.
+        Console.WriteLine(bestP);
+    }
+
+     // Функция для вычисления наибольшего общего делителя (НОД) двух чисел.
+    static long GCD(long a, long b)
+    {
+         //Алгоритмом Евклида.
+        while (b != 0)
+        {
+            long temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+}

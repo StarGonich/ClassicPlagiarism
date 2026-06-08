@@ -1,0 +1,101 @@
+h1 = input()
+m1 = input()
+h2 = input()
+m2 = input()
+
+if m1 == "0":
+    m1 = "00"
+elif m1 == "1":
+    m1 = "01"
+elif m1 == "2":
+    m1 = "02"
+elif m1 == "3":
+    m1 = "03"
+elif m1 == "4":
+    m1 = "04"
+elif m1 == "5":
+    m1 = "05"
+elif m1 == "6":
+    m1 = "06"
+elif m1 == "7":
+    m1 = "07"
+elif m1 == "8":
+    m1 = "08"
+elif m1 == "9":
+    m1 = "09"
+
+if m2 == "0":
+    m2 = "00"
+elif m2 == "1":
+    m2 = "01"
+elif m2 == "2":
+    m2 = "02"
+elif m2 == "3":
+    m2 = "03"
+elif m2 == "4":
+    m2 = "04"
+elif m2 == "5":
+    m2 = "05"
+elif m2 == "6":
+    m2 = "06"
+elif m2 == "7":
+    m2 = "07"
+elif m2 == "8":
+    m2 = "08"
+elif m2 == "9":
+    m2 = "09"
+    
+
+I = ""
+a = h1 + m1
+b = h2 + m2
+c = a
+while c != b:
+    I += c + " "
+    c1 = c[:-2]
+    c2 = c[-2:]
+    if c2 == "00":
+        c2 = "01"
+    elif c2 == "01":
+        c2 = "02"
+    elif c2 == "02":
+        c2 = "03"
+    elif c2 == "03":
+        c2 = "04"
+    elif c2 == "04":
+        c2 = "05"
+    elif c2 == "05":
+        c2 = "06"
+    elif c2 == "06":
+        c2 = "07"
+    elif c2 == "07":
+        c2 = "08"
+    elif c2 == "08":
+        c2 = "09"
+    elif c2 == "09":
+        c2 = "10"
+    else:
+        c2 = int(c2)
+        c2 += 1
+
+        if c2 > 59:
+            c1 = int(c1)
+            c1 += 1
+            c1 = str(c1)
+            c2 = "00"
+        c2 = str(c2)
+    c = c1 + c2
+
+I = I.split()
+jjj = "0123456789"
+ammount = 0
+for i in range(len(I)):
+    v = I[i]
+    if v[-2:] == v[:-2]:
+        ammount += 1
+    elif v[:-2] == (v[3] + v[2]):
+        ammount += 1
+    elif v in jjj:
+        ammount += 1
+
+print(ammount)

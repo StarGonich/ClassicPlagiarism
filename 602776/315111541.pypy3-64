@@ -1,0 +1,28 @@
+def hash(curr_s):
+    ans = 0
+    mod = 10**9
+    for el in curr_s:
+        ans = (ans + ord(el) * (mod + 10)) % (mod + 7)
+    return ans
+
+def main():
+    n = int(input())
+    s = input()
+    if n == 1:
+        hash_s = str(hash(s)).zfill(5)
+        print(hash_s + s + s)
+        return
+    if n == 2:
+        curr_hash = s[:5]
+        try:
+            curr_hash = int(curr_hash)
+        except:
+            print(s[5:5+(len(s) - 5)//2])
+            return
+        if hash(s[5:5+(len(s) - 5)//2]) == curr_hash:
+            print(s[5:5+(len(s) - 5)//2])
+        else:
+            print(s[5+(len(s) - 5)//2:])
+
+
+main()

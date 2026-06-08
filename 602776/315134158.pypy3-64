@@ -1,0 +1,21 @@
+from random import randint
+f = ['R', 'B']
+s = 210
+a = [1,1,1]
+while True:
+    if a == [0,0,0]:
+        print(f'{s} {f[randint(0,1)]}',flush = True)
+    else:
+        print(f'1 {f[randint(0,1)]}',flush = True)
+    c = input()
+    if c == '1' and a == [0,0,0]:
+        s *= 2
+    elif c=='1':
+        s += 1
+    elif c == '0':
+        s -= 1
+    a[0] = a[1]
+    a[1] = a[2]
+    a[2] = int(c)
+    if s >= 1000 or c == '-1':
+        break

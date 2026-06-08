@@ -1,0 +1,15 @@
+from math import ceil, floor
+
+
+def solve():
+    n = int(input())
+    a = floor(n / 4)
+    b = floor(n / 5)
+    c = floor(n / 6)
+    print(a + b + c - 2 * (n // 12 + n // 20 + n // 30))
+
+
+t = 1
+# t = int(input())
+for _ in range(t):
+    solve()

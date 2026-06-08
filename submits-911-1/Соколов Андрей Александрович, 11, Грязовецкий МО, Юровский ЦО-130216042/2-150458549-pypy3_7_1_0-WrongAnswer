@@ -1,0 +1,27 @@
+n=int(input())
+p=[6,28,496,8128,33550336]
+def divs(x):
+    r=[]
+    i=1
+    while i*i<=x:
+        if x%i==0:
+            if i<x:r.append(i)
+            if x//i<x and x//i!=i:r.append(x//i)
+        i+=1
+    return sorted(r)
+def go(a,i,c,s):
+    if c==0:return [] if s==0 else None
+    if i==len(a):return None
+    if a[i]<=s:
+        r=go(a,i+1,c-1,s-a[i])
+        if r!=None:return [a[i]]+r
+    return go(a,i+1,c,s)
+for m in p:
+    d=divs(m)
+    if len(d)>=n:
+        r=go(d,0,n,m)
+        if r!=None:
+            print(m)
+            print(*r)
+            exit()
+print(-1)

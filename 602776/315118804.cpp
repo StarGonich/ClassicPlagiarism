@@ -1,0 +1,101 @@
+#define _USE_MATH_DEFINES
+#include <iostream>
+#include <ios>
+#include <iomanip>
+#include <cmath>
+#include <algorithm>
+#include <vector>
+#include <map>
+#include <unordered_map>
+#include <unordered_set>
+#include <set>
+
+using namespace std;
+
+#define ll long long
+#define sortt(a) sort(a.begin(), a.end())
+#define rev(a) reverse(a.begin(), a.end())
+
+struct fenwick {
+	vector<int> t;
+	int n;
+
+	fenwick(int n_) : n(n_) {
+		t.assign(n, 0);
+	}
+
+	int get(int i) {
+		int sum = 0;
+		for (; i >= 0; i = (i & (i + 1)) - 1) sum += t[i];
+		return sum;
+	}
+
+	void add(int i, int dif) {
+		for (; i < n; i = i | (i + 1)) t[i] += dif;
+	}
+
+	int get(int l, int r) {
+		return get(r) - get(l - 1);
+	}
+};
+
+int gcd(int a, int b) {
+	if (b == 0) return a;
+	return gcd(b, a % b);
+}
+
+const int M = 1e9 + 7;
+const int W = 10000;
+vector<vector<int>> dp(1001, vector<int>(W + 2));
+
+void solve() {
+	int n;
+	cin >> n;
+
+	vector<int> ans;
+
+	//cout << n << " - ";
+
+	for (int sq = 1; ; sq++) {
+		if (sq * sq > W) break;
+		if (!dp[n][sq * sq]) continue;
+
+		ans.push_back(sq);
+
+		int nn = n;
+		int w = sq * sq;
+		while (w > 0 && nn) {
+			ans.push_back(dp[nn][w]);
+			w -= dp[nn][w] * dp[nn][w];
+			nn--;
+		}
+
+		rev(ans);
+		for (int i : ans) cout << i << ' ';
+		//cout << 1 << endl;
+		return;
+	}
+	cout << -1 << endl;
+}
+
+int main()
+{
+	dp[0][0] = -1;
+	for (int i = 0; i < 1000; i++) {
+		for (int j = W; j >= 0; j--) {
+			for (int add = 1; ; add++) {
+				if (add * add * i > W) break;
+				if (j - add * add < 0) break;
+				if (dp[i][j - add * add] == 0) continue;
+				dp[i + 1][j] = add;
+			}
+		}
+	}
+
+	cout.tie(0);
+	cin.tie(0);
+	cout << fixed;
+	cout.precision(10);
+	solve();
+	//for (int i = 1000; i >= 1; i--) solve(i);
+}

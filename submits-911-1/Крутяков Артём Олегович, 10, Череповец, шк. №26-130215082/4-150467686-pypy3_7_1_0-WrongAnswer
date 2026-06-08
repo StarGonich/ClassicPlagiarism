@@ -1,0 +1,21 @@
+import math
+
+
+def lcm(x, y):
+    while True:
+        n = math.gcd(x, y)
+        x = x // n
+        if math.gcd(x, y) == 1:
+            return(x*y)
+
+
+n = int(input())
+k = int(input())
+minimum = 0
+minimum_true = 0
+p_range = list(range(n+1, n+k))
+for i in range(len(p_range)):
+    p_range[i] = lcm(n, p_range[i])
+p_range = sorted(p_range)
+print(p_range[0]//n)
+

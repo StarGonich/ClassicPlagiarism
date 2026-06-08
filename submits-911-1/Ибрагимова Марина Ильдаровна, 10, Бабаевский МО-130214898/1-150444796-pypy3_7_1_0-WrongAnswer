@@ -1,0 +1,25 @@
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+c1 = h1//10+(h1%10)*10
+c2 = h2//10+(h2%10)*10
+a = 0
+if h1==h2:
+    a = int(m1<=h1 and m2>=h1)+ int(m1<=c1 and m2>=c1)
+    if (h1==1 and m1<=23 and m2>=23):
+        a+=1
+    if (h1==12 and m1<=34 and m2>=34):
+        a+=1
+    if (h1==23 and m1<=45 and m2>=45):
+        a+=1
+else:
+    a = (h2-h1-1)+ int(m1<=h1) + int(m2>=h2)
+    a+= (h2-h1-1)+ int(m1<=c1) + int(m2>=c2)
+    if (h1<1 and 1<h2) or (h1==1 and m1<=23) or (h2==1 and m2>=23):
+        a+=1
+    if (h1<12 and 12<h2) or (h1==12 and m1<=34) or (h2==12 and m2>=34):
+        a+=1
+    if (h1<23 and 23<h2) or (h1==23 and m1<=45) or (h2==23 and m2>=45):
+        a+=1
+print(a)

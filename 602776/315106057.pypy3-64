@@ -1,0 +1,24 @@
+a, b, p = [int(i) for i in input().split()]
+c, d, q = [int(i) for i in input().split()]
+if d * a - b * c == 0:
+    if q * a - p * c == 0:
+        print("Ambiguity")
+    else:
+        print("Contradiction")
+elif c * b - a * d == 0:
+    if q * b - p * d == 0:
+        print("Ambiguity")
+    else:
+        print("Contradiction")
+else:
+    y = (q * a - p * c) / (d * a - b * c)
+    if a != 0:
+        x = (p - b * y) / a
+    else:
+        x = (q - d * y) / c
+
+    if x < 0 or y < 0:
+        print("Not positive")
+    else:
+        print("Success")
+        print(f"{x * 100} {y * 100}")

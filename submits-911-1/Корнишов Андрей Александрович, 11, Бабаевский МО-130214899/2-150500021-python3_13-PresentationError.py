@@ -1,0 +1,17 @@
+a = int(input())
+c = []
+c1 = '1'
+d = 1
+b = 0
+while d < a and b != a:
+    if a % d == 0 and d >= sum(c):
+        c += [d]
+        c1 = c1 + str(d) + ' '
+        print(d)
+    b = sum(c)-1
+    d += 1
+if b == a:
+    print(b)
+    print(c1[1:len(c1)-1])
+else:
+    print(-1)

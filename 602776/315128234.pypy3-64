@@ -1,0 +1,21 @@
+a, b, p = map(int, input().split())
+c, d, q = map(int, input().split())
+
+if a == c and b == d and p == q and not(a == 0 and b == 0 and p != 0):
+    print('Ambiguity')
+else:
+    try:
+        second = ((c*p)/a-q)/((c*b)/a-d)
+        first = (p-b*second)/a
+
+        first, second = round(first * 100, 1), round(second * 100, 1)
+
+
+        if first < 0 or second < 0:
+            print('Not positive')
+        else:
+            print('Success')
+            print(first, second)
+    except:
+        print('Contradiction')
+

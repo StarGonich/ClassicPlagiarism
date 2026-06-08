@@ -1,0 +1,21 @@
+h1 = int(input())
+m1 = int(input())
+h2 = int(input())
+m2 = int(input())
+start = h1 * 60 + m1
+end = h2 * 60 = m2
+ans = 0
+for t inrage(start, end + 1):
+    h = t // 60
+    m = t % 60 
+    hs = f"{h:02d}"
+    ms = f"{m:02d}"
+    # 1) HH == MM
+    ok = (h == m)
+    # 2) MM = reversed(HH)
+    ok |= ( ms == hs[::-1])
+    # 3) digits increasing by 1
+    d = [ int(hs[0]), int(hs[1]), int(ms[0]), int(ms[1])]
+    if ok:
+        ans + = 1
+print(ans)        

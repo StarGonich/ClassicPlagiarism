@@ -1,0 +1,11 @@
+k=int(input())
+n=int(input())
+m=int(input())
+answ="2 1"
+for i in range(n):
+    s=list(map(int,input().split()))
+    for j in s:
+        if j==1:
+            answ="1 2"
+            break
+print(answ)

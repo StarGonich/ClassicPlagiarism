@@ -1,0 +1,5 @@
+for p1 in range (0.5,1):
+    for p2 in range (0.5,1):
+        for p3 in range (0.5,1):
+            k=(p1+p2+p3)//3
+print(k)

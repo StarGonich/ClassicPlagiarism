@@ -1,0 +1,27 @@
+from math import *
+def f(x):
+    a=1
+    for i in range(2,int(x**0.5)+1):
+        if x%i==0:
+            a=i
+            break
+    return x//a
+n=int(input())
+k=int(input())
+a=f(n)
+nok_min=10**24
+if k>=a:
+    
+    for p in range(n+a,n+k+1,a):
+        nok=(n*p)//gcd(n,p)
+        if nok_min>=nok:
+            nok_min=nok
+            pmin=p
+    print(pmin)
+else:
+    for p in range(n+1,n+k+1):
+        nok=(n*p)//gcd(n,p)
+        if nok_min>=nok:
+            nok_min=nok
+            pmin=p
+    print(pmin) 

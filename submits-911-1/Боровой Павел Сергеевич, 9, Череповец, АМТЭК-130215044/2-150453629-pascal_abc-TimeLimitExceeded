@@ -1,0 +1,48 @@
+program p1;
+ var m,x:real; z,b,n,l,a,i,k:integer; c:array[1..99999999] of integer; g:array[1..30] of integer;
+begin
+ read(n);
+ if n=1 then
+ begin
+  writeln(1);
+  write(1);
+  end
+  else
+  begin
+   z:=1;
+   l:=1;
+   for i:=1 to n do
+   begin
+    for a:=1 to 1000000000 do
+    begin
+     m:=a*1;
+     for b:=1 to 3000 do
+     begin
+      x:=b*1;
+      if m/x=a div b then
+      begin
+      c[z]:=b;
+      z:=z+1;
+      end;
+     end;
+    end;
+   end;
+   end;
+  for k:=1 to z do
+  begin
+  l:=c[k]*l;
+ end;
+   if z=n then
+   begin
+ writeln(l);
+ write(c);
+ if z>n then
+ for i:=1 to n do
+ l:=l*c[i];
+ g[i]:=c[i];
+ writeln(l);
+ write(g);
+ end;
+ if z<n then
+ write(-1);
+end.

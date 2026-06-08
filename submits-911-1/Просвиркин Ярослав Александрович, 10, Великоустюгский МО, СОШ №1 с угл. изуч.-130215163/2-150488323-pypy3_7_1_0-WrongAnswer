@@ -1,0 +1,11 @@
+n = int(input())
+
+dl = [1, 2, 3]
+n -= 3
+
+while n > 0:
+    dl.append(dl[-1] * 2)
+    n -= 1
+
+print(sum(dl))
+print(*dl)

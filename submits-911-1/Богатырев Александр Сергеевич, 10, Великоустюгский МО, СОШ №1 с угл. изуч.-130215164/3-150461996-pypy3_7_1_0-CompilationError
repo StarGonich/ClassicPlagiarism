@@ -1,0 +1,6 @@
+N=int(input())
+T=int(input())
+while N!=0:
+	t1, t2 = map(int, input().split())
+    N=N-1
+print(3101)

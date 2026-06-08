@@ -1,0 +1,29 @@
+import sys
+bank=210
+st=10
+while True:
+    if bank>1000:
+        quit()
+    print(st, "R",'\n')
+    sys.stdout.flush()
+    ans = int(input())
+    if ans==1:
+        bank+=st*2
+        if bank>900:
+            st=60
+        elif bank>750:
+            st=50
+        elif bank>520:
+            st=40
+        elif bank>450:
+            st=30
+        elif bank>300:
+            st=20
+        else:
+            st=10
+    elif ans==0:
+        bank-=st
+        st*=2
+    elif ans==-1:
+        quit()
+       

@@ -1,0 +1,43 @@
+using System;
+public class Program
+{
+    public static void Main()
+    {
+        int h1 = int.Parse(Console.ReadLine());
+        int m1 = int.Parse(Console.ReadLine());
+        int h2 = int.Parse(Console.ReadLine());
+        int m2 = int.Parse(Console.ReadLine());
+        int sum = 0;
+
+        for(int i = h1; i <= h2; i++)
+        {
+            for(int j = m1; j < 60; j++)
+            {
+                if (i == h2 && j > m2) break;
+
+                string hStr = i.ToString();
+                if (hStr.Length == 1) hStr = $"0{hStr[0]}";
+                string mStr = j.ToString();
+                if (mStr.Length == 1) mStr = $"0{mStr[0]}";
+                if (i == j)
+                {
+                    sum++;
+                    continue;
+                }
+                string mReverse = mStr.Length == 2 ? $"{mStr[1]}{mStr[0]}" : $"{mStr[0]}0";
+
+                if (hStr == mReverse)
+                {
+                    sum++;
+                    continue;
+                }
+                if (Convert.ToInt32(hStr[0]) + 1 == Convert.ToInt32(hStr[1]) && Convert.ToInt32(hStr[1]) + 1 == Convert.ToInt32(mStr[0]) && Convert.ToInt32(mStr[0]) + 1 == Convert.ToInt32(mStr[1]))
+                {
+                    sum++;
+                    continue;
+                }
+            }
+        }
+        Console.WriteLine(sum);
+    }
+}

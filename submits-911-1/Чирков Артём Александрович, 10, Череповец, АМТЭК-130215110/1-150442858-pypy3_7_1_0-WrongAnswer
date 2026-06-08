@@ -1,0 +1,48 @@
+a=[0]*2
+b=[0]*2
+k=0
+def time(z,x):
+    global k;
+    if (z==0 and x==0) or (z==1 and x==1) or (z==2 and x==2) or (z==3 and x==3) or (z==4 and x==4) or (z==5 and x==5) or (z==6 and x==6) or (z==7 and x==7) or (z==8 and x==8) or (z==9 and x==9) or (z==10 and x==10) or (z==11 and x==11) or (z==12 and x==12) or (z==13 and x==13) or (z==14 and x==14) or (z==15 and x==15) or (z==16 and x==16) or (z==17 and x==17) or (z==18 and x==18) or (z==19 and x==19) or (z==20 and x==20) or (z==21 and x==21) or (z==22 and x==22) or (z==23 and x==23) or (z==1 and x==23) or (z==12 and x==34) or (z==23 and x==45) or (z==1 and x==10) or (z==2 and x==20) or (z==3 and x==30) or (z==4 and x==40) or (z==5 and x==50) or (z==10 and x==1) or (z==12 and x==21) or (z==13 and x==31) or (z==14 and x==41) or (z==15 and x==51) or (z==20 and x==2) or (z==21 and x==12) or (z==23 and x==32):
+        k+=1
+k=0
+h1=int(input())
+m1=int(input())
+h2=int(input())
+m2=int(input())
+if (h2*60+m2)>=(h1*60+m1):
+    for h in range(h1,h2+1):
+        if h==h1 and h!=h2:
+            for m in range(m1,60):
+                time(h,m)
+        elif h<h2:
+            for m in range(0,60):
+                time(h,m)
+        elif h==h2 and h!=h1:
+            for m in range(0,m2+1):
+                time(h,m)
+        elif h1==h2:
+            for m in range(m1,m2+1):
+                time(h,m)
+else:
+    for h in range(h1,24):
+        if h==h1:
+            for m in range(m1,60):
+                time(h,m)
+        else:
+            for m in range(0,60):
+                time(h,m)
+    for h in range(0,h2+1):
+        if h==h1 and h!=h2:
+            for m in range(m1,60):
+                time(h,m)
+        elif h<h2:
+            for m in range(0,60):
+                time(h,m)
+        elif h==h2 and h!=h1:
+            for m in range(0,m2+1):
+                time(h,m)
+        elif h1==h2:
+            for m in range(m1,m2+1):
+                time(h,m)
+print(k)

@@ -1,0 +1,17 @@
+A,B,P = map(int,input().split())
+C,D,Q = map(int,input().split())
+
+det = A*D - B*C 
+if det == 0:
+    if A*Q == P*C:
+        print("Ambiguity")
+    else:
+        print("Contradiction")
+else:
+    x = (P*D-Q*B)/det*100
+    y = (A*Q-C*P)/det*100
+    if x < 0 or y < 0:
+        print("Not positive")
+    else:
+        print("Success")
+        print(x, y)

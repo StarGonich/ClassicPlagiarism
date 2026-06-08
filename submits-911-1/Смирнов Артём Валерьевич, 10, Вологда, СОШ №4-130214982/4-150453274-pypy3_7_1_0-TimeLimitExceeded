@@ -1,0 +1,29 @@
+def gcd(a, b):
+    """
+    Функция для вычисления наибольшего общего делителя (НОД) двух чисел.
+    Использует алгоритм Евклида.
+    """
+    while b:
+        a, b = b, a % b
+    return a
+
+def lcm(a, b):
+    """
+    Функция для вычисления наименьшего общего кратного (НОК) двух чисел.
+    Использует формулу: НОК(a, b) = (a * b) / НОД(a, b).
+    """
+    return (a * b) // gcd(a, b)
+
+n = int(input())
+k = int(input())
+
+best_p = -1
+min_lcm = float('inf')  # Инициализируем бесконечностью
+
+for p in range(n + 1, min(n + k + 1, n + n + 1)): # Проходим только до 2 * n, как максимум
+    current_lcm = lcm(n, p)
+    if current_lcm < min_lcm:
+        min_lcm = current_lcm
+        best_p = p
+
+print(best_p)

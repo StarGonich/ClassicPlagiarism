@@ -1,0 +1,23 @@
+from sys import stdin, stdout
+from math import gcd
+
+input = stdin.readline
+
+def lcm(a, b):
+    return (a * b) // gcd(a, b)
+
+def main():
+    n = int(input())
+    k = int(input())
+    
+    min_lcm = float('inf')
+    min_res = 0
+    for p in range(n + 1, n + k + 1):
+        l = lcm(n, p)
+        if l < min_lcm:
+            min_lcm = l
+            min_res = p
+
+    stdout.write(str(min_res))
+
+main()

@@ -1,0 +1,58 @@
+def next_state(grid, n, m):
+    new_grid = [[0]*m for _ in range(n)]
+    for i in range(n):
+        for j in range(m):
+            neighbors = 0
+            for di in [-1, 0, 1]:
+                for dj in [-1, 0, 1]:
+                    if di == 0 and dj == 0:
+                        continue
+                    ni, nj = i + di, j + dj
+                    if 0 <= ni < n and 0 <= nj < m:
+                        neighbors += grid[ni][nj]
+            if grid[i][j] == 1:
+                new_grid[i][j] = 1 if neighbors in [2, 3] else 0
+            else:
+                new_grid[i][j] = 1 if neighbors == 3 else 0
+    return new_grid
+
+k = int(input())
+n = int(input())
+m = int(input())
+
+configs = []
+for _ in range(k):
+    grid = []
+    for i in range(n):
+        row = list(map(int, input().split()))
+        grid.append(row)
+    configs.append(grid)
+
+def equal_grids(g1, g2):
+    for i in range(n):
+        for j in range(m):
+            if g1[i][j] != g2[i][j]:
+                return False
+    return True
+
+graph = [[] for _ in range(k)]
+for i in range(k):
+    for j in range(k):
+        if i != j and equal_grids(next_state(configs[i], n, m), configs[j]):
+            graph[i].append(j)
+
+visited = [False]*k
+order = []
+
+def dfs(v):
+    visited[v] = True
+    for u in graph[v]:
+        if not visited[u]:
+            dfs(u)
+    order.append(v+1)
+
+for i in range(k):
+    if not visited[i]:
+        dfs(i)
+
+print(' '.join(map(str, reversed(order))))

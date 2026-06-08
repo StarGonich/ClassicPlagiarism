@@ -1,0 +1,40 @@
+h1=int(input())
+m1=int(input())
+h2=int(input())
+m2=int(input())
+c=0
+for i in range(h1,h2+1):
+    if i==h1:
+        for j in range(m1,60):
+            s1=str(i).zfill(2)
+            s2=str(j).zfill(2)
+            gg=int(s1[0])
+            if s1==s2:
+                c+=1
+            elif s1==s2[::-1]:
+                c+=1
+            elif int(s1[1])==gg+1 and int(s2[0])==gg+2 and int(s2[1])==gg+3:
+                c+=1
+    elif i==h2:
+        for j in range(0,m2+1):
+            s1=str(i).zfill(2)
+            s2=str(j).zfill(2)
+            gg=int(s1[0])
+            if s1==s2:
+                c+=1
+            elif s1==s2[::-1]:
+                c+=1
+            elif int(s1[1])==gg+1 and int(s2[0])==gg+2 and int(s2[1])==gg+3:
+                c+=1
+    else:
+        for j in range(0,60):
+            s1=str(i).zfill(2)
+            s2=str(j).zfill(2)
+            gg=int(s1[0])
+            if s1==s2:
+                c+=1
+            elif s1==s2[::-1]:
+                c+=1
+            elif int(s1[1])==gg+1 and int(s2[0])==gg+2 and int(s2[1])==gg+3:
+                c+=1
+print(c)

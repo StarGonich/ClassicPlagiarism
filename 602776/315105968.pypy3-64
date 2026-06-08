@@ -1,0 +1,25 @@
+n = int(input())
+points = list(map(int, input().split()))
+powers = list(map(int, input().split()))
+k = int(input()) - 1
+active = [1] * n
+active[k] = 0
+power = powers[k]
+finished = 0
+for i in range(k - 1, -1, -1):
+    power -= abs(powers[i + 1] - powers[i])
+    if power < 0:
+        finished = i + 1
+        break
+    active[i] = 0
+    power = max(power, powers[i])
+power = powers[finished]
+for i in range(finished + 1, n):
+    power -= abs(powers[i-1] - powers[i])
+    if power < 0 and i > k:
+        break
+    active[i] = 0
+    power = max(power, powers[i])
+print(sum(active))
+
+

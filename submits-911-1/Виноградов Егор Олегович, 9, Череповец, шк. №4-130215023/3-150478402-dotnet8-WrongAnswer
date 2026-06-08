@@ -1,0 +1,62 @@
+using System;
+public class Program
+{
+    public static void Main()
+    {
+        int n = int.Parse(Console.ReadLine());
+        int T = int.Parse(Console.ReadLine());
+
+        int[] ads = new int[n * 2];
+
+        for (int i = 0; i < ads.Length; i += 2)
+        {
+            string[] input = Console.ReadLine().Split(' ');
+            ads[i] = int.Parse(input[0]);
+            ads[i + 1] = int.Parse(input[1]);
+        }
+        bool mFlag = true;
+        for (int i = 1; i < ads.Length; i += 2)
+        {
+            int sumT = 0;
+            sumT += ads[i] - ads[i - 1];
+
+
+            int temp = i;
+            while (true)
+            {
+                temp -= 2;
+                if (temp < 1)
+                {
+                    break;
+                }
+                if (ads[temp] > ads[i] - 3600)
+                {
+
+                    if (ads[temp - 1] > ads[i] - 3600)
+                    {
+                        sumT += ads[temp] - ads[temp - 1];
+                    }
+                    else
+                    {
+                        sumT += ads[temp] - (ads[i] - 3600);
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            if (sumT > T)
+            {
+                Console.WriteLine((ads[i - 1] + T * 2 - sumT) - 3600 + 1);
+                mFlag = false;
+                break;
+            }
+        }
+        if (mFlag)
+        {
+            Console.WriteLine(-1);
+        }
+    }
+}

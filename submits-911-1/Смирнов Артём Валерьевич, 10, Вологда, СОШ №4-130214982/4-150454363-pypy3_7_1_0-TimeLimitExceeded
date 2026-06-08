@@ -1,0 +1,19 @@
+import sys
+import math
+
+n = int(sys.stdin.readline())
+k = int(sys.stdin.readline())
+
+def lcm(a, b):
+    return a // math.gcd(a, b) * b
+
+best_p = n + 1
+best_lcm = lcm(n, best_p)
+
+for p in range(n + 2, n + k + 1):
+    current_lcm = lcm(n, p)
+    if current_lcm < best_lcm:
+        best_lcm = current_lcm
+        best_p = p
+
+print(best_p)

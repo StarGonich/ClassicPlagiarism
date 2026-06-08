@@ -1,0 +1,43 @@
+def calculate_f1(tp, fp, fn):
+    """Calculate F1 score based on TP, FP, and FN."""
+    if tp == 0 and fp == 0 and fn == 0:
+        return 0.0
+    precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+    recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+    if precision == 0 and recall == 0:
+        return 0.0
+    return 2 * precision * recall / (precision + recall)
+
+n = int(input())  # Read number of messages
+scores = [int(x) for x in input().split()]  # Read message scores
+k = int(input())  # Read number of fraud messages
+fraud_indices = [int(x) - 1 for x in input().split()]  # Read fraud message indices (0-based)
+
+best_f1 = -1.0
+best_threshold = -1
+
+# Iterate through each unique score as a potential threshold
+for threshold in sorted(list(set(scores))):
+    tp = 0
+    fp = 0
+    fn = 0
+    tn = 0
+
+    for i in range(n):
+        is_fraud = i in fraud_indices
+        predicted_fraud = scores[i] >= threshold
+
+        if is_fraud and predicted_fraud:
+            tp += 1
+        elif not is_fraud and predicted_fraud:
+            fp += 1
+        elif is_fraud and not predicted_fraud:
+            fn 
+    f1 = calculate_f1(tp, fp, fn)
+    if f1 > best_f1:
+        best_f1 = f1
+        best_threshold = threshold
+    elif f1 == best_f1 and f1 > 0 and threshold < best_threshold:
+        best_threshold = threshold
+
+print(best_threshold)

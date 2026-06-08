@@ -1,0 +1,28 @@
+program ln4;
+var potv,otv,i,nok,nod,a,b,n,k,pmin,pmax,p:longint;
+begin
+  readln(n,k);
+  pmin:=n+1;
+  pmax:=n+k;
+  a:=n;
+  otv:=1000000000;
+  for p:=pmin to pmax do begin
+  b:=p;
+  while a<>b do begin
+    if (a>b) then begin
+      a:=a-b;
+      end
+    else if (b>a) then begin
+    b:=b-a;
+    a:=n;
+    end;
+  end;
+  nod:=a;
+  nok:=(n*p) div nod;;
+  if (nok < otv) then begin
+    otv:=nok;
+    potv:=p;
+  end;
+  end;
+  writeln(potv);
+end.

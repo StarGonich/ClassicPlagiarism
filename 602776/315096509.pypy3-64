@@ -1,0 +1,6 @@
+n = int(input())
+c = 0
+for i in range(4, n+1):
+    if i % 4 == 0 and i % 5 != 0 and i % 6 != 0 or i % 4 != 0 and i % 5 == 0 and i % 6 != 0 or i % 4 != 0 and i % 5 != 0 and i % 6 == 0:
+        c += 1
+print(c)

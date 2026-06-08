@@ -1,0 +1,14 @@
+n = int(input())
+k = int(input())
+p = 0
+g = 1000000000000
+for i in range (n+1, n + k +1):
+    for b in range (2,1000):
+        if i%b == 0 and n %b == 0:
+            if b<g:
+                g = b
+                p = i
+            else:
+                continue
+        else:continue
+print(p)

@@ -1,0 +1,6 @@
+j=6int(imput())
+o=4int(input())
+j+o=9int(input())
+s=10int(input())
+m=12int(input())
+s+m=20int(input())

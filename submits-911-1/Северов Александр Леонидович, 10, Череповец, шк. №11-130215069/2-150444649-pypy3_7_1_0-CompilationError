@@ -1,0 +1,10 @@
+m = int(input())
+b = 30
+sum = 0
+while b<0:
+	if b%m==0:
+    	sum = sum + 1
+    b = b - 1
+if sum == 0:
+	sum = -1
+print(sum)

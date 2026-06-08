@@ -1,0 +1,15 @@
+from math import lcm
+
+n = int(input())
+k = int(input())
+mlcm = 999999999
+mp = n + 1
+if k < n:
+    print(n * 2)
+    exit()
+for p in range(n + 1, n + k):
+    if lcm(n, p) < mlcm:
+        mlcm = lcm(n, p)
+        mp = p
+
+print(mp)

@@ -1,0 +1,79 @@
+a1,b1,c1 = map(int,input().split())
+a2,b2,c2=map(int,input().split())
+if a1==0:
+    y = round(c1/b1*100,1)
+    if a2!=0:
+        x = round((c2-b2*y)/a2*100,1)
+    else:
+        x = 0
+    if y != round(c2/b2*100,1):
+        print("Contradiction")
+        exit()
+    elif y<0 or x<0:
+        print("Not positive")
+        exit()
+    else:
+        print("Success")
+        print(x,y)
+        exit()
+elif b1==0:
+    x = round(c1/a1*100,1)
+    if b2!=0:
+        y = round((c2-a2*x)/b2*100,1)
+    else:
+        y = 0
+    if y != round(c2/a2*100,1):
+        print("Contradiction")
+        exit()
+    elif y<0 or x<0:
+        print("Not positive")
+        exit()
+    else:
+        print("Success")
+        print(x,y)
+        exit()
+if a2==0:
+    y = round(c2/b2*100,1)
+    if a1!=0:
+        x = round((c1-b1*y)/a1*100,1)
+    else:
+        x = 0
+    if y != round(c1/b1*100,1):
+        print("Contradiction")
+        exit()
+    elif y<0 or x<0:
+        print("Not positive")
+        exit()
+    else:
+        print("Success")
+        print(x,y)
+        exit()
+elif b2==0:
+    x = round(c2/a2*100,1)
+    if b2!=0:
+        y = round((c1-a1*x)/b1*100,1)
+    else:
+        y = 0
+    if y != round(c1/a1*100,1):
+        print("Contradiction")
+        exit()
+    elif y<0 or x<0:
+        print("Not positive")
+        exit()
+    else:
+        print("Success")
+        print(x,y)
+        exit()
+elif (b2-(a2*b1)/a1)==0 and (c2-(a2*c1)/a1)==0:
+    print("Ambiguity")
+    exit()
+elif (b2-(a2*b1)/a1)==0 and (c2-(a2*c1)/a1)!=0:
+    print("Contradiction")
+    exit()
+y = round((c2-(a2*c1)/a1)/(b2-(a2*b1)/a1)*100,1)
+x = round((c1-b1*(c2-(a2*c1)/a1)/(b2-(a2*b1)/a1))/a1*100,1)
+if x<0 or y<0:
+    print("Not positive")
+else:
+    print("Success")
+    print(x,y)

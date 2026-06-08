@@ -1,0 +1,42 @@
+import math
+import sys
+
+input = lambda: sys.stdin.readline().rstrip()
+
+def print(*args, sep=' ', end='\n'):
+    sys.stdout.write(sep.join(map(str, args)) + end)
+
+def ii():
+    return int(input())
+def lii():
+    return list(map(int, input().split()))
+def lsi():
+    return input().split()
+
+def main():
+    a, b, p = lii()
+    c, d, q = lii()
+    det = a*d - b*c
+    if det == 0:
+        if a > c:
+            cnst = a / c
+            p /= cnst
+        else:
+            cnst = c / a
+            q /= cnst
+        if p != q:
+            print('Contradiction')
+        else:
+            print('Ambiguity')
+    else:
+        c2 = (q*a - p*c) / det
+        c1 = (p - c2 * b) / a
+        if c2 <= 0 or c1 <= 0:
+            print('Not positive')
+        else:
+            print('Success')
+            print(c1 * 100, c2 * 100)
+
+
+if __name__ == '__main__':
+    main()

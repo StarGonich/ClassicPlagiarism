@@ -1,0 +1,88 @@
+h1 = int(input())
+m1 = int(input())
+time_1 = h1*60 + m1
+h2 = int(input())
+m2 = int(input())
+time_2 = h2*60 + m2
+col = 0
+if time_1 <= 0 and 0 <= time_2:
+    col += 1
+if time_1 <= 61 and 61 <= time_2:
+    col += 1
+if time_1 <= 70 and 70 <= time_2:
+    col += 1
+if time_1 <= 83 and 83 <= time_2:
+    col += 1
+if time_1 <= 122 and 122 <= time_2:
+    col += 1
+if time_1 <= 140 and 140 <= time_2:
+    col += 1
+if time_1 <= 183 and 183 <= time_2:
+    col += 1
+if time_1 <= 210 and 210 <= time_2:
+    col += 1
+if time_1 <= 244 and 244 <= time_2:
+    col += 1
+if time_1 <= 280 and 280 <= time_2:
+    col += 1
+if time_1 <= 305 and 305 <= time_2:
+    col += 1
+if time_1 <= 350 and 350 <= time_2:
+    col += 1
+if time_1 <= 366 and 366 <= time_2:
+    col += 1
+if time_1 <= 427 and 427 <= time_2:
+    col += 1
+if time_1 <= 488 and 488 <= time_2:
+    col += 1
+if time_1 <= 549 and 549 <= time_2:
+    col += 1
+if time_1 <= 601 and 601 <= time_2:
+    col += 1
+if time_1 <= 610 and 610 <= time_2:
+    col += 1
+if time_1 <= 671 and 671 <= time_2:
+    col += 1
+if time_1 <= 732 and 732 <= time_2:
+    col += 1
+if time_1 <= 741 and 741 <= time_2:
+    col += 1
+if time_1 <= 754 and 754 <= time_2:
+    col += 1
+if time_1 <= 793 and 793 <= time_2:
+    col += 1
+if time_1 <= 811 and 811 <= time_2:
+    col += 1
+if time_1 <= 854 and 854 <= time_2:
+    col += 1
+if time_1 <= 881 and 881 <= time_2:
+    col += 1
+if time_1 <= 915 and 915 <= time_2:
+    col += 1
+if time_1 <= 951 and 951 <= time_2:
+    col += 1
+if time_1 <= 976 and 976 <= time_2:
+    col += 1
+if time_1 <= 1037 and 1037 <= time_2:
+    col += 1
+if time_1 <= 1098 and 1098 <= time_2:
+    col += 1
+if time_1 <= 1159 and 1159 <= time_2:
+    col += 1
+if time_1 <= 1202 and 1202 <= time_2:
+    col += 1
+if time_1 <= 1220 and 1220 <= time_2:
+    col += 1
+if time_1 <= 1272 and 1272 <= time_2:
+    col += 1
+if time_1 <= 1281 and 1281 <= time_2:
+    col += 1
+if time_1 <= 1342 and 1342 <= time_2:
+    col += 1
+if time_1 <= 1403 and 1403 <= time_2:
+    col += 1
+if time_1 <= 1412 and 1412 <= time_2:
+    col += 1
+if time_1 <= 1425 and 1425 <= time_2:
+    col += 1
+print(col)

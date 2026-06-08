@@ -1,0 +1,9 @@
+program n5;
+var n,k,p:integer;
+  begin
+    readln(n); readln(k);
+    if (p>=n+1) and (p<=n+k) then begin
+      for p:=1 to n+k do
+        if p mod n=0 then writeln(p mod n);
+    end;
+  end.

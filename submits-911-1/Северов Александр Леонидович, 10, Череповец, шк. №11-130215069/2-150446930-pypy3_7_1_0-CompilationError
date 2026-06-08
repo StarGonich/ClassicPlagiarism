@@ -1,0 +1,13 @@
+n = int(input())
+m = 30
+sum = 0
+while m<0:
+	if n%m==0:
+    	sum = sum + 1
+    m = m - 1
+if sum == 0:
+	sum == -1
+    print(sum)
+else:
+	print(n)
+	print(sum)

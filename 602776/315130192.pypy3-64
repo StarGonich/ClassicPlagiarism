@@ -1,0 +1,30 @@
+n = int(input())
+
+arr = [0] * (60 + 1)
+for i in range(1, 60 + 1):
+    if i % 4 == 0:
+        arr[i] += 1
+    if i % 5 == 0:
+        arr[i] += 1
+    if i % 6 == 0:
+        arr[i] += 1
+k60 = 0
+for v in arr:
+    if v == 1:
+        k60 += 1
+m = n // 60
+r = m * k60
+arr = [0] * (60 + 1)
+for i in range(m * 60 + 1, n + 1):
+    j = i - (m * 60 + 1)
+    if i % 4 == 0:
+        arr[j] += 1
+    if i % 5 == 0:
+        arr[j] += 1
+    if i % 6 == 0:
+        arr[j] += 1
+for v in arr:
+    if v == 1:
+        r += 1
+
+print(r)

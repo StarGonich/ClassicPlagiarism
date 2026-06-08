@@ -1,0 +1,13 @@
+from math import gcd
+l=dict()
+minimum = 9999999999
+n = int(input())
+k = int(input())
+p1 = n+1
+p2 = n+k
+for p in range(p1,p2+1//2):
+    gsd = gcd(n, p)
+    nok = n*p/gsd
+    l[nok]=p
+i=l.get(min(l.keys()))
+print(i)

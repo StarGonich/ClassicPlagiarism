@@ -1,0 +1,18 @@
+#include <iostream>
+
+int main(){
+	long long n, k;
+	std::cin >> n >> k;
+	long long mx = 1;
+	for(long long i = 1; i <= n && i <= k; i++){
+		if(n % i == 0){
+			if(i > mx){
+				mx = i;
+			}
+			if(n / i > mx && n / i < k){
+				mx = n / i;
+			}
+		}
+	}
+	std::cout << n + mx;
+}

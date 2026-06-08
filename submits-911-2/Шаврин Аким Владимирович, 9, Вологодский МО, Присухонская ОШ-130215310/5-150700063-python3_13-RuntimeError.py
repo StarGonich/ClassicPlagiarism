@@ -1,0 +1,1 @@
+T= [int(x) for x in input(100).split(100)]

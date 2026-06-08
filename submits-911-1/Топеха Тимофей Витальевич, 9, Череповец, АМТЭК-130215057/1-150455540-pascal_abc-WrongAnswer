@@ -1,0 +1,17 @@
+var i,i1,a,b,c,h1,m1,h2,m2,d,l,h,m,w,w1:int64; 
+begin
+  readln(h1); readln(m1); readln(h2);  readln(m2); a:=0; b:=0; c:=0; d:=0;
+  while (h1<h2) and (m1<m2) do begin
+    for i:=m1 to 60 do begin
+ a:=h1 div 10; b:=h1 mod 10; w:=10*b+a;
+ c:=m1 div 10; d:=m1 mod 10; w1:=10*d+C; 
+ if (h1=m1) xor (w=w1) xor ((b-a=1) and (d-c=1) and (c-a=1)) and (m1<=m2) then
+   l:=l+1;
+ end;
+ if m1=m2 then m1:=m2
+ else
+ m1:=0;
+ h1:=h1+1;
+ end;
+ print(l);
+end.

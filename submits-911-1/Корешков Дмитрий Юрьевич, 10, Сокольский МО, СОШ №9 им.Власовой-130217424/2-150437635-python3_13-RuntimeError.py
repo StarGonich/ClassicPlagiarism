@@ -1,0 +1,7 @@
+n=int(input())
+k=0
+if i in range(1,n):
+    if a/n==0:
+        k=a
+    a=int(input())
+print(k,n)

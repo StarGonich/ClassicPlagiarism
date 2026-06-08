@@ -1,0 +1,43 @@
+var h1, h2, m1, m2, num, n1, n2, n3, n4, Code: int16;
+ tru: boolean;
+ whol, half, half2, whol2, equa, s1, s2, s3, s4: string;
+begin
+ num:=0;
+ writeln ();
+ read (h1);
+ read (m1);
+ read (h2);
+ readln (m2);
+ while (h1<h2) or (m1<m2+1) do begin
+   Str(h1, whol);
+   if Length(whol)<2 then whol:=('0')+whol;
+   half:=Copy(whol, 1, 1);
+   half2:=Copy(whol, 2, 1);
+   whol2:=half2+half;
+   Str(m1, equa);
+   if Length(equa)<2 then equa:=('0')+equa;
+   s1:=Copy(whol, 1, 1);
+   s2:=Copy(whol, 2, 1);
+   s3:=Copy(equa, 1, 1);
+   s4:=Copy(equa, 2, 1);
+   Val(s1, n1, Code);
+   Val(s2, n2, Code);
+   Val(s3, n3, Code);
+   Val(s4, n4, Code);
+   if (h1=m1) then tru:=true
+    else if (whol2=equa) then tru:=true
+     else if n2=n1+1 then 
+      if n3=n2+1 then 
+       if n4=n3+1 then tru:=true;
+   if (tru=true) then begin num:=num+1;
+    tru:=false
+    end;
+   if (m1=59) then begin
+    m1:=0;
+    if (h1=23) then h1:=0
+     else h1:=h1+1;
+    end
+   else m1:=m1+1;
+   end;
+  write(num); 
+end.

@@ -1,0 +1,32 @@
+import random
+import sys
+
+t = 100
+
+
+def solve():
+    temp = [3,3,2]
+    start = 210
+    while t:
+        r = random.randint(0, 1)
+        if temp[-1] == temp[-2] == temp[-3] == 0:
+            bet = start
+        else:
+            bet = 4
+        start -= bet
+        if r == 1:
+            c = 'R'
+        else:
+            c = 'B'
+        print(bet, c)
+        sys.stdout.flush()
+        res = int(input())
+        if res == -1:
+            return
+        else:
+            temp.append(res)
+            if res == 1:
+                start += 2 * bet
+        if start >= 1000:
+            return
+solve()

@@ -1,0 +1,45 @@
+a,b,p = map(int,input().split())
+c,d,q = map(int,input().split())
+try:
+    if a+b>0 and c+d>0:
+        q1 = c - a * d / b
+        q2 = q - p * d / b
+        r1 = q2 / q1
+        r2 = ((p - r1 * a) / b)
+        res1 = round(r1 * 100, 4)
+        res2 = round(r2 * 100, 4)
+        if res1 <= 1 or res2 <= 1:
+            print("Not positive")
+        else:
+            print("Success")
+            print(res1, res2)
+    else:
+        print('Contradiction')
+except:
+    if a!=0 and b == 0 and c!=0 and d==0:
+        if round(a/c,4)==round(p/q,4):
+            print("Ambiguity")
+        else: print("Contradiction")
+    elif a==0 and b!=0 and c==0 and d!=0:
+        if round(b/d,4)==round(p/q,4): print("Ambiguity")
+        else: print("Contradiction")
+    elif a!=0 and b!=0 and c!=0 and d!=0 and a!=c and b!=d and (p%q==0 or q%p==0):
+        if p/a == p/b == q/c == q/d:
+            print("Success")
+            print(p/a*100,p/a*100)
+    elif b==0:
+        a,b=b,a
+        c,d=d,c
+        q1 = c - a * d / b
+        q2 = q - p * d / b
+        r1 = q2 / q1
+        r2 = ((p - r1 * a) / b)
+        res1 = round(r1 * 100, 4)
+        res2 = round(r2 * 100, 4)
+        if res1 <= 1 or res2 <= 1:print("Not positive")
+        else:
+            print("Success")
+            res1,res2=res2,res1
+            print(res1, res2)
+    elif p!=q*(a/c): print("Contradiction")
+    elif p==q*(a/c): print("Ambiguity")

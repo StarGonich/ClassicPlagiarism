@@ -1,0 +1,24 @@
+def der(d, n, k, m):
+    if len(d) == k:
+        if sum(d) == n:
+            print(n)
+            for x in d: print(x, end=" ")
+            exit()
+        ##print(d)
+        return 0
+    else:
+        for i in range(m, n + 1, 1):
+            if n % i == 0:
+                dd = d.copy()
+                der(dd, n, k, i + 1)
+                d.add(i)
+                der(d, n, k, i + 1)
+
+
+
+
+n = int(input())
+if n == 2:
+    exit(print(-1))
+for i in range(1, 10**9):
+    der(set(), i, n, 1)

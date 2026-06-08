@@ -1,0 +1,6 @@
+n = int(input())
+k = int(input())
+p = int(input())
+p≥n+1
+p≤n+k
+print(p, if k==1 else n * 2)
