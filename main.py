@@ -27,7 +27,7 @@ ARCHIVEPATH = "submits-911-2"
 GRAPHSDIR=ARCHIVEPATH + "_OK_JOERN/graphs"
 
 SUBGRAPH_SIZE = 4
-SEARCH = '345'
+SEARCH = '12345'
 
 
 def prepare_nodes(graph) -> None:
@@ -45,6 +45,9 @@ def prepare_nodes(graph) -> None:
     graph.remove_nodes_from(components_to_remove)
 
 
+"""
+Альтернатива с генератором, нужны тесты
+"""
 # def extend_subgraph(G, k, V_sub, V_ext, v, results, seen: set):
 #     if len(V_sub) == k:
 #         sub_frozen = frozenset(V_sub)
@@ -89,7 +92,12 @@ def extend_subgraph(G, k, V_sub, V_ext, v, results, seen):
         extend_subgraph(G, k, new_sub, new_ext, v, results, seen)
 
 
-@functools.lru_cache(maxsize=None)
+"""
+При большом SUBGRAPH_SIZE может сильно пожираться память, при желании можно включить,
+главное не забудьте расскоментировать строчку get_all_weakly_connected_subgraphs.cache_clear()
+в конце файла
+"""
+# @functools.lru_cache(maxsize=None)
 def get_all_weakly_connected_subgraphs(G_path):
     G = nx.drawing.nx_agraph.read_dot(G_path)
     prepare_nodes(G)
@@ -115,29 +123,6 @@ def plagiarism(G1_path, G1, G2):
     return sum(G1_nodes_iso.values())/len(G1_nodes_iso)
 
 
-def set_graph_code(db, submission: Submission, G_Path) -> str:
-    db = PlagiarismDB('plagiarism.db')
-    db.connect_db()
-    cursor = db.conn.cursor()
-    cursor.execute("""
-            SELECT graph FROM submissions WHERE submission_id = ?
-            """, (submission.id,))
-    result = cursor.fetchone()
-    if result is None or result[0] is None:
-        with open(G_Path, 'r', encoding='utf-8') as f:
-            code = f.read()
-        cursor.execute("""
-                    UPDATE submissions 
-                    SET graph = ? 
-                    WHERE submission_id = ?
-                """, (code, submission.id))
-        db.conn.commit()
-        db.conn.close()
-        return code
-    db.conn.close()
-    return result[0]
-
-
 def process_combination(args):
     G1_sub, G2_sub, SUBGRAPH_SIZE, GRAPHSDIR = args
 
@@ -152,12 +137,8 @@ def process_combination(args):
     if not G2_files:
         return None
     
-    # Берём первый найденный файл (если их несколько)
     G1_dotpath = G1_files[0]
     G2_dotpath = G2_files[0]
-    
-    # set_graph_code(G1_sub, G1_dotpath)
-    # set_graph_code(G2_sub, G2_dotpath)
     
     G1 = nx.drawing.nx_pydot.read_dot(G1_dotpath)
     G2 = nx.drawing.nx_pydot.read_dot(G2_dotpath)
@@ -204,8 +185,6 @@ if __name__ == '__main__':
             not glob.glob(f"./{GRAPHSDIR}/*{G1_sub.submission_code}*.dot") or
             not glob.glob(f"./{GRAPHSDIR}/*{G2_sub.submission_code}*.dot")):
                 combinations_list.remove((G1_sub, G2_sub))
-        
-        # print(combinations_list)
         args = [(G1_sub, G2_sub, SUBGRAPH_SIZE, GRAPHSDIR)
                 for G1_sub, G2_sub in combinations_list]
         with mp.Pool(processes=mp.cpu_count()) as p:
@@ -213,7 +192,6 @@ if __name__ == '__main__':
                                total=len(args),
                                desc=f"{problem.code}",
                                position=0):
-                # print(result[0], result[1], result[2], result[3], result[4])
                 if result is not None:
                     if result[5]:  # error path
                         errors.add(result[5])
