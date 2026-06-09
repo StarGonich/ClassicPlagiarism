@@ -1,12 +1,11 @@
 import glob
-import os
 import functools
 import multiprocessing as mp
 import networkx as nx
 from itertools import combinations
 from tqdm import tqdm
 
-from PlagiarismDB import PlagiarismDB, Submission
+from PlagiarismDB import PlagiarismDB
 
 # PLATFORM = "Codeforces"
 # LOGPATH = "test_log.txt"
@@ -140,8 +139,8 @@ def process_combination(args):
     G1_dotpath = G1_files[0]
     G2_dotpath = G2_files[0]
     
-    G1 = nx.drawing.nx_pydot.read_dot(G1_dotpath)
-    G2 = nx.drawing.nx_pydot.read_dot(G2_dotpath)
+    G1 = nx.drawing.nx_agraph.read_dot(G1_dotpath)
+    G2 = nx.drawing.nx_agraph.read_dot(G2_dotpath)
 
     prepare_nodes(G1)
     if G1.number_of_nodes() == 0:
